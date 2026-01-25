@@ -1,0 +1,59 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Block_HousingChecker_Block.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Crystal_Blue.png",
+  "Categories": [
+    "Blocks.Rocks",
+    "Blocks.Rocks"
+  ],
+  "PlayerAnimationsId": "Block",
+  "BlockType": {
+    "Textures": [
+      {
+        "All": "BlockTextures/Rock_Crystal_Blue.png"
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "HousingChecker_Block",
+        "GatherType": "Rocks"
+      }
+    },
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "RandomRotation": "None",
+    "BlockParticleSetId": "Ore",
+    "ParticleColor": "#1aa3ff",
+    "BlockSoundSetId": "Crystal",
+    "RequiresAlphaBlending": false,
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "OpenCustomUI",
+            "Page": {
+              "Id": "HousingCheck"
+            },
+            "Effects": {}
+          }
+        ]
+      }
+    }
+  },
+  "RotationYawPlacementOffset": "None",
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      22.5,
+      45.0,
+      22.5
+    ],
+    "Translation": [
+      0.0,
+      -13.5
+    ]
+  },
+  "MaxStack": 25,
+  "ItemSoundSetId": "ISS_Blocks_Stone"
+}

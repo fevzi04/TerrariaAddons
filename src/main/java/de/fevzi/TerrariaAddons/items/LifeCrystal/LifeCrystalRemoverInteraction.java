@@ -23,8 +23,7 @@ import javax.annotation.Nonnull;
 import java.util.UUID;
 
 public class LifeCrystalRemoverInteraction extends SimpleInstantInteraction {
-    private static final float HEALTH_DECREASE = 5.0f;
-
+    
     public static final BuilderCodec<LifeCrystalRemoverInteraction> CODEC = BuilderCodec.builder(LifeCrystalRemoverInteraction.class, LifeCrystalRemoverInteraction::new, SimpleInstantInteraction.CODEC).build();
 
     @Override

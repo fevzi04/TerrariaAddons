@@ -1,0 +1,24 @@
+$C = "../Common.ui";
+
+$C.@PageOverlay {}
+
+$C.@DecoratedContainer {
+  Anchor: (Width: 480, Height: 220);
+
+  #Title {
+    Group {
+      $C.@Title {
+        @Text = "Housing Check";
+      }
+    }
+  }
+
+  #Content {
+    Group #ElementList {
+      LayoutMode: Top;
+      Padding: (Full: 12);
+    }
+  }
+}
+
+$C.@BackButton {}

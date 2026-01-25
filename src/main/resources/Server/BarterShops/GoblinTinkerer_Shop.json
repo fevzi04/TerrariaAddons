@@ -1,0 +1,7 @@
+{
+  "DisplayNameKey": "server.barter.GoblinTinkererShop.title",
+  "RefreshInterval": {
+    "Days": 3
+  },
+  "RestockHour": 6  
+}

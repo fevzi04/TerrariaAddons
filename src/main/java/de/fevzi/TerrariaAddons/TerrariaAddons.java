@@ -31,6 +31,11 @@ import de.fevzi.TerrariaAddons.items.potions.recall.RecallInteraction;
 import de.fevzi.TerrariaAddons.items.potions.wormhole.PlayerTeleportPageSupplier;
 import de.fevzi.TerrariaAddons.items.Voidbag.Voidbag;
 import de.fevzi.TerrariaAddons.items.Starfury.StarfuryInteraction;
+import de.fevzi.TerrariaAddons.housing.HousingCheckerSystem;
+import de.fevzi.TerrariaAddons.housing.HousingRevalidationBreakSystem;
+import de.fevzi.TerrariaAddons.housing.HousingRevalidationPlaceSystem;
+import de.fevzi.TerrariaAddons.housing.HousingRevalidationTickSystem;
+import de.fevzi.TerrariaAddons.housing.ui.HousingCheckPageSupplier;
 
 import javax.annotation.Nonnull;
 
@@ -44,6 +49,7 @@ public class TerrariaAddons extends JavaPlugin {
 
         Assets<Interaction, ? extends Codec<? extends Interaction>> interactions = this.getCodecRegistry(Interaction.CODEC);
         OpenCustomUIInteraction.PAGE_CODEC.register("PlayerTeleport", PlayerTeleportPageSupplier.class, PlayerTeleportPageSupplier.CODEC);
+        OpenCustomUIInteraction.PAGE_CODEC.register("HousingCheck", HousingCheckPageSupplier.class, HousingCheckPageSupplier.CODEC);
         interactions.register("Recall", RecallInteraction.class, RecallInteraction.CODEC);
         interactions.register("MirrorRecall", MirrorRecallInteraction.class, MirrorRecallInteraction.CODEC);
         interactions.register("LifeCrystal", LifeCrystalInteraction.class, LifeCrystalInteraction.CODEC);
@@ -68,5 +74,9 @@ public class TerrariaAddons extends JavaPlugin {
         getEntityStoreRegistry().registerSystem(new LavaCharmHudSystem());
         getEntityStoreRegistry().registerSystem(new FallingStarSystem());
         getEntityStoreRegistry().registerSystem(new BandOfManaRegenerationSystem());
+        getEntityStoreRegistry().registerSystem(new HousingCheckerSystem());
+        getEntityStoreRegistry().registerSystem(new HousingRevalidationPlaceSystem());
+        getEntityStoreRegistry().registerSystem(new HousingRevalidationBreakSystem());
+        getEntityStoreRegistry().registerSystem(new HousingRevalidationTickSystem());
     }
 }

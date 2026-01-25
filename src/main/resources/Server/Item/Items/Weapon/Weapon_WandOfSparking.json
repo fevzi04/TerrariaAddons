@@ -29,6 +29,9 @@
   "Tags": {
     "Type": [
       "Weapon"
+    ],
+    "Family": [
+      "Maigc"
     ]
   },
   "Weapon": {
@@ -94,5 +97,8 @@
         ]
       }
     ]
+  },
+  "Utility": {
+    "Compatible": true
   }
 }

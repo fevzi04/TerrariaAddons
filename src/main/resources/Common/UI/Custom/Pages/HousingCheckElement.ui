@@ -1,0 +1,17 @@
+Button #Button {
+  LayoutMode: Top;
+  Padding: (Full: 10);
+  Style: (
+    Hovered: (
+      Background: #000000(0.0),
+    )
+  );
+
+  Label #Status {
+    Style: (RenderBold: true);
+  }
+
+  Label #Reason {
+    Style: (TextColor: #ffffff(0.7));
+  }
+}

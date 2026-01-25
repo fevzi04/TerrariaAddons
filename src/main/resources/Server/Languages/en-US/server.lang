@@ -62,6 +62,7 @@ items.Consumable_ManaCrystalRemover.name=Mana Crystal Remover (DEBUG)
 items.Consumable_ManaCrystalRemover.description=Removes 1 Mana Crystal use and reduces max mana by 5
 
 items.Block_LifeCrystal_Block.name=Life Crystal Block
+items.Block_HousingChecker_Block.name=Housing Checker Block
 
 items.Fallen_Star.name=Fallen Star
 items.Fallen_Star.description=A fragment of a star that fell from the night sky.
