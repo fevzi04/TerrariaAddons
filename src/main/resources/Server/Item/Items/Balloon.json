@@ -38,7 +38,7 @@
   },
   "ItemLevel": 20,
   "IconProperties": {
-    "Scale": 1,
+    "Scale": 0.3,
     "Rotation": [
       359,
       48,
@@ -46,7 +46,7 @@
     ],
     "Translation": [
       -1,
-      -13
+      -12
     ]
   },
   "MaxStack": 1,

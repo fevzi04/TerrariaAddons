@@ -23,12 +23,13 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class FallingStarSystem extends EntityTickingSystem<EntityStore> {
 
-    private static final double SPAWN_CHANCE = 0.001;
+    private static final double SPAWN_CHANCE = 0.0004;
     private static final double SPAWN_HEIGHT = 50.0;
-    private static final double SPAWN_RADIUS = 30.0;
+    private static final double SPAWN_RADIUS = 50.0;
     private static final double NIGHT_THRESHOLD = 0.3;
     private static final float DOWN_PITCH = -1.5707964f;
     private static final long SPAWN_COOLDOWN_MS = 5000L;
+    private static final String FALLEN_STAR_ITEM_ID = "Ingredient_FallenStar";
     private static final Map<UUID, Long> LAST_SPAWN_TIME = new ConcurrentHashMap<>();
 
     @Override
@@ -48,6 +49,25 @@ public class FallingStarSystem extends EntityTickingSystem<EntityStore> {
             return;
         }
 
+        WorldTimeResource worldTime = commandBuffer.getResource(WorldTimeResource.getResourceType());
+        if (worldTime == null) {
+            return;
+        }
+
+        double sunlightFactor = worldTime.getSunlightFactor();
+        boolean isDay = sunlightFactor > NIGHT_THRESHOLD;
+
+        ItemComponent itemComponent = store.getComponent(entityRef, ItemComponent.getComponentType());
+        if (itemComponent != null) {
+            ItemStack itemStack = itemComponent.getItemStack();
+            if (itemStack != null && FALLEN_STAR_ITEM_ID.equals(itemStack.getItemId())) {
+                if (isDay) {
+                    commandBuffer.removeEntity(entityRef, RemoveReason.REMOVE);
+                }
+                return;
+            }
+        }
+
         Player player = store.getComponent(entityRef, Player.getComponentType());
         if (player == null || player.isWaitingForClientReady()) {
             return;
@@ -58,13 +78,7 @@ public class FallingStarSystem extends EntityTickingSystem<EntityStore> {
             return;
         }
 
-        WorldTimeResource worldTime = commandBuffer.getResource(WorldTimeResource.getResourceType());
-        if (worldTime == null) {
-            return;
-        }
-
-        double sunlightFactor = worldTime.getSunlightFactor();
-        if (sunlightFactor > NIGHT_THRESHOLD) {
+        if (isDay) {
             return;
         }
 

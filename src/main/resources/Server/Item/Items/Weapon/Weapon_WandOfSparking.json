@@ -15,7 +15,7 @@
   "ItemLevel": 5,
   "Scale": 2,
   "IconProperties": {
-    "Scale": 1.1,
+    "Scale": 1,
     "Rotation": [
       0,
       315,
@@ -75,5 +75,24 @@
       ]
     }
   },
-  "Icon": "Icons/ItemsGenerated/Weapon_WandOfSparking.png"
+  "Icon": "Icons/ItemsGenerated/Weapon_WandOfSparking.png",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Stick"
+      },
+      {
+        "Quantity": 10,
+        "ItemId": "Ingredient_Fire_Essence"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Arcanebench",
+        "Categories": [
+          "Arcane_Misc"
+        ]
+      }
+    ]
+  }
 }

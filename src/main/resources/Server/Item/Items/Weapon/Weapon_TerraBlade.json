@@ -14,7 +14,7 @@
     "Input": [
       {
         "ItemId": "Ingredient_Bar_Terrasteel",
-        "Quantity": 5
+        "Quantity": 10
       },
       {
         "ItemId": "Ingredient_Voidheart",
@@ -30,7 +30,8 @@
         ],
         "RequiredTierLevel": 3
       }
-    ]
+    ],
+    "RequiredMemoriesLevel": 6
   },
   "Interactions": {
     "Primary": "Root_TerraBlade_Primary",

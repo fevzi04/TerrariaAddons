@@ -30,6 +30,7 @@
         "Quantity": 1
       }
     ],
+    "RequiredMemoriesLevel": 5,
     "BenchRequirement": [
       {
         "Type": "Crafting",
