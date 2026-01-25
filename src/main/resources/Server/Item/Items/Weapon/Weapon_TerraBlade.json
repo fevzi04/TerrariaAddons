@@ -14,7 +14,7 @@
     "Input": [
       {
         "ItemId": "Ingredient_Bar_Terrasteel",
-        "Quantity": 5
+        "Quantity": 10
       },
       {
         "ItemId": "Ingredient_Voidheart",
@@ -38,26 +38,6 @@
     "Ability1": "Root_Weapon_Sword_Signature_Vortexstrike"
   },
   "InteractionVars": {
-    "Swing_Left": {
-      "Interactions": [
-        "Weapon_Sword_Primary_Swing_Left",
-        {
-          "Type": "LaunchProjectile",
-          "RunTime": 0,
-          "ProjectileId": "TerraBlade_Beam1"
-        }
-      ]
-    },
-    "Swing_Right": {
-      "Interactions": [
-        "Weapon_Sword_Primary_Swing_Right",
-        {
-          "Type": "LaunchProjectile",
-          "RunTime": 0,
-          "ProjectileId": "TerraBlade_Beam2"
-        }
-      ]
-    },
     "Swing_Down": {
       "Interactions": [
         "Weapon_Sword_Primary_Swing_Down",
@@ -122,7 +102,7 @@
           "Parent": "Weapon_Sword_Primary_Thrust_Damage",
           "DamageCalculator": {
             "BaseDamage": {
-              "Physical": 25
+              "Physical": 50
             }
           },
           "EntityStatsOnHit": [
