@@ -23,7 +23,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class FallingStarSystem extends EntityTickingSystem<EntityStore> {
 
-    private static final double SPAWN_CHANCE = 0.001;
+    private static final double SPAWN_CHANCE = 0.95;
     private static final double SPAWN_HEIGHT = 50.0;
     private static final double SPAWN_RADIUS = 30.0;
     private static final double NIGHT_THRESHOLD = 0.3;
