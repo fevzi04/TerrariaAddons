@@ -1,0 +1,29 @@
+{
+  "Container": {
+    "Type": "Multiple",
+    "Containers": [
+      {
+        "Type": "Multiple",
+        "Containers": [
+          {
+            "Type": "Single",
+            "Item": {
+              "ItemId": "Food_Fish_Raw",
+              "QuantityMin": 1,
+              "QuantityMax": 2
+            },
+            "Weight": 100
+          },
+          {
+            "Type": "Single",
+            "Item": {
+              "ItemId": "Ingredient_Sharkfin",
+              "QuantityMin": 1
+            },
+            "Weight": 95
+          }
+        ]
+      }
+    ]
+  }
+}
