@@ -1,0 +1,59 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.BandOfRegeneration.name",
+    "Description": "server.items.BandOfRegeneration.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "Model": "Items/BandOfRegeneration/BandOfRegeneration.blockymodel",
+  "Texture": "Items/BandOfRegeneration/BandOfRegeneration.png",
+  "Scale": 1.5,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Adamantite",
+        "Quantity": 5
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      },
+      {
+        "ItemId": "Ingredient_Voidheart",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "TinkerersWorkshop",
+        "Categories": [
+          "Tinkerers_Accessories"
+        ]
+      }
+    ]
+  },
+  "ItemLevel": 20,
+  "IconProperties": {
+    "Scale": 1.4,
+    "Rotation": [
+      360,
+      264,
+      0
+    ],
+    "Translation": [
+      -0.5,
+      1
+    ]
+  },
+  "MaxStack": 1,
+  "Icon": "Icons/ItemsGenerated/BandOfRegeneration.png",
+  "Quality": "Epic"
+}

@@ -1,0 +1,56 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.LuckyHorseshoe.name",
+    "Description": "server.items.LuckyHorseshoe.description"
+
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "Model": "Items/LuckyHorseshoe/LuckyHorseshoe.blockymodel",
+  "Texture": "Items/LuckyHorseshoe/LuckyHorseshoe.png",
+  "Scale": 1.5,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Gold",
+        "Quantity": 6
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "TinkerersWorkshop",
+        "Categories": [
+          "Tinkerers_Accessories"
+        ]
+      }
+    ]
+  },
+  "ItemLevel": 20,
+  "Icon": "Icons/ItemsGenerated/LuckyHorseshoe.png",
+  "IconProperties": {
+    "Scale": 1.8,
+    "Rotation": [
+      291,
+      157,
+      21
+    ],
+    "Translation": [
+      -2,
+      -4
+    ]
+  },
+  "MaxStack": 1,
+  "Quality": "Rare"
+}

@@ -1,0 +1,41 @@
+{
+  "Model": "Items/Projectiles/Starfury_Projectile/Starfury_Projectile.blockymodel",
+  "Texture": "Items/Projectiles/Starfury_Projectile/Starfury_Texture.png",
+  "TranslationProperties": {
+    "Name": "server.items.Fallen_Star.name",
+    "Description": "server.items.Fallen_Star.description"
+  },
+  "Quality": "Common",
+  "MaxStack": 25,
+  "PlayerAnimationsId": "Item",
+  "Trails": [
+    {
+      "TrailId": "Large_Projectile",
+      "TargetEntityPart": "Self",
+      "FixedRotation": false,
+      "RotationOffset": {
+        "Roll": 90
+      }
+    },
+    {
+      "TrailId": "Fire_Trap_Fire"
+    }
+  ],
+  "Light": {
+    "Color": "#fe0",
+    "Radius": 15
+  },
+  "Icon": "Icons/ItemsGenerated/Ingredient_FallenStar.png",
+  "IconProperties": {
+    "Scale": 0.7,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      1,
+      -10
+    ]
+  }
+}

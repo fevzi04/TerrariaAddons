@@ -1,0 +1,59 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.BlizzardInABottle.name",
+    "Description": "server.items.BlizzardInABottle.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "Model": "Items/Consumables/Potions/Potion.blockymodel",
+  "Texture": "Items/Consumables/Potions/Potion_Textures/Blue.png",
+  "Scale": 1.5,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Shadoweave",
+        "Quantity": 12
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      },
+      {
+        "ItemId": "Ingredient_Bar_Cobalt",
+        "Quantity": 8
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "TinkerersWorkshop",
+        "Categories": [
+          "Tinkerers_Accessories"
+        ]
+      }
+    ]
+  },
+  "ItemLevel": 20,
+  "Icon": "Icons/ItemsGenerated/BlizzardInABottle.png",
+  "IconProperties": {
+    "Scale": 0.9,
+    "Rotation": [
+      340,
+      133,
+      21
+    ],
+    "Translation": [
+      -1,
+      -9
+    ]
+  },
+  "MaxStack": 1,
+  "Quality": "Rare"
+}

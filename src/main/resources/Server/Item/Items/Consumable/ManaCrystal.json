@@ -1,0 +1,63 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Consumable_ManaCrystal.name",
+    "Description": "server.items.Consumable_ManaCrystal.description"
+  },
+  "MaxStack": 10,
+  "Icon": "Icons/ItemsGenerated/ManaCrystal.png",
+  "Consumable": false,
+  "Model": "Items/ManaCrystal/Mana_Crystal_Model.blockymodel",
+  "Texture": "Items/ManaCrystal/ManaCrystal_Texture.png",
+  "Scale": 1.0,
+  "ItemLevel": 1,
+  "Quality": "Rare",
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "ManaCrystal",
+          "Effects": {
+            "LocalSoundEventId": "SFX_LifeCrystal_Use"
+          }
+        }
+      ],
+      "Cooldown": {
+        "Id": "",
+        "Cooldown": 1
+      }
+    }
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_FallenStar",
+        "Quantity": 5
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Arcanebench",
+        "Categories": [
+          "Arcane_Misc"
+        ],
+        "RequiredTierLevel": 0
+      }
+    ]
+  },
+  "PlayerAnimationsId": {
+    "Parent": "Item"
+  },
+  "IconProperties": {
+    "Scale": 0.9,
+    "Rotation": [
+      30,
+      40,
+      16
+    ],
+    "Translation": [
+      0,
+      -9
+    ]
+  }
+}

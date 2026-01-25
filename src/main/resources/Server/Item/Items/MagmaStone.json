@@ -1,0 +1,60 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.MagmaStone.name",
+    "Description": "server.items.MagmaStone.description"
+
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "Model": "Items/MagmaStone/MagmaStone.blockymodel",
+  "Texture": "Items/MagmaStone/MagmaStone.png",
+  "Scale": 1.5,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Gold",
+        "Quantity": 4
+      },
+      {
+        "ItemId": "Ingredient_Fire_Essence",
+        "Quantity": 20
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "TinkerersWorkshop",
+        "Categories": [
+          "Tinkerers_Accessories"
+        ]
+      }
+    ]
+  },
+  "ItemLevel": 20,
+  "IconProperties": {
+    "Scale": 1.7,
+    "Rotation": [
+      313,
+      200,
+      0
+    ],
+    "Translation": [
+      -1,
+      -4
+    ]
+  },
+  "MaxStack": 1,
+  "Icon": "Icons/ItemsGenerated/MagmaStone.png",
+  "Quality": "Rare"
+}

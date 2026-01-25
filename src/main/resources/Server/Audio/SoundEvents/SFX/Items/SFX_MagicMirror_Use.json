@@ -1,0 +1,13 @@
+{
+  "Layers": [
+    {
+      "Files": [
+        "Sounds/Items/MagicMirror/MagicMirror_Use.ogg"
+      ],
+      "Volume": 3.0
+    }
+  ],
+  "Volume": 0,
+  "PreventSoundInterruption": true,
+  "Parent": "SFX_Attn_Moderate"
+}

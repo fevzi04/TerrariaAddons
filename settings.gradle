@@ -1,0 +1,8 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        maven { url 'https://maven.hytale-mods.dev/releases' }
+    }
+}
+rootProject.name = 'TerrariaAddons'

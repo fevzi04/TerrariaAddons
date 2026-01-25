@@ -1,0 +1,189 @@
+{
+  "Parent": "Template_Weapon_Sword",
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_TerraBlade.name",
+    "Description": "server.items.Weapon_TerraBlade.description"
+  },
+  "Model": "Items/Weapons/Sword/TerraBlade.blockymodel",
+  "Texture": "Items/Weapons/Sword/TerraBlade.png",
+  "Scale": 0.5,
+  "Quality": "Legendary",
+  "Icon": "Icons/ItemsGenerated/Weapon_Sword_TerraBlade.png",
+  "ItemLevel": 60,
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Terrasteel",
+        "Quantity": 5
+      },
+      {
+        "ItemId": "Ingredient_Voidheart",
+        "Quantity": 3
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Weapon_Bench",
+        "Categories": [
+          "Weapon_Sword"
+        ],
+        "RequiredTierLevel": 3
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Root_TerraBlade_Primary",
+    "Secondary": "Root_Weapon_Sword_Secondary_Guard",
+    "Ability1": "Root_Weapon_Sword_Signature_Vortexstrike"
+  },
+  "InteractionVars": {
+    "Swing_Left": {
+      "Interactions": [
+        "Weapon_Sword_Primary_Swing_Left",
+        {
+          "Type": "LaunchProjectile",
+          "RunTime": 0,
+          "ProjectileId": "TerraBlade_Beam1"
+        }
+      ]
+    },
+    "Swing_Right": {
+      "Interactions": [
+        "Weapon_Sword_Primary_Swing_Right",
+        {
+          "Type": "LaunchProjectile",
+          "RunTime": 0,
+          "ProjectileId": "TerraBlade_Beam2"
+        }
+      ]
+    },
+    "Swing_Down": {
+      "Interactions": [
+        "Weapon_Sword_Primary_Swing_Down",
+        {
+          "Type": "LaunchProjectile",
+          "RunTime": 0,
+          "ProjectileId": "TerraBlade_Beam3"
+        }
+      ]
+    },
+    "Swing_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Primary_Swing_Left_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 15
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Swing_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Primary_Swing_Right_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 17
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Swing_Down_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Primary_Swing_Down_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 20
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Thrust_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Primary_Thrust_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 25
+            }
+          },
+          "EntityStatsOnHit": [
+            {
+              "EntityStatId": "SignatureEnergy",
+              "Amount": 4
+            }
+          ],
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Vortexstrike_Spin_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Signature_Vortexstrike_Spin_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 50
+            }
+          },
+          "EntityStatsOnHit": [],
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Vortexstrike_Stab_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Signature_Vortexstrike_Stab_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 45
+            }
+          },
+          "EntityStatsOnHit": [],
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Guard_Wield": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Secondary_Guard_Wield",
+          "StaminaCost": {
+            "Value": 10,
+            "CostType": "Damage"
+          }
+        }
+      ]
+    }
+  },
+  "MaxDurability": 200,
+  "DurabilityLossOnHit": 0.21
+}

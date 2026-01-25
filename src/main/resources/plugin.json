@@ -1,0 +1,7 @@
+{
+  "id": "terraria_addons",
+  "name": "Terraria Addons",
+  "version": "1.5.0",
+  "main": "de.fevzi.TerrariaAddons.TerrariaAddons",
+  "dependencies": []
+}

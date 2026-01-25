@@ -1,0 +1,59 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.SandstormInABottle.name",
+    "Description": "server.items.SandstormInABottle.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "Model": "Items/Consumables/Potions/Potion.blockymodel",
+  "Texture": "Items/Consumables/Potions/Potion_Textures/Orange.png",
+  "Scale": 1.5,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Cindercloth",
+        "Quantity": 12
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      },
+      {
+        "ItemId": "Ingredient_Bar_Thorium",
+        "Quantity": 8
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "TinkerersWorkshop",
+        "Categories": [
+          "Tinkerers_Accessories"
+        ]
+      }
+    ]
+  },
+  "ItemLevel": 20,
+  "Icon": "Icons/ItemsGenerated/SandstormInABottle.png",
+  "IconProperties": {
+    "Scale": 0.9,
+    "Rotation": [
+      340,
+      133,
+      21
+    ],
+    "Translation": [
+      -1,
+      -9
+    ]
+  },
+  "MaxStack": 1,
+  "Quality": "Rare"
+}

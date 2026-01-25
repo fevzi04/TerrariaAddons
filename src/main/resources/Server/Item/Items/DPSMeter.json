@@ -1,0 +1,59 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.DPSMeter.name",
+    "Description": "server.items.DPSMeter.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Tools",
+    "Items.Accessories"
+  ],
+  "MaxStack": 1,
+  "IconProperties": {
+    "Scale": 1.6,
+    "Rotation": [
+      282,
+      140,
+      29
+    ],
+    "Translation": [
+      -1,
+      -2
+    ]
+  },
+  "Model": "Items/DPSmeter/dps_meter.blockymodel",
+  "Texture": "Items/DPSmeter/dps_meter.png",
+  "Scale": 1.5,
+  "Tags": {
+    "Type": [
+      "Utility",
+      "Accessory"
+    ]
+  },
+  "ItemLevel": 20,
+  "Icon": "Icons/ItemsGenerated/DPSMeter.png",
+
+  "Recipe": {
+    "BenchRequirement": [
+      {
+        "Categories": [
+          "Tinkerers_Accessories"
+        ],
+        "Id": "TinkerersWorkshop"
+      }
+    ],
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Gold"
+      },
+      {
+        "ItemId": "Ingredient_Bar_Iron",
+        "Quantity": 5
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      }
+    ]
+  }
+}

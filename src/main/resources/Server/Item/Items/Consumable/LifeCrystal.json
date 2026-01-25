@@ -1,0 +1,59 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Consumable_LifeCrystal.name",
+    "Description": "server.items.Consumable_LifeCrystal.description"
+  },
+  "MaxStack": 10,
+  "Icon": "Icons/ItemsGenerated/LifeCrystal.png",
+  "Consumable": false,
+  "Model": "Items/LifeCrystal/LifeCrystal.blockymodel",
+  "Texture": "Items/LifeCrystal/LifeCrystal.png",
+  "Scale": 1.0,
+  "ItemLevel": 1,
+  "Quality": "Rare",
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "LifeCrystal",
+          "Effects": {
+            "LocalSoundEventId": "SFX_LifeCrystal_Use"
+          }
+        }
+      ],
+      "Cooldown": {
+        "Id": "",
+        "Cooldown": 1
+      }
+    }
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      },
+      {
+        "ItemId": "Ingredient_Voidheart",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Rock_Gem_Ruby",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Arcanebench",
+        "Categories": [
+          "Arcane_Misc"
+        ],
+        "RequiredTierLevel": 0
+      }
+    ]
+  },
+  "PlayerAnimationsId": {
+    "Parent": "Item"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Consumable_LifeCrystalRemover.name",
+    "Description": "server.items.Consumable_LifeCrystalRemover.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "MaxStack": 10,
+  "Icon": "Icons/ItemsGenerated/LifeCrystal.png",
+  "Consumable": false,
+  "Model": "Items/LifeCrystal/LifeCrystal.blockymodel",
+  "Texture": "Items/LifeCrystal/LifeCrystal.png",
+  "Scale": 1.0,
+  "ItemLevel": 1,
+  "Quality": "Rare",
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "LifeCrystalRemover",
+          "Effects": {
+            "LocalSoundEventId": "SFX_LifeCrystal_Use",
+            "ClearAnimationOnFinish": true
+          }
+        }
+      ],
+      "Cooldown": {
+        "Id": "",
+        "Cooldown": 1
+      }
+    }
+  }
+}

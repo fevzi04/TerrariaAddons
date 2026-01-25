@@ -1,0 +1,59 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.LavaCharm.name",
+    "Description": "server.items.LavaCharm.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "Model": "Items/LavaCharm/Lava_Charm_Model.blockymodel",
+  "Texture": "Items/LavaCharm/Lava_Charm_Texture.png",
+  "Scale": 1,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Gold",
+        "Quantity": 8
+      },
+      {
+        "ItemId": "Ingredient_Fire_Essence",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "TinkerersWorkshop",
+        "Categories": [
+          "Tinkerers_Accessories"
+        ]
+      }
+    ]
+  },
+  "ItemLevel": 20,
+  "Icon": "Icons/ItemsGenerated/LavaCharm.png",
+  "IconProperties": {
+    "Scale": 0.9,
+    "Rotation": [
+      336,
+      152,
+      0
+    ],
+    "Translation": [
+      4,
+      -10
+    ]
+  },
+  "MaxStack": 1,
+  "Quality": "Rare"
+}

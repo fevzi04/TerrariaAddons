@@ -1,0 +1,32 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Consumable_ManaCrystalRemover.name",
+    "Description": "server.items.Consumable_ManaCrystalRemover.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "MaxStack": 10,
+  "Icon": "Icons/ItemsGenerated/ManaCrystal.png",
+  "Consumable": false,
+  "Model": "Items/ManaCrystal/Mana_Crystal_Model.blockymodel",
+  "Texture": "Items/ManaCrystal/ManaCrystal_Texture.png",
+  "Scale": 1.0,
+  "ItemLevel": 1,
+  "Quality": "Rare",
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "ManaCrystalRemover",
+          "Effects": {
+            "LocalSoundEventId": "SFX_LifeCrystal_Use",
+            "ClearAnimationOnFinish": true
+          }
+        }
+      ],
+      "Cooldown": {
+        "Id": "",
+        "Cooldown": 1
+      }
+    }
+  }
+}

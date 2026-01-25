@@ -1,0 +1,55 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Balloon.name",
+    "Description": "server.items.Balloon.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "Model": "Items/Balloon/Balloon.blockymodel",
+  "Texture": "Items/Balloon/Balloon.png",
+  "Scale": 4,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Cindercloth",
+        "Quantity": 8
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "TinkerersWorkshop",
+        "Categories": [
+          "Tinkerers_Accessories"
+        ]
+      }
+    ]
+  },
+  "ItemLevel": 20,
+  "IconProperties": {
+    "Scale": 1,
+    "Rotation": [
+      359,
+      48,
+      0
+    ],
+    "Translation": [
+      -1,
+      -13
+    ]
+  },
+  "MaxStack": 1,
+  "Icon": "Icons/ItemsGenerated/Balloon.png",
+  "Quality": "Rare"
+}

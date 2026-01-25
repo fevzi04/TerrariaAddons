@@ -1,0 +1,22 @@
+{
+  "Appearance": "Fireball",
+  "Radius": 0.12,
+  "Height": 0.12,
+  "HorizontalCenterShot": 0.2,
+  "VerticalCenterShot": 0.1,
+  "DepthShot": 1.0,
+  "PitchAdjustShot": true,
+  "SticksVertically": true,
+  "MuzzleVelocity": 75,
+  "TerminalVelocity": 75,
+  "Gravity": 0,
+  "ImpactSlowdown": 0,
+  "TimeToLive": 1.2,
+  "Damage": 8,
+  "DeadTime": 0,
+  "DeadTimeMiss": 0,
+  "DeathEffectsOnHit": true,
+  "HitParticles": {
+    "SystemId": "Impact_Fire"
+  }
+}

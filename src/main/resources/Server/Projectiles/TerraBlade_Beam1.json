@@ -1,0 +1,27 @@
+{
+  "Appearance": "TerraBlade_Beam1",
+  "Radius": 0.2,
+  "Height": 0.2,
+  "HorizontalCenterShot": 0.2,
+  "VerticalCenterShot": 0.1,
+  "DepthShot": 1.4,
+  "PitchAdjustShot": true,
+  "SticksVertically": true,
+  "MuzzleVelocity": 60,
+  "TerminalVelocity": 60,
+  "Gravity": 0,
+  "ImpactSlowdown": 0,
+  "TimeToLive": 1.5,
+  "Damage": 15,
+  "DeadTime": 0,
+  "DeadTimeMiss": 0,
+  "DeathEffectsOnHit": true,
+  "HitParticles": {
+    "SystemId": "Impact_Blade_01"
+  },
+  "DeathParticles": {
+    "SystemId": "Impact_Blade_01"
+  },
+  "HitSoundEventId": "SFX_Sword_T2_Impact",
+  "DeathSoundEventId": "SFX_Sword_T2_Impact"
+}

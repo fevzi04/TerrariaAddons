@@ -1,0 +1,55 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.BandOfManaRegeneration.name",
+    "Description": "server.items.BandOfManaRegeneration.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "Model": "Items/BandOfManaRegeneration/BandOfManaRegeneration.blockymodel",
+  "Texture": "Items/BandOfManaRegeneration/BandOfManaRegeneration.png",
+  "Scale": 1.5,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "BandOfRegeneration",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "ManaCrystal",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "TinkerersWorkshop",
+        "Categories": [
+          "Tinkerers_Accessories"
+        ]
+      }
+    ]
+  },
+  "ItemLevel": 20,
+  "IconProperties": {
+    "Scale": 1.4,
+    "Rotation": [
+      360,
+      264,
+      0
+    ],
+    "Translation": [
+      -0.5,
+      1
+    ]
+  },
+  "MaxStack": 1,
+  "Quality": "Epic",
+  "Icon": "Icons/ItemsGenerated/BandOfManaRegeneration.png"
+}

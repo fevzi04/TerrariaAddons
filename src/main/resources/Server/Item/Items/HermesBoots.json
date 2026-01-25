@@ -1,0 +1,59 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.HermesBoots.name",
+    "Description": "server.items.HermesBoots.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "MaxStack": 1,
+  "IconProperties": {
+    "Scale": 0.6,
+    "Rotation": [
+      13,
+      34,
+      0
+    ],
+    "Translation": [
+      -1,
+      -12
+    ]
+  },
+  "Model": "Items/HermesBoots/HermesBoots.blockymodel",
+  "Texture": "Items/HermesBoots/HermesBoots.png",
+  "Scale": 1,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Cobalt",
+        "Quantity": 8
+      },
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Shadoweave",
+        "Quantity": 12
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "TinkerersWorkshop",
+        "Categories": [
+          "Tinkerers_Accessories"
+        ]
+      }
+    ]
+  },
+  "ItemLevel": 20,
+  "Icon": "Icons/ItemsGenerated/HermesBoots.png",
+  "Quality": "Rare"
+}

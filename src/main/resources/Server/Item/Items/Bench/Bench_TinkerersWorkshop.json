@@ -1,0 +1,124 @@
+{
+  "TranslationProperties": {
+    "Name": "Tinkerer's Workshop",
+    "Description": "Craft accessories."
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Thorium",
+        "Quantity": 5
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      },
+      {
+        "ItemId": "Ingredient_Void_Essence",
+        "Quantity": 10
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Workbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Crafting"
+        ],
+        "RequiredTierLevel": 2
+      }
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Bench_TinkerersWorkshop.png",
+  "Categories": [
+    "Furniture.Benches"
+  ],
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Benches/Tinkerers_Workshop_Model.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Benches/Tinkerers_Workshop_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Bench_TinkerersWorkshop",
+    "VariantRotation": "NESW",
+    "Bench": {
+      "Type": "Crafting",
+      "Categories": [
+        {
+          "Id": "Tinkerers_Accessories",
+          "Icon": "Icons/CraftingCategories/Tinkerers/HermesBoots.png",
+          "Name": "Accessories"
+        },
+        {
+          "Id": "Tinkerers_Pouches",
+          "Icon": "Icons/CraftingCategories/Tinkerers/AccessoryPouch.png",
+          "Name": "Pouches"
+        }
+      ],
+      "LocalOpenSoundEventId": "SFX_Workbench_Open",
+      "LocalCloseSoundEventId": "SFX_Workbench_Close",
+      "CompletedSoundEventId": "SFX_Workbench_Craft",
+      "FailedSoundEventId": "SFX_Generic_Crafting_Failed",
+      "BenchUpgradeSoundEventId": "SFX_Workbench_Upgrade_Start_Default",
+      "BenchUpgradeCompletedSoundEventId": "SFX_Workbench_Upgrade_Complete_Default",
+      "Id": "TinkerersWorkshop",
+      "TierLevels": [
+        {
+          "CraftingTimeReductionModifier": 0.0
+        }
+      ]
+    },
+    "State": {
+      "Id": "crafting",
+      "Definitions": {
+        "CraftCompleted": {
+          "CustomModelAnimation": "Blocks/Benches/Workbench_Crafting.blockyanim",
+          "Looping": true
+        },
+        "CraftCompletedInstant": {
+          "CustomModelAnimation": "Blocks/Benches/Workbench_Crafting.blockyanim"
+        }
+      }
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Benches"
+      }
+    },
+    "BlockParticleSetId": "Wood",
+    "ParticleColor": "#6e4a2f",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "BlockSoundSetId": "Wood"
+  },
+  "PlayerAnimationsId": "Block",
+  "IconProperties": {
+    "Scale": 0.4,
+    "Rotation": [
+      33,
+      40,
+      23
+    ],
+    "Translation": [
+      11,
+      -12
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Bench"
+    ]
+  },
+  "MaxStack": 1,
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

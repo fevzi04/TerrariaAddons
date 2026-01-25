@@ -1,0 +1,71 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Magic_Mirror.name",
+    "Description": "server.items.Magic_Mirror.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Tools"
+  ],
+  "MaxStack": 1,
+  "IconProperties": {
+    "Scale": 0.9,
+    "Rotation": [
+      0,
+      169,
+      0
+    ],
+    "Translation": [
+      3,
+      -8
+    ]
+  },
+  "Model": "Items/MagicMirror/Magic_Mirror_Model.blockymodel",
+  "Texture": "Items/MagicMirror/Magic_Mirror_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Magic_Mirror.png",
+  "Scale": 1.5,
+  "Tags": {
+    "Type": [
+      "Utility"
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Rock_Gem_Sapphire",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Ingredient_Bar_Silver",
+        "Quantity": 10
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Arcanebench",
+        "Categories": [
+          "Arcane_Misc"
+        ],
+        "RequiredTierLevel": 0
+      }
+    ]
+  },
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "MirrorRecall",
+          "Effects": {
+            "LocalSoundEventId": "SFX_MagicMirror_Use"
+          }
+        }
+      ]
+    }
+  },
+  "Quality": "Rare"
+}

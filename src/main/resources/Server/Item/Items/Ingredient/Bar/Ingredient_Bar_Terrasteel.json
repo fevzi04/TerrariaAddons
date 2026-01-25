@@ -1,0 +1,65 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Ingredient_Bar_Terrasteel.name",
+    "Description": "server.items.Ingredient_Bar_Terrasteel.description"
+  },
+  "Categories": [
+    "Items"
+  ],
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Adamantite",
+        "Quantity": 5
+      },
+      {
+        "ItemId": "Ingredient_Bar_Cobalt",
+        "Quantity": 5
+      },
+      {
+        "ItemId": "Ingredient_Bar_Thorium",
+        "Quantity": 5
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Processing",
+        "Id": "Furnace"
+      }
+    ],
+    "OutputQuantity": 1,
+    "TimeSeconds": 30
+  },
+  "Model": "Resources/Materials/Ingot.blockymodel",
+  "Texture": "Resources/Material/Ingot_Textures/Terrasteel.png",
+  "ResourceTypes": [
+    {
+      "Id": "Metal_Bars"
+    }
+  ],
+  "PlayerAnimationsId": "Item",
+  "IconProperties": {
+    "Scale": 1,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -3
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Ingredient"
+    ]
+  },
+  "ItemEntity": {
+    "ParticleSystemId": null
+  },
+  "ItemSoundSetId": "ISS_Items_Ingots",
+  "DropOnDeath": true,
+  "Icon": "Icons/ItemsGenerated/Ingredient_Bar_Terrasteel.png",
+  "Quality": "Legendary"
+}

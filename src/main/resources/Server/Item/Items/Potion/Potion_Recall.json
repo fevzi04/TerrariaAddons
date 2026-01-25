@@ -1,0 +1,61 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Potion_Potion_Recall.name",
+    "Description": "server.items.Potion_Potion_Recall.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Potion_Recall.png",
+  "BlockType": {
+    "CustomModel": "Items/Consumables/Potions/Potion.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Potions/Potion_Textures/Blue.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#ffffff"
+  },
+  "MaxStack": 10,
+  "DropOnDeath": false,
+  "Utility": {
+    "Usable": false,
+    "Compatible": false
+  },
+  "Consumable": false,
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "Recall",
+          "Effects": {
+            "LocalSoundEventId": "SFX_MagicMirror_Use"
+          }
+        }
+      ],
+      "Cooldown": {
+        "Id": "",
+        "Cooldown": 3
+      }
+    }
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Potion_Empty"
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 3
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Alchemybench",
+        "Categories": [
+          "Alchemy_Potions_Misc"
+        ],
+        "RequiredTierLevel": 2
+      }
+    ]
+  },
+  "Parent": "Potion_Template"
+}

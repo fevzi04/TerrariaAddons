@@ -1,0 +1,81 @@
+{
+  "TranslationProperties": {
+    "Name": "Accessory Pouch Upgrade (Large)"
+  },
+  "Icon": "Icons/ItemsGenerated/AccessoryPouch.png",
+  "MaxStack": 1,
+  "ItemLevel": 20,
+  "Categories": [
+    "Upgrade"
+  ],
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Leather_Heavy",
+        "Quantity": 8
+      },
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Cindercloth",
+        "Quantity": 16
+      },
+      {
+        "ItemId": "Ingredient_Bar_Adamantite",
+        "Quantity": 8
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 40
+      },
+      {
+        "ItemId": "Ingredient_Void_Essence",
+        "Quantity": 40
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "TinkerersWorkshop",
+        "Categories": [
+          "Tinkerers_Pouches"
+        ]
+      }
+    ]
+  },
+  "PlayerAnimationsId": "Item",
+  "Model": "Items/Consumables/Recipes/Recipe.blockymodel",
+  "Texture": "Items/Consumables/Recipes/Recipe_Texture.png",
+  "IconProperties": {
+    "Scale": 0.76,
+    "Translation": [
+      -0.895,
+      -1.11
+    ],
+    "Rotation": [
+      33.92,
+      68.795,
+      40.67
+    ]
+  },
+  "Consumable": true,
+  "Interactions": {
+    "Primary": {
+      "Interactions": [
+        {
+          "Type": "AccessoryPouchUpgradeLarge"
+        }
+      ]
+    },
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "AccessoryPouchUpgradeLarge"
+        }
+      ]
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Upgrade"
+    ]
+  }
+}

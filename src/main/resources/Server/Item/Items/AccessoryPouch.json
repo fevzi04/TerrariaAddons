@@ -1,0 +1,69 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Accessory_Pouch.name",
+    "Description": "server.items.Accessory_Pouch.description"
+  },
+  "Container": {
+    "Capacity": 2
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Tools"
+  ],
+  "MaxStack": 1,
+  "IconProperties": {
+    "Scale": 1.6,
+    "Rotation": [
+      336,
+      130,
+      28
+    ],
+    "Translation": [
+      1,
+      -1
+    ]
+  },
+  "Model": "Items/AccessoryPouch/AccessoryPouch.blockymodel",
+  "Texture": "Items/AccessoryPouch/AccessoryPouch.png",
+  "Icon": "Icons/ItemsGenerated/AccessoryPouch.png",
+  "Scale": 2,
+  "Tags": {
+    "Type": [
+      "Utility"
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Leather_Light",
+        "Quantity": 4
+      },
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Linen",
+        "Quantity": 8
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 15
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "TinkerersWorkshop",
+        "Categories": [
+          "Tinkerers_Pouches"
+        ]
+      }
+    ]
+  },
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "AccessoryPouch"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Potion_Potion_Wormhole.name",
+    "Description": "server.items.Potion_Potion_Wormhole.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Potion_Wormhole.png",
+  "BlockType": {
+    "CustomModel": "Items/Consumables/Potions/Potion.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Potions/Potion_Textures/Cyan.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#ffffff"
+  },
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "OpenCustomUI",
+          "Page": {
+            "Id": "PlayerTeleport"
+          },
+          "Effects": {}
+        }
+      ]
+    }
+  },
+  "MaxStack": 10,
+  "DropOnDeath": false,
+  "Utility": {
+    "Usable": false,
+    "Compatible": false
+  },
+  "Consumable": false,
+  "Recipe": {
+    "BenchRequirement": [
+      {
+        "Id": "Alchemybench",
+        "Categories": [
+          "Alchemy_Potions_Misc"
+        ],
+        "RequiredTierLevel": 2
+      }
+    ],
+    "Input": [
+      {
+        "Quantity": 1,
+        "ItemId": "Potion_Empty"
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 5
+      }
+    ]
+  },
+  "Parent": "Potion_Template"
+}

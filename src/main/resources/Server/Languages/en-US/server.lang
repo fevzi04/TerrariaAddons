@@ -1,0 +1,78 @@
+items.Potion_Potion_Recall.name=Recall Potion
+items.Potion_Potion_Recall.description=Consume to teleport back to your spawn location.
+
+items.Potion_Potion_Wormhole.name=Wormhole Potion
+items.Potion_Potion_Wormhole.description=Consume to teleport to a chosen player.
+
+items.Magic_Mirror.name=Magic Mirror
+items.Magic_Mirror.description=Reusable item that safely returns you to your spawn.
+
+items.Accessory_Pouch.name=Accessory Pouch
+items.Accessory_Pouch.description=Gain accessory benefits by equipping them in this bag.
+
+items.Balloon.name=Balloon
+items.Balloon.description=Increases jump height.
+
+items.BandOfRegeneration.name=Band of Regeneration
+items.BandOfRegeneration.description=Regenerates 1 health per second.
+
+items.BandOfManaRegeneration.name=Band of Mana Regeneration
+items.BandOfManaRegeneration.description=Regenerates 3 mana per second.
+
+items.DPSMeter.name=DPS Meter
+items.DPSMeter.description=Displays current damage per second.
+
+items.HermesBoots.name=Hermes Boots
+items.HermesBoots.description=Increases movement speed.
+
+items.LuckyHorseshoe.name=Lucky Horseshoe
+items.LuckyHorseshoe.description=Become immune to fall damage.
+
+items.CloudInABottle.name=Cloud in a Bottle
+items.CloudInABottle.description=Grants a double Jump. (crouch mid-air to use)
+
+items.BlizzardInABottle.name=Blizzard in a Bottle
+items.BlizzardInABottle.description= Grants a double Jump. (crouch mid-air to use)
+
+items.SandstormInABottle.name=Sandstorm in a Bottle
+items.SandstormInABottle.description= Grants a double Jump. (crouch mid-air to use)
+
+items.Voidbag.name=Voidbag
+items.Voidbag.description=Deletes items that are placed inside.
+
+items.MagmaStone.name=Magma Stone
+items.MagmaStone.description=Ignites Enemies.
+
+items.LavaCharm.name=Lava Charm
+items.LavaCharm.description=Grants temporary immunity to lava and fire damage.
+
+items.Weapon_TerraBlade.name=Terra Blade
+items.Weapon_TerraBlade.description=Fires a energy blade with each swing.
+
+items.Ingredient_Bar_Terrasteel.name=Terrasteel Ingot
+items.Ingredient_Bar_Terrasteel.description=Made by 5x Cobalt,Throrium and Adamantite Ingots in a Furnace
+
+items.Consumable_LifeCrystal.name=Life Crystal
+items.Consumable_LifeCrystal.description=Permanently increases maximum health by 5 (up to 10 times)
+
+items.Consumable_LifeCrystalRemover.name=Life Crystal Remover (DEBUG)
+items.Consumable_LifeCrystalRemover.description=Removes 1 Life Crystal use and reduces max health by 5
+
+items.Consumable_ManaCrystalRemover.name=Mana Crystal Remover (DEBUG)
+items.Consumable_ManaCrystalRemover.description=Removes 1 Mana Crystal use and reduces max mana by 5
+
+items.Block_LifeCrystal_Block.name=Life Crystal Block
+
+items.Fallen_Star.name=Fallen Star
+items.Fallen_Star.description=A fragment of a star that fell from the night sky.
+
+items.Consumable_ManaCrystal.name=Mana Crystal
+items.Consumable_ManaCrystal.description=Permanently increases mana on held Weapons by 10% (up to 10 times)
+
+items.Bullet.name=Bullet
+
+items.Minishark.name=Minishark
+items.Minishark.description=Half shark, half gun, completely awesome.
+
+items.WandOfSparking.name=Wand of Sparking
+items.WandOfSparking.description=Casts a small spark that ignites your enemies.

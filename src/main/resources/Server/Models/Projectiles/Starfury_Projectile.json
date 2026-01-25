@@ -1,0 +1,46 @@
+{
+  "Model": "Items/Projectiles/Starfury_Projectile/Starfury_Projectile.blockymodel",
+  "Texture": "Items/Projectiles/Starfury_Projectile/Starfury_Texture.png",
+  "HitBox": {
+    "Max": {
+      "X": 2,
+      "Y": 0.1,
+      "Z": 2
+    },
+    "Min": {
+      "X": -2,
+      "Y": -0.1,
+      "Z": -2
+    },
+    "Light": {
+      "Color": "#fe0",
+      "Radius": 15
+    },
+    "Trails": [
+      {
+        "TrailId": "Large_Projectile",
+        "TargetEntityPart": "Self",
+        "FixedRotation": false,
+        "RotationOffset": {
+          "Roll": 90
+        }
+      },
+      {
+        "TrailId": "Fire_Trap_Fire"
+      }
+    ]
+  },
+  "Trails": [
+    {
+      "TrailId": {
+        "Parent": "Large_Projectile",
+        "LightInfluence": 1
+      }
+    },
+    {
+      "TrailId": {
+        "Parent": "Fire_Trap_Fire"
+      }
+    }
+  ]
+}

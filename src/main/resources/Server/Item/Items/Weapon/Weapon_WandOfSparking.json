@@ -1,0 +1,79 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.WandOfSparking.name",
+    "Description": "server.items.WandOfSparking.description"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "PlayerAnimationsId": {
+    "Parent": "Sword"
+  },
+  "Model": "Items/Weapons/Wands/Wand Of Sparking.blockymodel",
+  "Texture": "Items/Weapons/Wands/WandOfSparking.png",
+  "Quality": "Uncommon",
+  "ItemLevel": 5,
+  "Scale": 2,
+  "IconProperties": {
+    "Scale": 1.1,
+    "Rotation": [
+      0,
+      315,
+      333
+    ],
+    "Translation": [
+      -4,
+      -7
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ]
+  },
+  "Weapon": {
+    "EntityStatsToClear": [
+      "Mana"
+    ],
+    "StatModifiers": {
+      "Mana": [
+        {
+          "Target": "Max",
+          "CalculationType": "Additive",
+          "Amount": 10
+        }
+      ]
+    }
+  },
+  "Interactions": {
+    "Primary": {
+      "Cooldown": {
+        "Id": "",
+        "Cooldown": 0.5
+      },
+      "RequireNewClick": true,
+      "Interactions": [
+        {
+          "Type": "StatsCondition",
+          "Costs": {
+            "Mana": 5
+          },
+          "Next": {
+            "Type": "ChangeStat",
+            "StatModifiers": {
+              "Mana": -5
+            },
+            "Next": {
+              "Type": "LaunchProjectile",
+              "ProjectileId": "WandOfSparking_Spark"
+            },
+            "Parent": "Weapon_Sword_Primary_Swing_Left",
+            "RunTime": 0.25
+          },
+          "Failed": "Staff_Cast_Fail"
+        }
+      ]
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/Weapon_WandOfSparking.png"
+}

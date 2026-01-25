@@ -1,0 +1,17 @@
+Group {
+  LayoutMode: Center;
+  Anchor: (Bottom: 170, Left: 0, Right: 0, Height: 40);
+
+  Group #DpsBox {
+    Visible: true;
+    Background: #000000(0.35);
+    Anchor: (Right: 0);
+    Padding: (Horizontal: 16, Vertical: 8);
+    LayoutMode: Left;
+
+    Label #DpsLabel {
+      Text: "DPS: 0.0";
+      Style: (FontSize: 28, FontName: "Default", Alignment: Center);
+    }
+  }
+}

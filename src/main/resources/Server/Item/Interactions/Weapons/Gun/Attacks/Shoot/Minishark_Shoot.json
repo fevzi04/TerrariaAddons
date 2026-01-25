@@ -1,0 +1,20 @@
+{
+  "Type": "LaunchProjectile",
+  "RunTime": 0.25,
+  "Effects": {
+    "ItemAnimationId": "Shoot",
+    "Particles": [
+      {
+        "SystemId": "RifleShooting",
+        "PositionOffset": {
+          "Z": 0.85,
+          "Y": 0.15
+        },
+        "RotationOffset": {
+          "Pitch": 90
+        }
+      }
+    ]
+  },
+  "ProjectileId": "Minishark_Projectile"
+}
