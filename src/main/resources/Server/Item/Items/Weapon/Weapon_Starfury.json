@@ -4,9 +4,9 @@
     "Name": "server.items.Weapon_Starfury.name",
     "Description": "server.items.Weapon_Starfury.description"
   },
-  "Model": "Items/Weapons/Sword/Mithril.blockymodel",
-  "Texture": "Items/Weapons/Sword/Mithril_Texture.png",
-  "Icon": "Icons/ItemsGenerated/Weapon_Sword_Mithril.png",
+  "Model": "Items/Weapons/Sword/Starfury_Model.blockymodel",
+  "Texture": "Items/Weapons/Sword/Starfury_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Weapon_Starfury.png",
   "Quality": "Epic",
   "ItemLevel": 50,
   "Recipe": {
@@ -38,15 +38,15 @@
     ]
   },
   "IconProperties": {
-    "Scale": 0.35,
+    "Scale": 0.5,
     "Rotation": [
       45,
       90,
       0
     ],
     "Translation": [
-      -35,
-      -35
+      -39,
+      -41
     ]
   },
   "Interactions": {
@@ -196,5 +196,10 @@
   },
   "MaxDurability": 220,
   "DurabilityLossOnHit": 0.21,
-  "MaxStack": 1
+  "MaxStack": 1,
+  "Scale": 1.2,
+  "Light": {
+    "Color": "#d8d",
+    "Radius": 0
+  }
 }

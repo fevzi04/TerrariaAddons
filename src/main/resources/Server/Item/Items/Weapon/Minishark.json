@@ -6,8 +6,8 @@
     "Items.Weapons"
   ],
   "Icon": "Icons/ItemsGenerated/Minishark.png",
-  "Model": "Items/Minishark/Minishark_Model.blockymodel",
-  "Texture": "Items/Minishark/Minishark_Texture.png",
+  "Model": "Items/Weapons/Gun/Minishark/Minishark_Model.blockymodel",
+  "Texture": "Items/Weapons/Gun/Minishark/Minishark_Texture.png",
   "PlayerAnimationsId": {
     "Parent": "Rifle",
     "Animations": {
