@@ -14,11 +14,15 @@
     "KnowledgeRequired": false,
     "Input": [
       {
-        "ItemId": "Ingredient_Bar_Mithril",
-        "Quantity": 6
+        "ItemId": "Ingredient_Bar_Adamantite",
+        "Quantity": 8
       },
       {
-        "ItemId": "Ingredient_Leather_Storm",
+        "ItemId": "Ingredient_Crystal_Purple",
+        "Quantity": 10
+      },
+      {
+        "ItemId": "Ingredient_FallenStar",
         "Quantity": 3
       },
       {
@@ -45,8 +49,8 @@
       0
     ],
     "Translation": [
-      -39,
-      -41
+      -27,
+      -26
     ]
   },
   "Interactions": {
