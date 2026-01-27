@@ -26,6 +26,9 @@ public class AccessoryPouch extends OpenItemStackContainerInteraction {
     private static final String ACCESSORY_CATEGORY = "Items.Accessories";
     private static final SlotFilter ACCESSORY_ONLY_FILTER = (action, container, slot, stack) -> {
         if (action == FilterActionType.ADD) {
+            if (stack == null || ItemStack.isEmpty(stack)) {
+                return true;
+            }
             return isAccessory(stack);
         }
         return true;
