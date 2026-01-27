@@ -4,6 +4,12 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Manages the priority and state of double-jump accessories.
+ * Tracks which bottle accessories (Cloud, Blizzard, Sandstorm) have been used,
+ * handles crouch detection for activation, and ensures proper ordering
+ * when multiple bottle accessories are equipped.
+ */
 public final class BoostOrderManager {
     public enum ActiveBoost {
         NONE,

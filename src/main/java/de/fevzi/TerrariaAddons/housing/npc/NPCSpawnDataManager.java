@@ -22,6 +22,11 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Manages NPC spawn data persistence and tracking.
+ * Tracks which NPCs are assigned to which housings, their alive status,
+ * death timestamps for respawn cooldowns, and persists this data to disk.
+ */
 public class NPCSpawnDataManager {
     private static final String DATA_DIR = "NPCSpawnData";
     private static final String DATA_FILE = "npc_spawn_data.json";

@@ -21,6 +21,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 
+/**
+ * System that handles falling star spawning during nighttime.
+ * Randomly spawns falling star items above players when it's dark,
+ * simulating the Terraria falling star mechanic. Stars fall from
+ * the sky and can be collected for crafting mana crystals.
+ */
 public class FallingStarSystem extends EntityTickingSystem<EntityStore> {
 
     private static final double SPAWN_CHANCE = 0.0004;

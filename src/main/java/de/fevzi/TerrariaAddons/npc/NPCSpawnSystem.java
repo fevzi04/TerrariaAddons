@@ -21,6 +21,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * System that handles NPC spawning logic.
+ * Periodically checks for valid housing locations and spawns appropriate NPCs
+ * when conditions are met (player nearby, valid housing available).
+ */
 public class NPCSpawnSystem extends EntityTickingSystem<EntityStore> {
     private static final long SPAWN_CHECK_INTERVAL_MS = 5000L;
     private static final Map<String, Long> LAST_SPAWN_CHECK = new ConcurrentHashMap<>();

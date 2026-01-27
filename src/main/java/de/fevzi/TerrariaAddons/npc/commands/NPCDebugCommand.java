@@ -11,6 +11,11 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Debug command that displays NPC spawn status information.
+ * Shows valid housings, unoccupied housings, NPCs on respawn cooldown,
+ * and available NPC types for each world.
+ */
 public class NPCDebugCommand extends CommandBase {
 
     public NPCDebugCommand() {

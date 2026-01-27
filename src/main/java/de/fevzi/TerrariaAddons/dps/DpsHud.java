@@ -6,6 +6,11 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Custom HUD element that displays the player's damage per second.
+ * Shows a text label with the calculated DPS value, automatically
+ * hiding after a period of combat inactivity.
+ */
 public class DpsHud extends CustomUIHud {
     private String text = "DPS: 0.0";
     private boolean visible = true;

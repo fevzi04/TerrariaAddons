@@ -20,6 +20,11 @@ import com.hypixel.hytale.math.vector.Vector3d;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Choice interaction that teleports the player to another player.
+ * Used by the Wormhole Potion's player selection UI to execute
+ * the actual teleportation when a target player is selected.
+ */
 public class TeleportInteraction extends ChoiceInteraction {
     private final Ref<EntityStore> targetRef;
 

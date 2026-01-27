@@ -26,6 +26,12 @@ import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ * System that validates housing structures when a Housing Checker block is placed.
+ * Performs a flood-fill search to verify that a structure meets housing requirements:
+ * enclosed space, minimum volume, contains a door, contains a light source (torch).
+ * Results are cached and displayed to the player via a UI page.
+ */
 public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBlockEvent> {
 
     public static final String HOUSING_CHECKER_ITEM_ID = "HousingChecker_Block";

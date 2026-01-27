@@ -46,6 +46,10 @@ import de.fevzi.TerrariaAddons.npc.NPCSpawnSystem;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Main plugin class for TerrariaAddons.
+ * Registers all custom interactions, systems, and commands.
+ */
 public class TerrariaAddons extends JavaPlugin {
     public TerrariaAddons(@Nonnull JavaPluginInit init) {
         super(init);

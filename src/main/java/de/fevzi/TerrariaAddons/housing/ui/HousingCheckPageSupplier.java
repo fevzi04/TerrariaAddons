@@ -11,6 +11,10 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Supplier that creates HousingCheckPage instances for the housing checker UI.
+ * Registered as a custom page supplier for the OpenCustomUIInteraction system.
+ */
 public class HousingCheckPageSupplier implements OpenCustomUIInteraction.CustomPageSupplier {
     public static final BuilderCodec<HousingCheckPageSupplier> CODEC;
 

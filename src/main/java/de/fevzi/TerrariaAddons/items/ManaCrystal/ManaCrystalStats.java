@@ -5,6 +5,11 @@ import com.hypixel.hytale.server.core.modules.entitystats.asset.DefaultEntitySta
 import com.hypixel.hytale.server.core.modules.entitystats.modifier.Modifier;
 import com.hypixel.hytale.server.core.modules.entitystats.modifier.StaticModifier;
 
+/**
+ * Utility class for applying Mana Crystal stat modifiers.
+ * Manages the maximum mana multiplier based on how many Mana Crystals
+ * a player has consumed (up to 10, each adding 10% max mana).
+ */
 public final class ManaCrystalStats {
     public static final int MAX_USES = 10;
     public static final float MANA_PERCENT_PER_USE = 0.1f;

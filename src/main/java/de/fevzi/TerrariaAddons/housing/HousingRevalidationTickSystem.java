@@ -15,6 +15,12 @@ import javax.annotation.Nonnull;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * System that processes queued housing revalidation requests.
+ * When blocks are placed or broken near housing checkers, this system
+ * processes the revalidation queue with a small delay to batch updates
+ * and avoid redundant validation checks.
+ */
 public class HousingRevalidationTickSystem extends EntityTickingSystem<EntityStore> {
     private static final int DELAY_TICKS = 1;
     private static final ConcurrentLinkedQueue<PendingRevalidation> QUEUE = new ConcurrentLinkedQueue<>();

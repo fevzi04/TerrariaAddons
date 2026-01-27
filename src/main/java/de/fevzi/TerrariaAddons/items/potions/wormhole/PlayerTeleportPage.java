@@ -11,6 +11,11 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import javax.annotation.Nonnull;
 import java.util.Collection;
 
+/**
+ * UI page that displays a list of players to teleport to.
+ * Used by the Wormhole Potion to let players select a target
+ * player in the same world for teleportation.
+ */
 public class PlayerTeleportPage extends ChoiceBasePage {
 
     private static final String UI_LAYOUT = "Pages/PlayerTeleportPage.ui";

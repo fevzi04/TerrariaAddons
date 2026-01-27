@@ -4,6 +4,11 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Manages Lava Charm immunity timers for players.
+ * Tracks remaining immunity duration, handles timer depletion when in lava,
+ * and manages recharging when out of lava after a short delay.
+ */
 public class LavaCharmImmunityManager {
     public static final float IMMUNITY_DURATION_SECONDS = 7.0f;
     private static final float RECHARGE_SPEED = 1.0f;

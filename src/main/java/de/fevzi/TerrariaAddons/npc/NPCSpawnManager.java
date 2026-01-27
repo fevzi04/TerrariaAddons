@@ -27,6 +27,12 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Manages NPC spawning operations.
+ * Handles finding valid spawn locations, determining which NPC types
+ * are available to spawn, and creating NPC entities at appropriate positions
+ * within valid housings.
+ */
 public class NPCSpawnManager {
     public static final long RESPAWN_COOLDOWN_MS = 30000L;
     public static final int SPAWN_RADIUS = 30;

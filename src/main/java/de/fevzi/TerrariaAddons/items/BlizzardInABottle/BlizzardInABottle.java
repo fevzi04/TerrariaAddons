@@ -28,6 +28,12 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import de.fevzi.TerrariaAddons.items.BoostOrderManager;
 import de.fevzi.TerrariaAddons.items.AccessoryPouch.AccessoryPouchSharedContainer;
 
+/**
+ * System that handles the Blizzard in a Bottle accessory effect.
+ * Provides a double-jump ability with a sustained forward boost
+ * when the player crouches while airborne. Consumes fuel during use and
+ * refuels when the player lands. Creates snow particle effects during flight.
+ */
 public class BlizzardInABottle extends EntityTickingSystem<EntityStore> {
 
     private final Map<PlayerRef, Integer> fuelRemaining = new ConcurrentHashMap<>();

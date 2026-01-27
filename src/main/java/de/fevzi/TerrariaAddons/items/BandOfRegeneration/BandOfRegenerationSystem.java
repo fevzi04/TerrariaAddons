@@ -18,6 +18,12 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * System that handles the Band of Regeneration accessory effect.
+ * When a player has the Band of Regeneration equipped in their accessory pouch,
+ * this system provides passive health regeneration over time.
+ * Heals 1 HP per second while equipped.
+ */
 public class BandOfRegenerationSystem extends EntityTickingSystem<EntityStore> {
     private static final String BAND_ITEM_ID = "BandOfRegeneration";
     private static final float HEAL_PER_SECOND = 1.0f;

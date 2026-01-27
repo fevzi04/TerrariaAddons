@@ -1,4 +1,10 @@
 package de.fevzi.TerrariaAddons.data;
+
+/**
+ * Data class storing persistent player information.
+ * Tracks usage counts for permanent stat-boosting items like
+ * Life Crystals and Mana Crystals.
+ */
 public class PlayerData {
     private int lifeCrystalUses = 0;
     private int manaCrystalUses = 0;

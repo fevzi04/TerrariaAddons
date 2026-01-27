@@ -29,6 +29,12 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import de.fevzi.TerrariaAddons.items.BoostOrderManager;
 import de.fevzi.TerrariaAddons.items.AccessoryPouch.AccessoryPouchSharedContainer;
 
+/**
+ * System that handles the Cloud in a Bottle accessory effect.
+ * Provides a double-jump ability that allows the player to perform
+ * an extra jump while airborne. Resets when the player lands.
+ * Creates cloud particle effects when activated.
+ */
 public class CloudInABottle extends EntityTickingSystem<EntityStore> {
 
     private static final String ITEM_ID = "CloudInABottle";

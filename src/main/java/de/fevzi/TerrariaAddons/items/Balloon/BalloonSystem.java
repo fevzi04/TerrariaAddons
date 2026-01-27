@@ -15,6 +15,12 @@ import de.fevzi.TerrariaAddons.items.AccessoryPouch.AccessoryPouchSharedContaine
 
 import javax.annotation.Nonnull;
 
+/**
+ * System that handles the Balloon accessory effect.
+ * When a player has a Balloon equipped in their accessory pouch,
+ * this system applies a jump height boost. The boost is automatically
+ * removed when the balloon is unequipped.
+ */
 public class BalloonSystem extends EntityTickingSystem<EntityStore> {
     private static final String BALLOON_ITEM_ID = "Balloon";
     private static final float JUMP_MULTIPLIER = 1.3f;

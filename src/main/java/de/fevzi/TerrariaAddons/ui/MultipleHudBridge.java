@@ -6,6 +6,11 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 
 import java.lang.reflect.Method;
 
+/**
+ * Bridge class for optional integration with the MultipleHUD plugin.
+ * Uses reflection to detect and interact with MultipleHUD if available,
+ * allowing multiple custom HUDs to be displayed simultaneously.
+ */
 public final class MultipleHudBridge {
     private static final String[] CLASS_CANDIDATES = new String[]{
             "com.buuz135.multiplehud.MultipleHUD",

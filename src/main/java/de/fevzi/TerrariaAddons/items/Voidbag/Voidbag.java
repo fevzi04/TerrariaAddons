@@ -21,6 +21,11 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Interaction handler for the Void Bag item.
+ * Opens a portable trash container that can be used to destroy unwanted items.
+ * Items placed in the void bag are permanently deleted.
+ */
 public class Voidbag extends OpenItemStackContainerInteraction {
 
     public static final BuilderCodec<Voidbag> CODEC;

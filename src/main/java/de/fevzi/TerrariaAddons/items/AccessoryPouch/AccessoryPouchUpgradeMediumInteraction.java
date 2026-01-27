@@ -17,6 +17,11 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Interaction handler for the Medium Accessory Pouch upgrade item.
+ * Increases the player's accessory pouch capacity from 2 to 4 slots.
+ * Requires the player to have an accessory pouch in their inventory.
+ */
 public class AccessoryPouchUpgradeMediumInteraction extends SimpleInstantInteraction {
     public static final BuilderCodec<AccessoryPouchUpgradeMediumInteraction> CODEC;
     private static final short MEDIUM_CAPACITY = 4;

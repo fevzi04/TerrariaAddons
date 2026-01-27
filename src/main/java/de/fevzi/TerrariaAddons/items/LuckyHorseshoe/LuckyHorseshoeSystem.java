@@ -17,6 +17,11 @@ import de.fevzi.TerrariaAddons.items.AccessoryPouch.AccessoryPouchSharedContaine
 
 import javax.annotation.Nonnull;
 
+/**
+ * System that handles the Lucky Horseshoe accessory effect.
+ * When a player with the Lucky Horseshoe equipped takes fall damage,
+ * this system cancels the damage, providing fall damage immunity.
+ */
 public class LuckyHorseshoeSystem extends DamageEventSystem {
     private static final String LUCKY_HORSESHOE_ITEM_ID = "LuckyHorseshoe";
 

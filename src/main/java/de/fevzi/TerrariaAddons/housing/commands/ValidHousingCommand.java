@@ -11,6 +11,11 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Command that lists all valid housing locations.
+ * Displays a formatted list of all registered valid housings
+ * grouped by world, showing their coordinates.
+ */
 public class ValidHousingCommand extends CommandBase {
 
     public ValidHousingCommand() {

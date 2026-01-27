@@ -24,6 +24,11 @@ import de.fevzi.TerrariaAddons.data.PlayerDataManager;
 import javax.annotation.Nonnull;
 import java.util.UUID;
 
+/**
+ * Interaction handler for consuming a Life Crystal.
+ * Permanently increases the player's maximum health by 5 HP per crystal,
+ * up to a maximum of 10 crystals (50 HP bonus). Consumes the item on use.
+ */
 public class LifeCrystalInteraction extends SimpleInstantInteraction {
     private static final int MAX_USES = 10;
     private static final float HEALTH_INCREASE = 5.0f;

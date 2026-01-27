@@ -15,6 +15,11 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 import javax.annotation.Nonnull;
 
+/**
+ * System that listens for block place events near housing areas.
+ * When a block is placed, this system enqueues a housing revalidation
+ * to ensure any nearby housing checkers are re-evaluated for validity.
+ */
 public class HousingRevalidationPlaceSystem extends EntityEventSystem<EntityStore, PlaceBlockEvent> {
     public HousingRevalidationPlaceSystem() {
         super(PlaceBlockEvent.class);

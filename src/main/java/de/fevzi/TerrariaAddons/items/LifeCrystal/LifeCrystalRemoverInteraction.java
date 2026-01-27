@@ -22,6 +22,11 @@ import de.fevzi.TerrariaAddons.data.PlayerDataManager;
 import javax.annotation.Nonnull;
 import java.util.UUID;
 
+/**
+ * Interaction handler for removing Life Crystal effects.
+ * Debug/admin tool that removes one Life Crystal usage from the player,
+ * reducing their maximum health bonus.
+ */
 public class LifeCrystalRemoverInteraction extends SimpleInstantInteraction {
     
     public static final BuilderCodec<LifeCrystalRemoverInteraction> CODEC = BuilderCodec.builder(LifeCrystalRemoverInteraction.class, LifeCrystalRemoverInteraction::new, SimpleInstantInteraction.CODEC).build();

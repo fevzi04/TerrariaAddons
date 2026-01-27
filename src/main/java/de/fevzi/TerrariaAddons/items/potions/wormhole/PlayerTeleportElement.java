@@ -7,6 +7,10 @@ import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import javax.annotation.Nonnull;
 
+/**
+ * UI element representing a single player in the teleport selection list.
+ * Displays the player name and a clickable button to teleport to them.
+ */
 public class PlayerTeleportElement extends ChoiceElement {
     private final String playerName;
 

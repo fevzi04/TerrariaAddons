@@ -20,6 +20,11 @@ import de.fevzi.TerrariaAddons.data.PlayerDataManager;
 import javax.annotation.Nonnull;
 import java.util.UUID;
 
+/**
+ * Interaction handler for removing Mana Crystal effects.
+ * Debug/admin tool that removes one Mana Crystal usage from the player,
+ * reducing their maximum mana bonus.
+ */
 public class ManaCrystalRemoverInteraction extends SimpleInstantInteraction {
     public static final BuilderCodec<ManaCrystalRemoverInteraction> CODEC = BuilderCodec.builder(ManaCrystalRemoverInteraction.class, ManaCrystalRemoverInteraction::new, SimpleInstantInteraction.CODEC).build();
 

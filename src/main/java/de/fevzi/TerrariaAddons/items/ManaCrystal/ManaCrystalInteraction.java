@@ -20,6 +20,11 @@ import de.fevzi.TerrariaAddons.data.PlayerDataManager;
 import javax.annotation.Nonnull;
 import java.util.UUID;
 
+/**
+ * Interaction handler for consuming a Mana Crystal.
+ * Permanently increases the player's maximum mana by 10% per crystal,
+ * up to a maximum of 10 crystals (100% bonus). Consumes the item on use.
+ */
 public class ManaCrystalInteraction extends SimpleInstantInteraction {
     private static final int MAX_USES = ManaCrystalStats.MAX_USES;
 

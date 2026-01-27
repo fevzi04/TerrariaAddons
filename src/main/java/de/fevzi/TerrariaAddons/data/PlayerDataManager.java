@@ -14,6 +14,12 @@ import java.nio.file.Paths;
 
 
 
+/**
+ * Manages persistent player data storage.
+ * Handles loading, saving, and caching of player-specific data such as
+ * Life Crystal and Mana Crystal usage counts. Data is persisted to disk
+ * as JSON files.
+ */
 public class PlayerDataManager {
     private static final String DATA_DIR = "PlayerData";
     private static final Map<UUID, PlayerData> PLAYER_DATA_CACHE = new ConcurrentHashMap<>();

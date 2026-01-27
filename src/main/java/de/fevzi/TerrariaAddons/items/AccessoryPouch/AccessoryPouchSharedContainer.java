@@ -20,6 +20,12 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Manages shared accessory pouch containers for all players.
+ * Handles container creation, loading, saving, and capacity upgrades.
+ * Each player's pouch is persisted to disk and loaded on demand.
+ * Provides utility methods to check for equipped accessories.
+ */
 public final class AccessoryPouchSharedContainer {
     private static final String POUCH_ID = "AccessoryPouch";
     private static final short BASE_CAPACITY = 2;

@@ -18,6 +18,12 @@ import de.fevzi.TerrariaAddons.items.AccessoryPouch.AccessoryPouchSharedContaine
 import javax.annotation.Nonnull;
 import java.util.UUID;
 
+/**
+ * System that handles the Lava Charm accessory effect.
+ * When a player with the Lava Charm equipped takes fire/lava damage,
+ * this system cancels the damage if the player has remaining immunity time.
+ * Works in conjunction with LavaCharmHudSystem to track and display immunity duration.
+ */
 public class LavaCharmSystem extends DamageEventSystem {
     private static final String LAVA_CHARM_ITEM_ID = "LavaCharm";
     private static final String[] FIRE_DAMAGE_CAUSES = {"Fire", "Lava", "Burn", "Magma"};

@@ -23,6 +23,11 @@ import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Optional;
 
+/**
+ * Interaction handler for the Magic Mirror item.
+ * Teleports the player to their nearest respawn point (bed or world spawn)
+ * without consuming the item, allowing unlimited use.
+ */
 public class MirrorRecallInteraction extends SimpleInstantInteraction {
     public static final BuilderCodec<MirrorRecallInteraction> CODEC;
 

@@ -40,6 +40,11 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Interaction handler for the Starfury weapon.
+ * When used, summons a falling star projectile from the sky at the
+ * player's cursor position, dealing damage to enemies on impact.
+ */
 @SuppressWarnings("deprecation")
 public class StarfuryInteraction extends SimpleInstantInteraction {
     public static final BuilderCodec<StarfuryInteraction> CODEC =

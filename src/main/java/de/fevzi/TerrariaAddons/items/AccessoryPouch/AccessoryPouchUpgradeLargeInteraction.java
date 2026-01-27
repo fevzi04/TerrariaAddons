@@ -17,6 +17,11 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Interaction handler for the Large Accessory Pouch upgrade item.
+ * Increases the player's accessory pouch capacity from 4 to 6 slots.
+ * Requires the player to have a Medium Accessory Pouch first.
+ */
 public class AccessoryPouchUpgradeLargeInteraction extends SimpleInstantInteraction {
     public static final BuilderCodec<AccessoryPouchUpgradeLargeInteraction> CODEC;
     private static final short LARGE_CAPACITY = 6;

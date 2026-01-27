@@ -18,6 +18,11 @@ import de.fevzi.TerrariaAddons.housing.HousingCheckerSystem;
 
 import javax.annotation.Nonnull;
 
+/**
+ * UI page that displays housing validation results.
+ * Shows whether a housing structure is valid or invalid,
+ * along with the reason for failure if applicable.
+ */
 public class HousingCheckPage extends ChoiceBasePage {
     private static final String UI_LAYOUT = "Pages/HousingCheckPage.ui";
     private static final String HOUSING_CHECKER_BLOCK_ID = "HousingChecker_Block";

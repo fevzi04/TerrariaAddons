@@ -18,6 +18,12 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * System that handles the Band of Mana Regeneration accessory effect.
+ * When a player has the Band of Mana Regeneration equipped in their accessory pouch,
+ * this system provides passive mana regeneration over time.
+ * Regenerates 3 mana per second while equipped.
+ */
 public class BandOfManaRegenerationSystem extends EntityTickingSystem<EntityStore> {
     private static final String BAND_ITEM_ID = "BandOfManaRegeneration";
     private static final float MANA_PER_SECOND = 3.0f;

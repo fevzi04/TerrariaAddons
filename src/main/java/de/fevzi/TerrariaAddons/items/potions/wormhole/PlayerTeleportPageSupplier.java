@@ -10,6 +10,10 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import javax.annotation.Nonnull;
 
+/**
+ * Supplier that creates PlayerTeleportPage instances for the wormhole potion UI.
+ * Registered as a custom page supplier to display the player selection interface.
+ */
 public class PlayerTeleportPageSupplier implements OpenCustomUIInteraction.CustomPageSupplier {
     public static final BuilderCodec<PlayerTeleportPageSupplier> CODEC;
     static {

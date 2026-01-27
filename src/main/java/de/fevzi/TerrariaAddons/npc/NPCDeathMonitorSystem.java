@@ -16,6 +16,11 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * System that monitors NPC death events.
+ * When a registered NPC dies, this system tracks it
+ * and triggers respawn logic through the NPCSpawnManager.
+ */
 public class NPCDeathMonitorSystem extends DamageEventSystem {
     private static final Map<UUID, Boolean> PENDING_DEATH_CHECK = new ConcurrentHashMap<>();
 

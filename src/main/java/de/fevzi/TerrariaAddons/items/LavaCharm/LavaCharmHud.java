@@ -6,6 +6,11 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Custom HUD element that displays the Lava Charm immunity bar.
+ * Shows a progress bar indicating remaining lava immunity duration,
+ * automatically hiding when not in lava.
+ */
 public class LavaCharmHud extends CustomUIHud {
     private boolean visible = false;
     private float progress = 1.0f;

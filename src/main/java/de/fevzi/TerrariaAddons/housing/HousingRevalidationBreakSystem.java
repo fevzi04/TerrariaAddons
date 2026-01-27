@@ -16,6 +16,12 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 import javax.annotation.Nonnull;
 
+/**
+ * System that listens for block break events near housing areas.
+ * When a block is broken, this system enqueues a housing revalidation
+ * to ensure any nearby housing checkers are re-evaluated for validity.
+ * Also handles cleanup when a housing checker block itself is broken.
+ */
 public class HousingRevalidationBreakSystem extends EntityEventSystem<EntityStore, BreakBlockEvent> {
     public HousingRevalidationBreakSystem() {
         super(BreakBlockEvent.class);

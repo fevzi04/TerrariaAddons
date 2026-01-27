@@ -14,6 +14,13 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import de.fevzi.TerrariaAddons.items.AccessoryPouch.AccessoryPouchSharedContainer;
 
 import javax.annotation.Nonnull;
+
+/**
+ * System that handles the Hermes Boots accessory effect.
+ * When a player has Hermes Boots equipped in their accessory pouch,
+ * this system applies a movement speed boost. The boost is automatically
+ * removed when the boots are unequipped.
+ */
 public class HermesBootsSystem extends EntityTickingSystem<EntityStore> {
     private static final String HERMES_BOOTS_ITEM_ID = "HermesBoots";
     private static final float SPEED_MULTIPLIER = 1.2f;

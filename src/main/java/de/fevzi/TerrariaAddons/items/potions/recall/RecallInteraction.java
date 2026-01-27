@@ -26,6 +26,11 @@ import java.util.Arrays;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 
+/**
+ * Interaction handler for the Recall Potion.
+ * Teleports the player to their nearest respawn point (bed or world spawn)
+ * and consumes the potion in the process.
+ */
 public class RecallInteraction extends SimpleInstantInteraction {
     public static final BuilderCodec<RecallInteraction> CODEC;
 

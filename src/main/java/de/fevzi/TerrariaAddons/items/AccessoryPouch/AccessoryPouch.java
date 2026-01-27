@@ -22,6 +22,12 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Interaction handler for the Accessory Pouch item.
+ * Opens a container window where players can store and equip accessories.
+ * Only items with the "Items.Accessories" category can be placed in the pouch.
+ * Equipped accessories provide passive effects while in the pouch.
+ */
 public class AccessoryPouch extends OpenItemStackContainerInteraction {
     private static final String ACCESSORY_CATEGORY = "Items.Accessories";
     private static final SlotFilter ACCESSORY_ONLY_FILTER = (action, container, slot, stack) -> {

@@ -26,6 +26,12 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * System that tracks and displays damage per second (DPS) for players.
+ * When a player has the DPS Meter accessory equipped, this system calculates
+ * their damage output over a sliding time window and displays it on a HUD.
+ * The HUD automatically hides after a period of inactivity.
+ */
 public class DpsMeterSystem extends DamageEventSystem {
     private static final String DPS_METER_ITEM_ID = "DPSMeter";
     private static final long WINDOW_MILLIS = 5_000L;

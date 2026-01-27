@@ -19,6 +19,11 @@ import de.fevzi.TerrariaAddons.items.AccessoryPouch.AccessoryPouchSharedContaine
 
 import javax.annotation.Nonnull;
 
+/**
+ * System that handles the Magma Stone accessory effect.
+ * When a player with the Magma Stone equipped deals damage to an enemy,
+ * this system applies a burn effect to the target, causing fire damage over time.
+ */
 public class MagmaStoneSystem extends DamageEventSystem {
     private static final String MAGMA_STONE_ITEM_ID = "MagmaStone";
     private static final String[] BURN_EFFECT_IDS = {

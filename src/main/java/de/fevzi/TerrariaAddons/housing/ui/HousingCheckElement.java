@@ -7,6 +7,10 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 
 import javax.annotation.Nonnull;
 
+/**
+ * UI element that displays a single housing check result.
+ * Shows the validation status (VALID/INVALID) and the reason message.
+ */
 public class HousingCheckElement extends ChoiceElement {
     private final String status;
     private final String reason;

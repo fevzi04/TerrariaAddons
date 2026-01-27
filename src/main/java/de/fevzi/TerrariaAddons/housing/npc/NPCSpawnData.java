@@ -6,6 +6,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
+/**
+ * Data class representing an NPC's spawn information.
+ * Stores the NPC type, assigned housing position, entity UUID,
+ * alive status, and death timestamp for respawn calculations.
+ */
 public class NPCSpawnData {
     private final String npcTypeId;
     private final Vector3i housingPosition;

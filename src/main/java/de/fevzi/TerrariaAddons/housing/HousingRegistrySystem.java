@@ -31,6 +31,12 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 
+/**
+ * System that manages the registry of valid housings across all worlds.
+ * Tracks which housing checker positions are currently valid, persists
+ * housing data to disk, and provides methods to query available housings
+ * for NPC spawning.
+ */
 public class HousingRegistrySystem extends EntityTickingSystem<EntityStore> {
     private static final String DATA_DIR = "HousingData";
     private static final String DATA_FILE = "valid_housings.json";

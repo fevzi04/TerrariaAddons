@@ -22,6 +22,12 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * System that manages the Lava Charm immunity HUD display.
+ * Tracks players' lava immunity duration and displays a progress bar
+ * showing remaining immunity time. The HUD is shown when the player
+ * is exposed to lava and has the Lava Charm equipped.
+ */
 public class LavaCharmHudSystem extends EntityTickingSystem<EntityStore> {
     private static final String LAVA_CHARM_ITEM_ID = "LavaCharm";
     private static final String[] BURN_EFFECT_IDS = {"Lava_Burn"};
