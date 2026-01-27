@@ -15,7 +15,7 @@
       "Description": "Overrides the memory name if set"
     },
     "NameTranslationKey": {
-      "Value": "server.npcRoles.GoblinTinkerer.name",
+      "Value": "server.npcRoles.ArmsDealer.name",
       "Description": "Translation key for NPC name display"
     }
   },

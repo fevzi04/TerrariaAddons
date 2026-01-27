@@ -37,7 +37,12 @@ import de.fevzi.TerrariaAddons.housing.HousingRevalidationPlaceSystem;
 import de.fevzi.TerrariaAddons.housing.HousingRevalidationTickSystem;
 import de.fevzi.TerrariaAddons.housing.commands.ValidHousingCommand;
 import de.fevzi.TerrariaAddons.housing.HousingRegistrySystem;
+import de.fevzi.TerrariaAddons.npc.commands.NPCDebugCommand;
+import com.hypixel.hytale.server.core.command.system.CommandManager;
 import de.fevzi.TerrariaAddons.housing.ui.HousingCheckPageSupplier;
+import de.fevzi.TerrariaAddons.npc.NPCBehaviorSystem;
+import de.fevzi.TerrariaAddons.npc.NPCDeathMonitorSystem;
+import de.fevzi.TerrariaAddons.npc.NPCSpawnSystem;
 
 import javax.annotation.Nonnull;
 
@@ -81,6 +86,12 @@ public class TerrariaAddons extends JavaPlugin {
         getEntityStoreRegistry().registerSystem(new HousingRevalidationPlaceSystem());
         getEntityStoreRegistry().registerSystem(new HousingRevalidationBreakSystem());
         getEntityStoreRegistry().registerSystem(new HousingRevalidationTickSystem());
-        getCommandRegistry().registerCommand(new ValidHousingCommand());
+        getEntityStoreRegistry().registerSystem(new NPCSpawnSystem());
+        getEntityStoreRegistry().registerSystem(new NPCDeathMonitorSystem());
+        getEntityStoreRegistry().registerSystem(new NPCBehaviorSystem());
+
+        CommandManager.get().register(new NPCDebugCommand());
+        CommandManager.get().register(new ValidHousingCommand());
+
     }
 }

@@ -43,3 +43,5 @@ bin/
 .DS_Store
 
 /cache/
+/Hytale-Server-Unpacked/
+/Assets/
