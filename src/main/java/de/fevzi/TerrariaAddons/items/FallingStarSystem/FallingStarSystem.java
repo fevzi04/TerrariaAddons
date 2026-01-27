@@ -13,6 +13,7 @@ import com.hypixel.hytale.server.core.modules.time.TimeResource;
 import com.hypixel.hytale.server.core.modules.time.WorldTimeResource;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+import de.fevzi.TerrariaAddons.config.TerrariaAddonsConfig;
 
 import javax.annotation.Nonnull;
 import java.util.Map;
@@ -29,9 +30,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class FallingStarSystem extends EntityTickingSystem<EntityStore> {
 
-    private static final double SPAWN_CHANCE = 0.0004;
     private static final double SPAWN_HEIGHT = 50.0;
-    private static final double SPAWN_RADIUS = 50.0;
     private static final double NIGHT_THRESHOLD = 0.3;
     private static final float DOWN_PITCH = -1.5707964f;
     private static final long SPAWN_COOLDOWN_MS = 5000L;
@@ -89,7 +88,8 @@ public class FallingStarSystem extends EntityTickingSystem<EntityStore> {
         }
 
         ThreadLocalRandom random = ThreadLocalRandom.current();
-        if (random.nextDouble() > SPAWN_CHANCE) {
+        double spawnChance = TerrariaAddonsConfig.getInstance().getFallingStarsSpawnRate();
+        if (random.nextDouble() > spawnChance) {
             return;
         }
 
@@ -116,8 +116,9 @@ public class FallingStarSystem extends EntityTickingSystem<EntityStore> {
             return;
         }
 
-        double offsetX = (random.nextDouble() - 0.5) * 2 * SPAWN_RADIUS;
-        double offsetZ = (random.nextDouble() - 0.5) * 2 * SPAWN_RADIUS;
+        double spawnRange = TerrariaAddonsConfig.getInstance().getFallingStarsSpawnRange();
+        double offsetX = (random.nextDouble() - 0.5) * 2 * spawnRange;
+        double offsetZ = (random.nextDouble() - 0.5) * 2 * spawnRange;
 
         Vector3d spawnPos = new Vector3d(
             playerPos.x + offsetX,

@@ -6,6 +6,7 @@ import com.hypixel.hytale.server.core.modules.interaction.interaction.config.ser
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.core.plugin.registry.CodecMapRegistry.Assets;
+import de.fevzi.TerrariaAddons.config.TerrariaAddonsConfig;
 import de.fevzi.TerrariaAddons.dps.DpsMeterSystem;
 import de.fevzi.TerrariaAddons.items.AccessoryPouch.AccessoryPouch;
 import de.fevzi.TerrariaAddons.items.AccessoryPouch.AccessoryPouchUpgradeLargeInteraction;
@@ -57,6 +58,8 @@ public class TerrariaAddons extends JavaPlugin {
 
     @Override
     protected void setup() {
+
+        TerrariaAddonsConfig.getInstance();
 
         Assets<Interaction, ? extends Codec<? extends Interaction>> interactions = this.getCodecRegistry(Interaction.CODEC);
         OpenCustomUIInteraction.PAGE_CODEC.register("PlayerTeleport", PlayerTeleportPageSupplier.class, PlayerTeleportPageSupplier.CODEC);
