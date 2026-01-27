@@ -112,6 +112,12 @@ public class NPCBehaviorSystem extends EntityTickingSystem<EntityStore> {
             return;
         }
 
+        String currentOccupant = NPCSpawnDataManager.getNpcTypeAtHousing(worldKey, housingPos);
+        if (currentOccupant == null || !currentOccupant.equals(npcData.getNpcTypeId())) {
+            NPC_IS_HOME.put(entityUuid, false);
+            return;
+        }
+
         double sunlightFactor = worldTime.getSunlightFactor();
         boolean isDaytime = sunlightFactor > DAYTIME_THRESHOLD;
         boolean isNighttime = sunlightFactor <= NIGHTTIME_THRESHOLD;

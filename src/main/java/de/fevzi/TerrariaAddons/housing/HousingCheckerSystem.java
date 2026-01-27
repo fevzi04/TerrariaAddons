@@ -34,7 +34,7 @@ import java.util.HashSet;
  */
 public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBlockEvent> {
 
-    public static final String HOUSING_CHECKER_ITEM_ID = "HousingChecker_Block";
+    public static final String HOUSING_CHECKER_ITEM_ID = "Housing_Block";
     private static final String DOOR_ID_MARKER = "door";
     private static final String TORCH_ID_MARKER = "torch";
 

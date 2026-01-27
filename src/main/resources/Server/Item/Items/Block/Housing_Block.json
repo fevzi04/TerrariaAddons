@@ -1,6 +1,6 @@
 {
   "TranslationProperties": {
-    "Name": "server.items.Block_HousingChecker_Block.name"
+    "Name": "server.items.Block_Housing_Block.name"
   },
   "Icon": "Icons/ItemsGenerated/Rock_Crystal_Blue.png",
   "Categories": [
@@ -16,7 +16,7 @@
     ],
     "Gathering": {
       "Breaking": {
-        "ItemId": "HousingChecker_Block",
+        "ItemId": "Housing_Block",
         "GatherType": "Rocks"
       }
     },

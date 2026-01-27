@@ -28,7 +28,9 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class NPCSpawnSystem extends EntityTickingSystem<EntityStore> {
     private static final long SPAWN_CHECK_INTERVAL_MS = 5000L;
+    private static final long HOMELESS_CHECK_INTERVAL_MS = 30000L;
     private static final Map<String, Long> LAST_SPAWN_CHECK = new ConcurrentHashMap<>();
+    private static final Map<String, Long> LAST_HOMELESS_CHECK = new ConcurrentHashMap<>();
 
     @Override
     public Query<EntityStore> getQuery() {
@@ -68,6 +70,33 @@ public class NPCSpawnSystem extends EntityTickingSystem<EntityStore> {
         }
 
         long now = System.currentTimeMillis();
+
+        Set<Vector3i> validHousings = HousingRegistrySystem.getValidHousings(world);
+        if (validHousings.isEmpty()) {
+            return;
+        }
+
+        Long lastHomelessCheck = LAST_HOMELESS_CHECK.get(worldKey);
+        if (lastHomelessCheck == null || (now - lastHomelessCheck) >= HOMELESS_CHECK_INTERVAL_MS) {
+            LAST_HOMELESS_CHECK.put(worldKey, now);
+
+            List<String> homelessNpcs = NPCSpawnDataManager.getHomelessNpcs(worldKey, validHousings);
+            if (!homelessNpcs.isEmpty()) {
+                Set<Vector3i> unoccupiedHousings = NPCSpawnDataManager.getUnoccupiedHousings(worldKey, validHousings);
+                if (!unoccupiedHousings.isEmpty()) {
+                    Iterator<Vector3i> housingIterator = unoccupiedHousings.iterator();
+                    Iterator<String> homelessIterator = homelessNpcs.iterator();
+
+                    if (housingIterator.hasNext() && homelessIterator.hasNext()) {
+                        Vector3i housing = housingIterator.next();
+                        String npcType = homelessIterator.next();
+                        NPCSpawnDataManager.assignHousingToHomelessNpc(worldKey, npcType, housing);
+                        return;
+                    }
+                }
+            }
+        }
+
         Long lastCheck = LAST_SPAWN_CHECK.get(worldKey);
         if (lastCheck != null && (now - lastCheck) < SPAWN_CHECK_INTERVAL_MS) {
             return;
@@ -84,16 +113,26 @@ public class NPCSpawnSystem extends EntityTickingSystem<EntityStore> {
             return;
         }
 
-        Set<Vector3i> validHousings = HousingRegistrySystem.getValidHousings(world);
-        if (validHousings.isEmpty()) {
-            return;
-        }
-
         Set<Vector3i> unoccupiedHousings = NPCSpawnDataManager.getUnoccupiedHousings(worldKey, validHousings);
         if (unoccupiedHousings.isEmpty()) {
             return;
         }
 
+        // Priority 1: Assign housing to homeless NPCs
+        List<String> homelessNpcs = NPCSpawnDataManager.getHomelessNpcs(worldKey, validHousings);
+        if (!homelessNpcs.isEmpty()) {
+            Iterator<Vector3i> housingIterator = unoccupiedHousings.iterator();
+            Iterator<String> homelessIterator = homelessNpcs.iterator();
+
+            if (housingIterator.hasNext() && homelessIterator.hasNext()) {
+                Vector3i housing = housingIterator.next();
+                String npcType = homelessIterator.next();
+                NPCSpawnDataManager.assignHousingToHomelessNpc(worldKey, npcType, housing);
+                return;
+            }
+        }
+
+        // Priority 2: Spawn new NPCs if there are still available slots
         List<String> availableNpcs = NPCSpawnManager.getAllAvailableNpcTypes(worldKey);
         if (availableNpcs.isEmpty()) {
             return;

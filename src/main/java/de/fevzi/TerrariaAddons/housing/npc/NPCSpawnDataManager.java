@@ -244,6 +244,132 @@ public class NPCSpawnDataManager {
         }
     }
 
+
+    @Nonnull
+    public static List<NPCSpawnData> getAllAliveNpcs(@Nonnull String worldKey) {
+        Map<String, NPCSpawnData> worldMap = NPC_TYPE_MAP.get(worldKey);
+        if (worldMap == null || worldMap.isEmpty()) {
+            return Collections.emptyList();
+        }
+        List<NPCSpawnData> aliveNpcs = new ArrayList<>();
+        for (NPCSpawnData data : worldMap.values()) {
+            if (data.isAlive()) {
+                aliveNpcs.add(data);
+            }
+        }
+        return aliveNpcs;
+    }
+
+
+    public static boolean reassignNpcToHousing(@Nonnull String worldKey, @Nonnull String npcTypeId, @Nonnull Vector3i newHousingPos) {
+        NPCSpawnData existingData = getNpcByType(worldKey, npcTypeId);
+        if (existingData == null || !existingData.isAlive()) {
+            return false;
+        }
+
+        Vector3i oldHousingPos = existingData.getHousingPosition();
+
+        String displacedNpcType = getNpcTypeAtHousing(worldKey, newHousingPos);
+
+        Map<Vector3i, NPCSpawnData> housingMap = HOUSING_NPC_MAP.get(worldKey);
+        if (housingMap != null) {
+            housingMap.remove(oldHousingPos);
+        }
+        Set<Vector3i> occupied = OCCUPIED_HOUSINGS.get(worldKey);
+        if (occupied != null) {
+            occupied.remove(oldHousingPos);
+        }
+
+        NPCSpawnData newData = new NPCSpawnData(npcTypeId, newHousingPos);
+        newData.setEntityUuid(existingData.getEntityUuid());
+        newData.setAlive(true);
+        newData.setDeathTimestamp(0L);
+
+        HOUSING_NPC_MAP.computeIfAbsent(worldKey, k -> new ConcurrentHashMap<>()).put(newHousingPos, newData);
+        NPC_TYPE_MAP.computeIfAbsent(worldKey, k -> new ConcurrentHashMap<>()).put(npcTypeId, newData);
+        OCCUPIED_HOUSINGS.computeIfAbsent(worldKey, k -> ConcurrentHashMap.newKeySet()).add(newHousingPos);
+
+        saveToDisk();
+
+        return true;
+    }
+
+
+    @Nullable
+    public static String getNpcTypeAtHousing(@Nonnull String worldKey, @Nonnull Vector3i housingPos) {
+        NPCSpawnData data = getNpcAtHousing(worldKey, housingPos);
+        return data != null ? data.getNpcTypeId() : null;
+    }
+
+
+    @Nonnull
+    public static List<String> getHomelessNpcs(@Nonnull String worldKey, @Nonnull Set<Vector3i> validHousings) {
+        List<String> homeless = new ArrayList<>();
+        Map<String, NPCSpawnData> worldMap = NPC_TYPE_MAP.get(worldKey);
+        if (worldMap == null || worldMap.isEmpty()) {
+            return homeless;
+        }
+
+        Map<Vector3i, NPCSpawnData> housingMap = HOUSING_NPC_MAP.get(worldKey);
+
+        for (NPCSpawnData data : worldMap.values()) {
+            if (!data.isAlive()) {
+                continue;
+            }
+
+            Vector3i housingPos = data.getHousingPosition();
+
+
+            if (!validHousings.contains(housingPos)) {
+                homeless.add(data.getNpcTypeId());
+            } else if (housingMap != null) {
+                NPCSpawnData occupant = housingMap.get(housingPos);
+                if (occupant == null || !occupant.getNpcTypeId().equals(data.getNpcTypeId())) {
+                    homeless.add(data.getNpcTypeId());
+                }
+            }
+        }
+        return homeless;
+    }
+
+    public static boolean assignHousingToHomelessNpc(@Nonnull String worldKey, @Nonnull String npcTypeId, @Nonnull Vector3i newHousingPos) {
+        NPCSpawnData existingData = getNpcByType(worldKey, npcTypeId);
+        if (existingData == null || !existingData.isAlive()) {
+            return false;
+        }
+
+        Vector3i oldHousingPos = existingData.getHousingPosition();
+        Map<Vector3i, NPCSpawnData> housingMap = HOUSING_NPC_MAP.get(worldKey);
+        if (housingMap != null) {
+            housingMap.remove(oldHousingPos);
+        }
+        Set<Vector3i> occupied = OCCUPIED_HOUSINGS.get(worldKey);
+        if (occupied != null) {
+            occupied.remove(oldHousingPos);
+        }
+
+        NPCSpawnData newData = new NPCSpawnData(npcTypeId, newHousingPos);
+        newData.setEntityUuid(existingData.getEntityUuid());
+        newData.setAlive(true);
+        newData.setDeathTimestamp(0L);
+
+        HOUSING_NPC_MAP.computeIfAbsent(worldKey, k -> new ConcurrentHashMap<>()).put(newHousingPos, newData);
+        NPC_TYPE_MAP.computeIfAbsent(worldKey, k -> new ConcurrentHashMap<>()).put(npcTypeId, newData);
+        OCCUPIED_HOUSINGS.computeIfAbsent(worldKey, k -> ConcurrentHashMap.newKeySet()).add(newHousingPos);
+
+        saveToDisk();
+        return true;
+    }
+
+
+    public static void tryImmediateHousingAssignment(@Nonnull String worldKey, @Nonnull String homelessNpcType, @Nonnull Set<Vector3i> validHousings) {
+        Set<Vector3i> unoccupiedHousings = getUnoccupiedHousings(worldKey, validHousings);
+        if (!unoccupiedHousings.isEmpty()) {
+            Vector3i freeHousing = unoccupiedHousings.iterator().next();
+            assignHousingToHomelessNpc(worldKey, homelessNpcType, freeHousing);
+        }
+    }
+
     private static class SavedNPCData {
         String npcTypeId;
         int housingX;
@@ -254,3 +380,5 @@ public class NPCSpawnDataManager {
         String entityUuid;
     }
 }
+
+
