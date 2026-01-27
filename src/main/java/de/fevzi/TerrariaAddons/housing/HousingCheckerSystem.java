@@ -21,6 +21,7 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
 import javax.annotation.Nonnull;
+
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -185,7 +186,7 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
             }
         }
 
-        if (!allColumnsMeetMinHeight(columnHeights, MIN_HEIGHT)) {
+        if (!allColumnsMeetMinHeight(columnHeights, MIN_HEIGHT, hasDoor ? 2 : 0)) {
             return HousingResult.TOO_SHORT;
         }
 
@@ -264,10 +265,14 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
         }
     }
 
-    private static boolean allColumnsMeetMinHeight(HashMap<Long, int[]> columnHeights, int minHeight) {
+    private static boolean allColumnsMeetMinHeight(HashMap<Long, int[]> columnHeights, int minHeight, int allowedTooShortColumns) {
+        int tooShortColumns = 0;
         for (int[] bounds : columnHeights.values()) {
             if ((bounds[1] - bounds[0] + 1) < minHeight) {
-                return false;
+                tooShortColumns++;
+                if (tooShortColumns > allowedTooShortColumns) {
+                    return false;
+                }
             }
         }
         return true;
@@ -352,15 +357,19 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
         };
     }
 
-    public static void clearCachedResult(Vector3i checkerPos) {
-        if (checkerPos == null) {
+    public static void clearCachedResult(World world, Vector3i checkerPos) {
+        if (world == null || checkerPos == null) {
             return;
         }
-        CACHED_RESULTS.remove(positionKey(checkerPos));
+        long key = positionKey(checkerPos);
+        HousingResult previous = CACHED_RESULTS.remove(key);
+        if (previous != null) {
+            HousingRegistrySystem.unregisterHousing(world, checkerPos);
+        }
     }
 
 
-    private static long positionKey(Vector3i pos) {
+    static long positionKey(Vector3i pos) {
         long x = ((long) pos.x) & 0x3FFFFFFL;
         long z = ((long) pos.z) & 0x3FFFFFFL;
         long y = ((long) pos.y) & 0xFFFL;
@@ -411,6 +420,7 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
                     }
 
                     CACHED_RESULTS.put(key, result);
+                    HousingRegistrySystem.updateHousing(world, checkerPos, result == HousingResult.VALID);
 
                     if (result == HousingResult.VALID) {
                         player.sendMessage(Message.raw("Housing check updated: valid."));

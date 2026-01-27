@@ -11,6 +11,7 @@ import com.hypixel.hytale.math.vector.Vector3i;
 import com.hypixel.hytale.server.core.asset.type.blocktype.config.BlockType;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.event.events.ecs.BreakBlockEvent;
+import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 import javax.annotation.Nonnull;
@@ -35,9 +36,12 @@ public class HousingRevalidationBreakSystem extends EntityEventSystem<EntityStor
             return;
         }
 
+        EntityStore entityStore = (EntityStore) commandBuffer.getExternalData();
+        World world = entityStore != null ? entityStore.getWorld() : null;
+
         BlockType brokenType = event.getBlockType();
         if (brokenType != null && HousingCheckerSystem.HOUSING_CHECKER_ITEM_ID.equals(brokenType.getId())) {
-            HousingCheckerSystem.clearCachedResult(changed);
+            HousingCheckerSystem.clearCachedResult(world, changed);
             return;
         }
 

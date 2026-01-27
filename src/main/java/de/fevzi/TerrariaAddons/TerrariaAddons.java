@@ -35,6 +35,8 @@ import de.fevzi.TerrariaAddons.housing.HousingCheckerSystem;
 import de.fevzi.TerrariaAddons.housing.HousingRevalidationBreakSystem;
 import de.fevzi.TerrariaAddons.housing.HousingRevalidationPlaceSystem;
 import de.fevzi.TerrariaAddons.housing.HousingRevalidationTickSystem;
+import de.fevzi.TerrariaAddons.housing.commands.ValidHousingCommand;
+import de.fevzi.TerrariaAddons.housing.HousingRegistrySystem;
 import de.fevzi.TerrariaAddons.housing.ui.HousingCheckPageSupplier;
 
 import javax.annotation.Nonnull;
@@ -75,8 +77,10 @@ public class TerrariaAddons extends JavaPlugin {
         getEntityStoreRegistry().registerSystem(new FallingStarSystem());
         getEntityStoreRegistry().registerSystem(new BandOfManaRegenerationSystem());
         getEntityStoreRegistry().registerSystem(new HousingCheckerSystem());
+        getEntityStoreRegistry().registerSystem(new HousingRegistrySystem());
         getEntityStoreRegistry().registerSystem(new HousingRevalidationPlaceSystem());
         getEntityStoreRegistry().registerSystem(new HousingRevalidationBreakSystem());
         getEntityStoreRegistry().registerSystem(new HousingRevalidationTickSystem());
+        getCommandRegistry().registerCommand(new ValidHousingCommand());
     }
 }
