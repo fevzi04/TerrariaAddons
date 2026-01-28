@@ -34,6 +34,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class DpsMeterSystem extends DamageEventSystem {
     private static final String DPS_METER_ITEM_ID = "DPSMeter";
+    private static final String DPS_HUD_KEY = "TerrariaAddons_Dps";
     private static final long WINDOW_MILLIS = 5_000L;
     private static final long SEND_INTERVAL_MILLIS = 1_000L;
     private static final long HIDE_AFTER_MILLIS = 5_000L;
@@ -181,18 +182,11 @@ public class DpsMeterSystem extends DamageEventSystem {
             playerComponentByUuid.put(uuid, playerComponent);
             hudManagerByUuid.put(uuid, hudManager);
 
-            boolean usesMultipleHud = MultipleHudBridge.isAvailable();
             DpsHud hud = hudByPlayer.computeIfAbsent(uuid, ignored -> {
                 DpsHud created = new DpsHud(playerRef);
-                attachHud(playerComponent, playerRef, hudManager, created, usesMultipleHud);
-                created.show();
                 return created;
             });
-
-            if (!usesMultipleHud && hudManager.getCustomHud() != hud) {
-                hudManager.setCustomHud(playerRef, hud);
-                hud.show();
-            }
+            MultipleHudBridge.setCustomHud(playerComponent, playerRef, DPS_HUD_KEY, hud);
 
             hud.setVisible(true);
             hud.setText(message);
@@ -208,14 +202,6 @@ public class DpsMeterSystem extends DamageEventSystem {
                 markHidden(uuid);
             }
         }
-    }
-
-    private void attachHud(Player player, PlayerRef playerRef, HudManager hudManager, DpsHud hud, boolean usesMultipleHud) {
-        if (usesMultipleHud) {
-            MultipleHudBridge.setCustomHud(player, playerRef, "TerrariaAddons_Dps", hud);
-            return;
-        }
-        hudManager.setCustomHud(playerRef, hud);
     }
 
     private void hideInactiveHud() {

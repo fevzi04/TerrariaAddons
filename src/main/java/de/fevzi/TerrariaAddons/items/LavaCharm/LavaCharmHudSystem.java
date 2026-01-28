@@ -7,8 +7,6 @@ import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.component.query.Query;
 import com.hypixel.hytale.component.system.tick.EntityTickingSystem;
 import com.hypixel.hytale.server.core.entity.entities.Player;
-import com.hypixel.hytale.server.core.entity.entities.player.hud.CustomUIHud;
-import com.hypixel.hytale.server.core.entity.entities.player.hud.HudManager;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import de.fevzi.TerrariaAddons.items.AccessoryPouch.AccessoryPouchSharedContainer;
@@ -30,13 +28,13 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class LavaCharmHudSystem extends EntityTickingSystem<EntityStore> {
     private static final String LAVA_CHARM_ITEM_ID = "LavaCharm";
+    private static final String LAVA_CHARM_HUD_KEY = "TerrariaAddons_LavaCharm";
     private static final String[] BURN_EFFECT_IDS = {"Lava_Burn"};
     private static final float BURN_CHECK_INTERVAL_SECONDS = 1.0f;
 
     private final Map<UUID, LavaCharmHud> hudByPlayer = new ConcurrentHashMap<>();
     private final Map<UUID, PlayerRef> playerByUuid = new ConcurrentHashMap<>();
     private final Map<UUID, Player> playerComponentByUuid = new ConcurrentHashMap<>();
-    private final Map<UUID, HudManager> hudManagerByUuid = new ConcurrentHashMap<>();
     private final Map<UUID, Float> burnCheckTimerByUuid = new ConcurrentHashMap<>();
     private final Map<UUID, Boolean> hasBurnEffectByUuid = new ConcurrentHashMap<>();
     private final Object hudLock = new Object();
@@ -89,7 +87,7 @@ public class LavaCharmHudSystem extends EntityTickingSystem<EntityStore> {
 
             if (showHud) {
                 float progress = LavaCharmImmunityManager.getProgress(uuid);
-                showHud(playerRef, player.getHudManager(), player, progress);
+                showHud(playerRef, player, progress);
             } else {
                 hideHud(playerRef);
             }
@@ -103,38 +101,17 @@ public class LavaCharmHudSystem extends EntityTickingSystem<EntityStore> {
         }
     }
 
-    private void showHud(PlayerRef playerRef, HudManager hudManager, Player playerComponent, float progress) {
+    private void showHud(PlayerRef playerRef, Player playerComponent, float progress) {
         synchronized (hudLock) {
             UUID uuid = playerRef.getUuid();
             playerByUuid.put(uuid, playerRef);
             playerComponentByUuid.put(uuid, playerComponent);
-            hudManagerByUuid.put(uuid, hudManager);
 
-            boolean usesMultipleHud = MultipleHudBridge.isAvailable();
             LavaCharmHud hud = hudByPlayer.computeIfAbsent(uuid, ignored -> {
-                LavaCharmHud created = new LavaCharmHud(playerRef);
-                attachHud(playerComponent, playerRef, hudManager, created, usesMultipleHud);
-                if (!usesMultipleHud) {
-                    created.show();
-                }
-                return created;
+                return new LavaCharmHud(playerRef);
             });
 
-            if (usesMultipleHud) {
-                hud.setVisible(true);
-            } else {
-                CustomUIHud currentHud = hudManager.getCustomHud();
-                if (currentHud == null) {
-                    hudManager.setCustomHud(playerRef, hud);
-                    hud.show();
-                } else if (currentHud == hud) {
-                    hud.setVisible(true);
-                } else {
-                    hudManager.setCustomHud(playerRef, hud);
-                    hud.show();
-                }
-            }
-
+            MultipleHudBridge.setCustomHud(playerComponent, playerRef, LAVA_CHARM_HUD_KEY, hud);
             hud.setVisible(true);
             hud.setProgress(progress);
         }
@@ -203,13 +180,5 @@ public class LavaCharmHudSystem extends EntityTickingSystem<EntityStore> {
         }
     }
 
-
-    private void attachHud(Player player, PlayerRef playerRef, HudManager hudManager, LavaCharmHud hud, boolean usesMultipleHud) {
-        if (usesMultipleHud) {
-            MultipleHudBridge.setCustomHud(player, playerRef, "TerrariaAddons_LavaCharm", hud);
-            return;
-        }
-        hudManager.setCustomHud(playerRef, hud);
-    }
 
 }

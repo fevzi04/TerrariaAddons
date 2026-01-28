@@ -9,6 +9,9 @@
         }
     ],
     "ServerVersion": "*",
+    "Dependencies": {
+        "Buuz135:MultipleHUD": "*"
+    },
     "OptionalDependencies": {
         
     },
