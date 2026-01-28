@@ -83,3 +83,19 @@ items.Ingredient_Sharkfin.description=Dropped by Sharks.
 
 items.Weapon_Starfury.name=Starfury
 items.Weapon_Starfury.description=Causes stars to rain from the sky.
+
+items.Ingredient_Coin_Copper.name=Copper Coin
+items.Ingredient_Coin_Copper.description=The most basic form of currency. 100 copper coins equal 1 silver coin.
+
+items.Ingredient_Coin_Silver.name=Silver Coin
+items.Ingredient_Coin_Silver.description=A valuable currency. 100 silver coins equal 1 gold coin.
+
+items.Ingredient_Coin_Gold.name=Gold Coin
+items.Ingredient_Coin_Gold.description=A highly valuable currency. 100 gold coins equal 1 platinum coin.
+
+items.Ingredient_Coin_Platinum.name=Platinum Coin
+items.Ingredient_Coin_Platinum.description=The most valuable form of currency.
+
+items.Coin_Pouch.name=Coin Pouch
+items.Coin_Pouch.description=Store your coins here. Converts 100 coins of a tier to a single coin of the next tier.
+

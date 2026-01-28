@@ -16,6 +16,8 @@ import de.fevzi.TerrariaAddons.items.BandOfManaRegeneration.BandOfManaRegenerati
 import de.fevzi.TerrariaAddons.items.BandOfRegeneration.BandOfRegenerationSystem;
 import de.fevzi.TerrariaAddons.items.BlizzardInABottle.BlizzardInABottle;
 import de.fevzi.TerrariaAddons.items.CloudInABottle.CloudInABottle;
+import de.fevzi.TerrariaAddons.items.CoinDropSystem.CoinDropSystem;
+import de.fevzi.TerrariaAddons.items.CoinPouch.CoinPouch;
 import de.fevzi.TerrariaAddons.items.FallingStarSystem.FallingStarSystem;
 import de.fevzi.TerrariaAddons.items.HermesBoots.HermesBootsSystem;
 import de.fevzi.TerrariaAddons.items.LavaCharm.LavaCharmHudSystem;
@@ -73,6 +75,7 @@ public class TerrariaAddons extends JavaPlugin {
         interactions.register("AccessoryPouch", AccessoryPouch.class, AccessoryPouch.CODEC);
         interactions.register("AccessoryPouchUpgradeMedium", AccessoryPouchUpgradeMediumInteraction.class, AccessoryPouchUpgradeMediumInteraction.CODEC);
         interactions.register("AccessoryPouchUpgradeLarge", AccessoryPouchUpgradeLargeInteraction.class, AccessoryPouchUpgradeLargeInteraction.CODEC);
+        interactions.register("CoinPouch", CoinPouch.class, CoinPouch.CODEC);
         interactions.register("Voidbag", Voidbag.class, Voidbag.CODEC);
         interactions.register("Starfury", StarfuryInteraction.class, StarfuryInteraction.CODEC);
         getEntityStoreRegistry().registerSystem(new DpsMeterSystem());
@@ -88,6 +91,7 @@ public class TerrariaAddons extends JavaPlugin {
         getEntityStoreRegistry().registerSystem(new LavaCharmHudSystem());
         getEntityStoreRegistry().registerSystem(new FallingStarSystem());
         getEntityStoreRegistry().registerSystem(new BandOfManaRegenerationSystem());
+        getEntityStoreRegistry().registerSystem(new CoinDropSystem());
         getEntityStoreRegistry().registerSystem(new HousingCheckerSystem());
         getEntityStoreRegistry().registerSystem(new HousingRegistrySystem());
         getEntityStoreRegistry().registerSystem(new HousingRevalidationPlaceSystem());

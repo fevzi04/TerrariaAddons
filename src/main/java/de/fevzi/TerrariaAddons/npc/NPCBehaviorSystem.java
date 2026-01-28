@@ -200,3 +200,4 @@ public class NPCBehaviorSystem extends EntityTickingSystem<EntityStore> {
         LAST_BEHAVIOR_CHECK.entrySet().removeIf(entry -> entry.getKey().endsWith(":" + entityUuid.toString()));
     }
 }
+

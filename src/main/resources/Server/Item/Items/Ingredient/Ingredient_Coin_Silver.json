@@ -1,0 +1,26 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Ingredient_Coin_Silver.name",
+    "Description": "server.items.Ingredient_Coin_Silver.description"
+  },
+  "Model": "Items/Ingredients/Coin_Model.blockymodel",
+  "Texture": "Items/Ingredients/Coin_Silver_texture.png",
+  "Scale": 0.6,
+  "PlayerAnimationsId": "Item",
+  "ItemLevel": 1,
+  "Icon": "Icons/ItemsGenerated/Ingredient_Coin_Silver.png",
+  "IconProperties": {
+    "Scale": 1.8,
+    "Rotation": [
+      63,
+      328,
+      0
+    ],
+    "Translation": [
+      3,
+      -3
+    ]
+  },
+  "MaxStack": 9999,
+  "Quality": "Common"
+}
