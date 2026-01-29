@@ -11,6 +11,7 @@ import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.modules.time.WorldTimeResource;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+import com.hypixel.hytale.server.core.modules.entity.damage.DeathComponent;
 import de.fevzi.TerrariaAddons.housing.HousingRegistrySystem;
 import de.fevzi.TerrariaAddons.housing.npc.NPCSpawnDataManager;
 
@@ -29,8 +30,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class NPCSpawnSystem extends EntityTickingSystem<EntityStore> {
     private static final long SPAWN_CHECK_INTERVAL_MS = 5000L;
     private static final long HOMELESS_CHECK_INTERVAL_MS = 30000L;
+    private static final long NPC_VALIDATE_INTERVAL_MS = 5000L;
     private static final Map<String, Long> LAST_SPAWN_CHECK = new ConcurrentHashMap<>();
     private static final Map<String, Long> LAST_HOMELESS_CHECK = new ConcurrentHashMap<>();
+    private static final Map<String, Long> LAST_NPC_VALIDATE = new ConcurrentHashMap<>();
 
     @Override
     public Query<EntityStore> getQuery() {
@@ -70,6 +73,12 @@ public class NPCSpawnSystem extends EntityTickingSystem<EntityStore> {
         }
 
         long now = System.currentTimeMillis();
+
+        Long lastValidate = LAST_NPC_VALIDATE.get(worldKey);
+        if (lastValidate == null || (now - lastValidate) >= NPC_VALIDATE_INTERVAL_MS) {
+            LAST_NPC_VALIDATE.put(worldKey, now);
+            validateNpcLiveness(store, entityStore, worldKey);
+        }
 
         Set<Vector3i> validHousings = HousingRegistrySystem.getValidHousings(world);
         if (validHousings.isEmpty()) {
@@ -145,6 +154,29 @@ public class NPCSpawnSystem extends EntityTickingSystem<EntityStore> {
             Vector3i housing = housingIterator.next();
             String npcType = npcIterator.next();
             NPCSpawnManager.spawnNpc(commandBuffer, world, worldKey, npcType, housing);
+        }
+    }
+
+    private void validateNpcLiveness(@Nonnull Store<EntityStore> store,
+                                     @Nonnull EntityStore entityStore,
+                                     @Nonnull String worldKey) {
+        for (var data : NPCSpawnDataManager.getAllNpcData(worldKey)) {
+            if (data == null || !data.isAlive()) {
+                continue;
+            }
+            var uuid = data.getEntityUuid();
+            if (uuid == null) {
+                NPCSpawnDataManager.markNpcDead(worldKey, data.getNpcTypeId());
+                continue;
+            }
+            Ref<EntityStore> ref = entityStore.getRefFromUUID(uuid);
+            if (ref == null || !ref.isValid()) {
+                NPCSpawnDataManager.markNpcDead(worldKey, data.getNpcTypeId());
+                continue;
+            }
+            if (store.getArchetype(ref).contains(DeathComponent.getComponentType())) {
+                NPCSpawnDataManager.markNpcDead(worldKey, data.getNpcTypeId());
+            }
         }
     }
 }

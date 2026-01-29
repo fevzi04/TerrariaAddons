@@ -1,0 +1,113 @@
+Button #Button {
+  LayoutMode: Top;
+  Anchor: (Width: 230, Height: 185);
+  Padding: (Horizontal: 5, Vertical: 5);
+  Style: (
+    Hovered: (
+      Background: #c9a050,
+    )
+  );
+
+  Group #Card {
+    LayoutMode: Top;
+    Anchor: (Full: 0);
+    Padding: (Full: 6);
+    Background: #1c2835;
+
+    Group #ItemIconBox {
+      Anchor: (Width: 88, Height: 88);
+
+      ItemSlot #ItemIcon {
+        Anchor: (Full: 0);
+        ShowQualityBackground: true;
+      }
+
+      Label #ItemQuantity {
+        Anchor: (Right: 2, Bottom: 2);
+        Padding: (Horizontal: 3, Vertical: 1);
+        Background: #000000(0.3);
+        Style: (TextColor: #ffffff(0.9));
+      }
+    }
+
+    Label #ItemName {
+      Anchor: (Top: 6);
+      Style: (RenderBold: true);
+    }
+
+    Group #PriceRow {
+      LayoutMode: Left;
+      Anchor: (Top: 6);
+      Background: #000000(0.2);
+      Padding: (Horizontal: 6, Vertical: 4);
+
+      Group #CoinCopper {
+        LayoutMode: Left;
+        Anchor: (Height: 20);
+        Padding: (Right: 6);
+
+        ItemSlot #PriceCopperIcon {
+          Anchor: (Width: 16, Height: 16);
+          ShowQualityBackground: false;
+        }
+
+        Label #PriceCopperText {
+          Anchor: (Left: 4);
+          Style: (TextColor: #ffffff(0.9));
+        }
+      }
+
+      Group #CoinSilver {
+        LayoutMode: Left;
+        Anchor: (Height: 20);
+        Padding: (Right: 6);
+
+        ItemSlot #PriceSilverIcon {
+          Anchor: (Width: 16, Height: 16);
+          ShowQualityBackground: false;
+        }
+
+        Label #PriceSilverText {
+          Anchor: (Left: 4);
+          Style: (TextColor: #ffffff(0.9));
+        }
+      }
+
+      Group #CoinGold {
+        LayoutMode: Left;
+        Anchor: (Height: 20);
+        Padding: (Right: 6);
+
+        ItemSlot #PriceGoldIcon {
+          Anchor: (Width: 16, Height: 16);
+          ShowQualityBackground: false;
+        }
+
+        Label #PriceGoldText {
+          Anchor: (Left: 4);
+          Style: (TextColor: #ffffff(0.9));
+        }
+      }
+
+      Group #CoinPlatinum {
+        LayoutMode: Left;
+        Anchor: (Height: 20);
+
+        ItemSlot #PricePlatinumIcon {
+          Anchor: (Width: 16, Height: 16);
+          ShowQualityBackground: false;
+        }
+
+        Label #PricePlatinumText {
+          Anchor: (Left: 4);
+          Style: (TextColor: #ffffff(0.9));
+        }
+      }
+    }
+
+    Label #Stock {
+      Visible: false;
+      Style: (TextColor: #ffffff(0.6));
+    }
+  }
+}

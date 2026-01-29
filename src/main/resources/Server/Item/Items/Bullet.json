@@ -6,24 +6,6 @@
   "Texture": "Items/Bullet/bullet_texture.png",
   "Scale": 0.5,
   "PlayerAnimationsId": "Item",
-  "Recipe": {
-    "Input": [
-      {
-        "ItemId": "Ingredient_Bar_Iron",
-        "Quantity": 1
-      }
-    ],
-    "BenchRequirement": [
-      {
-        "Type": "Crafting",
-        "Id": "Weapon_Bench",
-        "Categories": [
-          "Weapon_Bow"
-        ]
-      }
-    ],
-    "OutputQuantity": 80
-  },
   "ItemLevel": 20,
   "Icon": "Icons/ItemsGenerated/Bullet.png",
   "IconProperties": {

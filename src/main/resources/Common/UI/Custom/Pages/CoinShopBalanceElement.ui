@@ -1,0 +1,86 @@
+Group #BalanceRow {
+  LayoutMode: Left;
+  Anchor: (Left: 0, Right: 0, Height: 40);
+
+  Label #BalanceLabel {
+    Anchor: (Height: 40);
+    Style: (
+      RenderBold: true,
+      TextColor: #ffffff(0.9),
+    );
+    Text: "Available Coins";
+  }
+
+  Group #CoinRow {
+    LayoutMode: Left;
+    Anchor: (Left: 16, Height: 40);
+
+    Group #CoinCopperSlot {
+      LayoutMode: Left;
+      Anchor: (Height: 40);
+      Background: #000000(0.2);
+      Padding: (Horizontal: 6, Vertical: 6);
+
+      ItemSlot #CoinCopper {
+        Anchor: (Width: 20, Height: 20);
+        ShowQualityBackground: false;
+      }
+
+      Label #CoinCopperCount {
+        Anchor: (Left: 6);
+        Style: (TextColor: #ffffff(0.9));
+      }
+    }
+
+    Group #CoinSilverSlot {
+      LayoutMode: Left;
+      Anchor: (Left: 8, Height: 40);
+      Background: #000000(0.2);
+      Padding: (Horizontal: 6, Vertical: 6);
+
+      ItemSlot #CoinSilver {
+        Anchor: (Width: 20, Height: 20);
+        ShowQualityBackground: false;
+      }
+
+      Label #CoinSilverCount {
+        Anchor: (Left: 6);
+        Style: (TextColor: #ffffff(0.9));
+      }
+    }
+
+    Group #CoinGoldSlot {
+      LayoutMode: Left;
+      Anchor: (Left: 8, Height: 40);
+      Background: #000000(0.2);
+      Padding: (Horizontal: 6, Vertical: 6);
+
+      ItemSlot #CoinGold {
+        Anchor: (Width: 20, Height: 20);
+        ShowQualityBackground: false;
+      }
+
+      Label #CoinGoldCount {
+        Anchor: (Left: 6);
+        Style: (TextColor: #ffffff(0.9));
+      }
+    }
+
+    Group #CoinPlatinumSlot {
+      LayoutMode: Left;
+      Anchor: (Left: 8, Height: 40);
+      Background: #000000(0.2);
+      Padding: (Horizontal: 6, Vertical: 6);
+
+      ItemSlot #CoinPlatinum {
+        Anchor: (Width: 20, Height: 20);
+        ShowQualityBackground: false;
+      }
+
+      Label #CoinPlatinumCount {
+        Anchor: (Left: 6);
+        Style: (TextColor: #ffffff(0.9));
+      }
+    }
+  }
+}

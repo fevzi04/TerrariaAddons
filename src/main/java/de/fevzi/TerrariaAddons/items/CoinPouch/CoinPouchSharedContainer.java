@@ -88,11 +88,11 @@ public final class CoinPouchSharedContainer {
         return container;
     }
 
-    private static final String COPPER_COIN_ID = "Ingredient_Coin_Copper";
-    private static final String SILVER_COIN_ID = "Ingredient_Coin_Silver";
-    private static final String GOLD_COIN_ID = "Ingredient_Coin_Gold";
-    private static final String PLATINUM_COIN_ID = "Ingredient_Coin_Platinum";
-    private static final int CONVERSION_RATE = 100;
+    private static final String COPPER_COIN_ID = CoinPouchCurrency.COPPER_COIN_ID;
+    private static final String SILVER_COIN_ID = CoinPouchCurrency.SILVER_COIN_ID;
+    private static final String GOLD_COIN_ID = CoinPouchCurrency.GOLD_COIN_ID;
+    private static final String PLATINUM_COIN_ID = CoinPouchCurrency.PLATINUM_COIN_ID;
+    private static final int CONVERSION_RATE = CoinPouchCurrency.CONVERSION_RATE;
     private static final Map<UUID, Boolean> CONVERTING = new ConcurrentHashMap<>();
 
     private static void registerAutoSave(UUID uuid, SimpleItemContainer container) {
@@ -161,6 +161,311 @@ public final class CoinPouchSharedContainer {
         if (higherTierCount > 0) {
             ItemStack higherTierStack = new ItemStack(higherTierId, higherTierCount);
             coinPouch.addItemStack(higherTierStack);
+        }
+    }
+
+    public static int getTotalCoinsInCopper(Inventory inventory, UUID uuid) {
+        ItemContainer container = getOrCreateContainer(inventory, uuid);
+        if (container == null) {
+            return 0;
+        }
+        return getTotalCoinsInCopper(container);
+    }
+
+    public static int getTotalCoinsInCopperCombined(Inventory inventory, UUID uuid) {
+        return getInventoryCoinsInCopper(inventory) + getTotalCoinsInCopper(inventory, uuid);
+    }
+
+    public static int[] getCoinCounts(Inventory inventory, UUID uuid) {
+        ItemContainer container = getOrCreateContainer(inventory, uuid);
+        if (container == null) {
+            return new int[]{0, 0, 0, 0};
+        }
+        return getCoinCounts(container);
+    }
+
+    public static int[] getCoinCountsCombined(Inventory inventory, UUID uuid) {
+        int[] counts = new int[]{0, 0, 0, 0};
+        addInventoryCoinCounts(inventory, counts);
+        if (inventory != null && hasPouch(inventory)) {
+            int[] pouchCounts = getCoinCounts(inventory, uuid);
+            counts[0] += pouchCounts[0];
+            counts[1] += pouchCounts[1];
+            counts[2] += pouchCounts[2];
+            counts[3] += pouchCounts[3];
+        }
+        return counts;
+    }
+
+    public static int[] getCoinCountsCombinedForDisplay(Inventory inventory, UUID uuid) {
+        int[] counts = new int[]{0, 0, 0, 0};
+        addInventoryCoinCounts(inventory, counts);
+
+        if (inventory == null || !hasPouch(inventory)) {
+            return counts;
+        }
+        SimpleItemContainer container = CONTAINERS.get(uuid);
+        if (container == null) {
+            container = loadContainer(uuid);
+        }
+        if (container != null) {
+            int[] pouchCounts = getCoinCounts(container);
+            counts[0] += pouchCounts[0];
+            counts[1] += pouchCounts[1];
+            counts[2] += pouchCounts[2];
+            counts[3] += pouchCounts[3];
+        }
+        return counts;
+    }
+
+    public static boolean trySpendCoinsPreferInventory(Inventory inventory, UUID uuid, int costCopper) {
+        if (costCopper <= 0) {
+            return true;
+        }
+        if (inventory == null) {
+            return false;
+        }
+        int inventoryTotal = getInventoryCoinsInCopper(inventory);
+        if (inventoryTotal >= costCopper) {
+            setInventoryCoinsFromCopper(inventory, inventoryTotal - costCopper);
+            return true;
+        }
+
+        if (inventoryTotal > 0) {
+            setInventoryCoinsFromCopper(inventory, 0);
+        }
+        return trySpendCoins(inventory, uuid, costCopper - inventoryTotal);
+    }
+
+    public static boolean trySpendCoins(Inventory inventory, UUID uuid, int costCopper) {
+        if (costCopper <= 0) {
+            return true;
+        }
+        ItemContainer container = getOrCreateContainer(inventory, uuid);
+        if (container == null) {
+            return false;
+        }
+        int total = getTotalCoinsInCopper(container);
+        if (total < costCopper) {
+            return false;
+        }
+        int remaining = total - costCopper;
+        setCoinsFromCopper(container, uuid, remaining);
+        return true;
+    }
+
+    public static boolean addCoins(Inventory inventory, UUID uuid, int amountCopper) {
+        if (amountCopper <= 0) {
+            return true;
+        }
+        ItemContainer container = getOrCreateContainer(inventory, uuid);
+        if (container == null) {
+            return false;
+        }
+        int total = getTotalCoinsInCopper(container);
+        int newTotal = total + amountCopper;
+        setCoinsFromCopper(container, uuid, newTotal);
+        return true;
+    }
+
+    private static int getTotalCoinsInCopper(ItemContainer coinPouch) {
+        int total = 0;
+        short capacity = coinPouch.getCapacity();
+        for (short i = 0; i < capacity; i++) {
+            ItemStack stack = coinPouch.getItemStack(i);
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
+            total += CoinPouchCurrency.getValueInCopper(stack.getItemId(), stack.getQuantity());
+        }
+        return total;
+    }
+
+    private static int[] getCoinCounts(ItemContainer coinPouch) {
+        int copper = 0;
+        int silver = 0;
+        int gold = 0;
+        int platinum = 0;
+        short capacity = coinPouch.getCapacity();
+        for (short i = 0; i < capacity; i++) {
+            ItemStack stack = coinPouch.getItemStack(i);
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
+            String itemId = stack.getItemId();
+            int qty = stack.getQuantity();
+            if (COPPER_COIN_ID.equals(itemId)) {
+                copper += qty;
+            } else if (SILVER_COIN_ID.equals(itemId)) {
+                silver += qty;
+            } else if (GOLD_COIN_ID.equals(itemId)) {
+                gold += qty;
+            } else if (PLATINUM_COIN_ID.equals(itemId)) {
+                platinum += qty;
+            }
+        }
+        return new int[]{copper, silver, gold, platinum};
+    }
+
+    private static int getInventoryCoinsInCopper(Inventory inventory) {
+        if (inventory == null) {
+            return 0;
+        }
+        int total = 0;
+        ItemContainer[] sections = new ItemContainer[]{
+                inventory.getHotbar(),
+                inventory.getStorage(),
+                inventory.getBackpack(),
+                inventory.getUtility(),
+                inventory.getTools(),
+                inventory.getArmor()
+        };
+        for (ItemContainer section : sections) {
+            if (section == null) {
+                continue;
+            }
+            short capacity = section.getCapacity();
+            for (short slot = 0; slot < capacity; slot++) {
+                ItemStack stack = section.getItemStack(slot);
+                if (stack == null || stack.isEmpty()) {
+                    continue;
+                }
+                total += CoinPouchCurrency.getValueInCopper(stack.getItemId(), stack.getQuantity());
+            }
+        }
+        return total;
+    }
+
+    private static void addInventoryCoinCounts(Inventory inventory, int[] counts) {
+        if (inventory == null || counts == null || counts.length < 4) {
+            return;
+        }
+        ItemContainer[] sections = new ItemContainer[]{
+                inventory.getHotbar(),
+                inventory.getStorage(),
+                inventory.getBackpack(),
+                inventory.getUtility(),
+                inventory.getTools(),
+                inventory.getArmor()
+        };
+        for (ItemContainer section : sections) {
+            if (section == null) {
+                continue;
+            }
+            short capacity = section.getCapacity();
+            for (short slot = 0; slot < capacity; slot++) {
+                ItemStack stack = section.getItemStack(slot);
+                if (stack == null || stack.isEmpty()) {
+                    continue;
+                }
+                String itemId = stack.getItemId();
+                int qty = stack.getQuantity();
+                if (COPPER_COIN_ID.equals(itemId)) {
+                    counts[0] += qty;
+                } else if (SILVER_COIN_ID.equals(itemId)) {
+                    counts[1] += qty;
+                } else if (GOLD_COIN_ID.equals(itemId)) {
+                    counts[2] += qty;
+                } else if (PLATINUM_COIN_ID.equals(itemId)) {
+                    counts[3] += qty;
+                }
+            }
+        }
+    }
+
+    private static void setInventoryCoinsFromCopper(Inventory inventory, int totalCopper) {
+        if (inventory == null) {
+            return;
+        }
+
+        ItemContainer[] sections = new ItemContainer[]{
+                inventory.getHotbar(),
+                inventory.getStorage(),
+                inventory.getBackpack(),
+                inventory.getUtility(),
+                inventory.getTools(),
+                inventory.getArmor()
+        };
+        for (ItemContainer section : sections) {
+            if (section == null) {
+                continue;
+            }
+            short capacity = section.getCapacity();
+            for (short slot = 0; slot < capacity; slot++) {
+                ItemStack stack = section.getItemStack(slot);
+                if (stack == null || stack.isEmpty()) {
+                    continue;
+                }
+                if (CoinPouchCurrency.isCoin(stack.getItemId())) {
+                    section.setItemStackForSlot(slot, ItemStack.EMPTY);
+                }
+            }
+        }
+
+        int remaining = Math.max(totalCopper, 0);
+        int platinum = remaining / CoinPouchCurrency.PLATINUM_VALUE;
+        remaining %= CoinPouchCurrency.PLATINUM_VALUE;
+        int gold = remaining / CoinPouchCurrency.GOLD_VALUE;
+        remaining %= CoinPouchCurrency.GOLD_VALUE;
+        int silver = remaining / CoinPouchCurrency.SILVER_VALUE;
+        remaining %= CoinPouchCurrency.SILVER_VALUE;
+        int copper = remaining;
+
+        ItemContainer target = inventory.getCombinedHotbarFirst();
+        if (platinum > 0) {
+            target.addItemStack(new ItemStack(PLATINUM_COIN_ID, platinum));
+        }
+        if (gold > 0) {
+            target.addItemStack(new ItemStack(GOLD_COIN_ID, gold));
+        }
+        if (silver > 0) {
+            target.addItemStack(new ItemStack(SILVER_COIN_ID, silver));
+        }
+        if (copper > 0) {
+            target.addItemStack(new ItemStack(COPPER_COIN_ID, copper));
+        }
+    }
+
+    private static void setCoinsFromCopper(ItemContainer coinPouch, UUID uuid, int totalCopper) {
+        if (CONVERTING.getOrDefault(uuid, false)) {
+            return;
+        }
+        CONVERTING.put(uuid, true);
+        try {
+            short capacity = coinPouch.getCapacity();
+            for (short i = 0; i < capacity; i++) {
+                ItemStack stack = coinPouch.getItemStack(i);
+                if (stack == null || stack.isEmpty()) {
+                    continue;
+                }
+                if (CoinPouchCurrency.isCoin(stack.getItemId())) {
+                    coinPouch.setItemStackForSlot(i, ItemStack.EMPTY);
+                }
+            }
+
+            int remaining = Math.max(totalCopper, 0);
+            int platinum = remaining / CoinPouchCurrency.PLATINUM_VALUE;
+            remaining %= CoinPouchCurrency.PLATINUM_VALUE;
+            int gold = remaining / CoinPouchCurrency.GOLD_VALUE;
+            remaining %= CoinPouchCurrency.GOLD_VALUE;
+            int silver = remaining / CoinPouchCurrency.SILVER_VALUE;
+            remaining %= CoinPouchCurrency.SILVER_VALUE;
+            int copper = remaining;
+
+            if (platinum > 0) {
+                coinPouch.addItemStack(new ItemStack(PLATINUM_COIN_ID, platinum));
+            }
+            if (gold > 0) {
+                coinPouch.addItemStack(new ItemStack(GOLD_COIN_ID, gold));
+            }
+            if (silver > 0) {
+                coinPouch.addItemStack(new ItemStack(SILVER_COIN_ID, silver));
+            }
+            if (copper > 0) {
+                coinPouch.addItemStack(new ItemStack(COPPER_COIN_ID, copper));
+            }
+        } finally {
+            CONVERTING.put(uuid, false);
         }
     }
 

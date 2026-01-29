@@ -22,7 +22,7 @@
   "StartState": "Idle",
   "DefaultNPCAttitude": "Ignore",
   "DefaultPlayerAttitude": "Neutral",
-  "Appearance": "Goblin_Tinkerer",
+  "Appearance": "Arms_Dealer",
   "MaxHealth": 50,
   "IsMemory": true,
   "MemoriesCategory": "Kweebec",
@@ -92,6 +92,7 @@
               ]
             },
             {
+              "Continue": true,
               "Sensor": {
                 "Type": "Any"
               },
@@ -279,8 +280,8 @@
                 "Type": "LockOnInteractionTarget"
               },
               {
-                "Type": "OpenBarterShop",
-                "Shop": "GoblinTinkerer_Shop"
+                "Type": "OpenCoinShop",
+                "Shop": "ArmsDealer_Shop"
               },
               {
                 "Type": "State",

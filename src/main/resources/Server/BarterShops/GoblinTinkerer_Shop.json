@@ -1,7 +1,22 @@
 {
   "DisplayNameKey": "server.barter.GoblinTinkererShop.title",
   "RefreshInterval": {
-    "Days": 3
+    "Days": 1
   },
-  "RestockHour": 6  
+  "RestockHour": 0,
+  "Trades": [
+    {
+      "Output": {
+        "ItemId": "Bench_TinkerersWorkshop",
+        "Quantity": 1
+      },
+      "Input": [
+        {
+          "ItemId": "Ingredient_Coin_Gold",
+          "Quantity": 15
+        }
+      ],
+      "Stock": 1
+    }
+  ]
 }

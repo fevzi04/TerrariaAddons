@@ -167,7 +167,7 @@ public class TerrariaAddonsConfig {
 
         private int maxCoinsPerKill = 5;
 
-        private float coinsPerHealth = 10.0f;
+        private float coinsPerHealth = 0.2f;
 
         public ConfigData() {
         }
@@ -181,7 +181,7 @@ public class TerrariaAddonsConfig {
         private String coinItemId = "Item ID for the coin currency to drop from slain mobs";
         private String minCoinsPerKill = "Minimum number of coins dropped per kill (fallback if health unavailable)";
         private String maxCoinsPerKill = "Maximum number of coins dropped per kill (fallback if health unavailable)";
-        private String coinsPerHealth = "Health points per coin (e.g., 10.0 = 1 coin per 10 max health)";
+        private String coinsPerHealth = "Health points per coin (e.g., 0.2 = 1 coin per 0.2 max health)";
 
         public ConfigDescription() {
         }

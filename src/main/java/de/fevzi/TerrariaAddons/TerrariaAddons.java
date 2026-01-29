@@ -6,6 +6,8 @@ import com.hypixel.hytale.server.core.modules.interaction.interaction.config.ser
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.core.plugin.registry.CodecMapRegistry.Assets;
+import com.hypixel.hytale.server.npc.NPCPlugin;
+import java.util.logging.Level;
 import de.fevzi.TerrariaAddons.config.TerrariaAddonsConfig;
 import de.fevzi.TerrariaAddons.dps.DpsMeterSystem;
 import de.fevzi.TerrariaAddons.items.AccessoryPouch.AccessoryPouch;
@@ -46,6 +48,7 @@ import de.fevzi.TerrariaAddons.housing.ui.HousingCheckPageSupplier;
 import de.fevzi.TerrariaAddons.npc.NPCBehaviorSystem;
 import de.fevzi.TerrariaAddons.npc.NPCDeathMonitorSystem;
 import de.fevzi.TerrariaAddons.npc.NPCSpawnSystem;
+import de.fevzi.TerrariaAddons.shop.coin.BuilderActionOpenCoinShop;
 
 import javax.annotation.Nonnull;
 
@@ -78,6 +81,12 @@ public class TerrariaAddons extends JavaPlugin {
         interactions.register("CoinPouch", CoinPouch.class, CoinPouch.CODEC);
         interactions.register("Voidbag", Voidbag.class, Voidbag.CODEC);
         interactions.register("Starfury", StarfuryInteraction.class, StarfuryInteraction.CODEC);
+        NPCPlugin npcPlugin = NPCPlugin.get();
+        if (npcPlugin != null) {
+            npcPlugin.registerCoreComponentType("OpenCoinShop", BuilderActionOpenCoinShop::new);
+        } else {
+            getLogger().at(Level.WARNING).log("NPCPlugin not ready; OpenCoinShop not registered");
+        }
         getEntityStoreRegistry().registerSystem(new DpsMeterSystem());
         getEntityStoreRegistry().registerSystem(new HermesBootsSystem());
         getEntityStoreRegistry().registerSystem(new LuckyHorseshoeSystem());

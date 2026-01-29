@@ -99,3 +99,5 @@ items.Ingredient_Coin_Platinum.description=The most valuable form of currency.
 items.Coin_Pouch.name=Coin Pouch
 items.Coin_Pouch.description=Store your coins here. Converts 100 coins of a tier to a single coin of the next tier.
 
+npcRoles.ArmsDealer.name=Arms Dealer
+npcRoles.GoblinTinkerer.name=Goblin Tinkerer

@@ -37,6 +37,8 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
     public static final String HOUSING_CHECKER_ITEM_ID = "Housing_Block";
     private static final String DOOR_ID_MARKER = "door";
     private static final String TORCH_ID_MARKER = "torch";
+    private static final String CHAIR_ID_MARKER = "chair";
+    private static final String TABLE_ID_MARKER = "table";
 
     private static final int MAX_SEARCH_BLOCKS = 4000; //how many blocks can be checked
     public static final int MAX_RADIUS = 24; // scanning radius
@@ -135,6 +137,8 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
 
         boolean hasDoor = false;
         boolean hasTorch = false;
+        boolean hasChair = false;
+        boolean hasTable = false;
 
         queue.add(start);
         visited.add(start);
@@ -185,6 +189,14 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
                     hasTorch = true;
                 }
 
+                if (check == BlockCheck.CHAIR) {
+                    hasChair = true;
+                }
+
+                if (check == BlockCheck.TABLE) {
+                    hasTable = true;
+                }
+
                 Vector3i next = new Vector3i(nx, ny, nz);
                 if (visited.add(next)) {
                     queue.addLast(next);
@@ -206,6 +218,14 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
 
         if (!hasTorch) {
             return HousingResult.NO_TORCH;
+        }
+
+        if (!hasChair) {
+            return HousingResult.NO_CHAIR;
+        }
+
+        if (!hasTable) {
+            return HousingResult.NO_TABLE;
         }
 
         return HousingResult.VALID;
@@ -238,6 +258,14 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
 
         if (isTorchBlock(blockType)) {
             return BlockCheck.TORCH;
+        }
+
+        if (isChairBlock(blockType)) {
+            return BlockCheck.CHAIR;
+        }
+
+        if (isTableBlock(blockType)) {
+            return BlockCheck.TABLE;
         }
 
         return blockType.getMaterial() == BlockMaterial.Solid
@@ -312,11 +340,41 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
                 && interactionHitboxType.toLowerCase().contains(TORCH_ID_MARKER);
     }
 
+    private static boolean isChairBlock(BlockType blockType) {
+        String id = blockType.getId();
+        if (id != null && id.toLowerCase().contains(CHAIR_ID_MARKER)) {
+            return true;
+        }
+        String hitboxType = blockType.getHitboxType();
+        if (hitboxType != null && hitboxType.toLowerCase().contains(CHAIR_ID_MARKER)) {
+            return true;
+        }
+        String interactionHitboxType = blockType.getInteractionHitboxType();
+        return interactionHitboxType != null
+                && interactionHitboxType.toLowerCase().contains(CHAIR_ID_MARKER);
+    }
+
+    private static boolean isTableBlock(BlockType blockType) {
+        String id = blockType.getId();
+        if (id != null && id.toLowerCase().contains(TABLE_ID_MARKER)) {
+            return true;
+        }
+        String hitboxType = blockType.getHitboxType();
+        if (hitboxType != null && hitboxType.toLowerCase().contains(TABLE_ID_MARKER)) {
+            return true;
+        }
+        String interactionHitboxType = blockType.getInteractionHitboxType();
+        return interactionHitboxType != null
+                && interactionHitboxType.toLowerCase().contains(TABLE_ID_MARKER);
+    }
+
     private enum BlockCheck {
         SOLID,
         AIR,
         DOOR,
         TORCH,
+        CHAIR,
+        TABLE,
         CHECKER,
         UNLOADED
     }
@@ -331,6 +389,8 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
         MULTIPLE_CHECKERS,
         NO_DOOR,
         NO_TORCH,
+        NO_CHAIR,
+        NO_TABLE,
         UNLOADED
     }
 
@@ -356,7 +416,9 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
             case TOO_SHORT -> "room too short";
             case NO_DOOR -> "no door found";
             case NO_TORCH -> "no torch found";
-            case MULTIPLE_CHECKERS -> "multiple housing checkers in same house";
+            case NO_CHAIR -> "no chair found";
+            case NO_TABLE -> "no table found";
+            case MULTIPLE_CHECKERS -> "multiple housing blocks in same house";
             case OPEN -> "room not closed";
             case UNLOADED -> "area not fully loaded";
             default -> "invalid";

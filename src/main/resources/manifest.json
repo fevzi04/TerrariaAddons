@@ -10,7 +10,8 @@
     ],
     "ServerVersion": "*",
     "Dependencies": {
-        "Buuz135:MultipleHUD": "*"
+        "Buuz135:MultipleHUD": "*",
+        "Hytale:NPC": "*"
     },
     "OptionalDependencies": {
         

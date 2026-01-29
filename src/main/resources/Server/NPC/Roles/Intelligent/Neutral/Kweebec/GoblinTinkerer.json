@@ -279,7 +279,7 @@
                 "Type": "LockOnInteractionTarget"
               },
               {
-                "Type": "OpenBarterShop",
+                "Type": "OpenCoinShop",
                 "Shop": "GoblinTinkerer_Shop"
               },
               {

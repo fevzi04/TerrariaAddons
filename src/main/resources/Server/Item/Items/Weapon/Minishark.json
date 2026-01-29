@@ -64,30 +64,5 @@
       "Weapon"
     ]
   },
-  "Weapon": {},
-  "Recipe": {
-    "Input": [
-      {
-        "ItemId": "Ingredient_Sharkfin",
-        "Quantity": 3
-      },
-      {
-        "ItemId": "Ingredient_Chitin_Sturdy",
-        "Quantity": 8
-      },
-      {
-        "ItemId": "Ingredient_Bar_Thorium",
-        "Quantity": 10
-      }
-    ],
-    "BenchRequirement": [
-      {
-        "Id": "Weapon_Bench",
-        "Categories": [
-          "Weapon_Bow"
-        ],
-        "RequiredTierLevel": 2
-      }
-    ]
-  }
+  "Weapon": {}
 }

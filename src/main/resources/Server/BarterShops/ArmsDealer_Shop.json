@@ -1,0 +1,35 @@
+{
+  "DisplayNameKey": "server.barter.ArmsDealerShop.title",
+  "RefreshInterval": {
+    "Days": 1
+  },
+  "RestockHour": 0,
+  "Trades": [
+    {
+      "Output": {
+        "ItemId": "Minishark",
+        "Quantity": 1
+      },
+      "Input": [
+        {
+          "ItemId": "Ingredient_Coin_Gold",
+          "Quantity": 20
+        }
+      ],
+      "Stock": 1
+    },
+    {
+      "Output": {
+        "ItemId": "Bullet",
+        "Quantity": 100
+      },
+      "Input": [
+        {
+          "ItemId": "Ingredient_Coin_Silver",
+          "Quantity": 7
+        }
+      ],
+      "Stock": 1
+    }
+  ]
+}

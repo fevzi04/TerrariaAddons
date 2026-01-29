@@ -169,6 +169,15 @@ public class NPCSpawnDataManager {
         return onCooldown;
     }
 
+    @Nonnull
+    public static List<NPCSpawnData> getAllNpcData(@Nonnull String worldKey) {
+        Map<String, NPCSpawnData> worldMap = NPC_TYPE_MAP.get(worldKey);
+        if (worldMap == null || worldMap.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return new ArrayList<>(worldMap.values());
+    }
+
     private static void loadFromDisk() {
         try {
             Path dataDir = Paths.get(System.getProperty("user.dir"), DATA_DIR);

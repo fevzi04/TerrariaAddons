@@ -21,6 +21,7 @@ import com.hypixel.hytale.server.core.modules.entitystats.asset.DefaultEntitySta
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.hypixel.hytale.server.npc.entities.NPCEntity;
 import de.fevzi.TerrariaAddons.config.TerrariaAddonsConfig;
+import de.fevzi.TerrariaAddons.items.CoinPouch.CoinPouchCurrency;
 import de.fevzi.TerrariaAddons.npc.NPCSpawnManager;
 
 import javax.annotation.Nonnull;
@@ -88,6 +89,7 @@ public class CoinDropSystem extends EntityTickingSystem<EntityStore> {
             return;
         }
 
+        
         EntityStore entityStore = (EntityStore) store.getExternalData();
         if (entityStore == null) {
             return;
@@ -135,9 +137,7 @@ public class CoinDropSystem extends EntityTickingSystem<EntityStore> {
             return;
         }
 
-        String coinItemId = "Ingredient_Coin_Copper";
-
-        dropCoins(store, commandBuffer, deathPosition, coinItemId, coinAmount, random);
+        dropConvertedCoins(store, commandBuffer, deathPosition, coinAmount, random);
 
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastCleanupTime > CLEANUP_INTERVAL_MS) {
@@ -179,60 +179,72 @@ public class CoinDropSystem extends EntityTickingSystem<EntityStore> {
         return random.nextInt(minCoins, maxCoins + 1);
     }
 
-    private void dropCoins(@Nonnull Store<EntityStore> store,
-                          @Nonnull CommandBuffer<EntityStore> commandBuffer,
-                          @Nonnull Vector3d position,
-                          @Nonnull String coinItemId,
-                          int totalAmount,
-                          @Nonnull ThreadLocalRandom random) {
+    private void dropConvertedCoins(@Nonnull Store<EntityStore> store,
+                                    @Nonnull CommandBuffer<EntityStore> commandBuffer,
+                                    @Nonnull Vector3d position,
+                                    int totalCopper,
+                                    @Nonnull ThreadLocalRandom random) {
+        if (totalCopper <= 0) {
+            return;
+        }
 
-        int stacksToDrop = Math.min(totalAmount, 5);
-        int coinsPerStack = totalAmount / stacksToDrop;
-        int remainder = totalAmount % stacksToDrop;
+        int remaining = totalCopper;
+        int platinum = remaining / CoinPouchCurrency.PLATINUM_VALUE;
+        remaining %= CoinPouchCurrency.PLATINUM_VALUE;
+        int gold = remaining / CoinPouchCurrency.GOLD_VALUE;
+        remaining %= CoinPouchCurrency.GOLD_VALUE;
+        int silver = remaining / CoinPouchCurrency.SILVER_VALUE;
+        remaining %= CoinPouchCurrency.SILVER_VALUE;
+        int copper = remaining;
 
-        for (int i = 0; i < stacksToDrop; i++) {
-            int stackSize = coinsPerStack;
-            if (i == 0) {
-                stackSize += remainder;
-            }
+        dropCoinStack(store, commandBuffer, position, CoinPouchCurrency.PLATINUM_COIN_ID, platinum, random);
+        dropCoinStack(store, commandBuffer, position, CoinPouchCurrency.GOLD_COIN_ID, gold, random);
+        dropCoinStack(store, commandBuffer, position, CoinPouchCurrency.SILVER_COIN_ID, silver, random);
+        dropCoinStack(store, commandBuffer, position, CoinPouchCurrency.COPPER_COIN_ID, copper, random);
+    }
 
-            if (stackSize <= 0) {
-                continue;
-            }
+    private void dropCoinStack(@Nonnull Store<EntityStore> store,
+                               @Nonnull CommandBuffer<EntityStore> commandBuffer,
+                               @Nonnull Vector3d position,
+                               @Nonnull String coinItemId,
+                               int amount,
+                               @Nonnull ThreadLocalRandom random) {
+        if (amount <= 0) {
+            return;
+        }
 
-            double offsetX = (random.nextDouble() - 0.5) * DROP_SPREAD;
-            double offsetZ = (random.nextDouble() - 0.5) * DROP_SPREAD;
-            double offsetY = random.nextDouble() * 0.1;
+        double offsetX = (random.nextDouble() - 0.5) * DROP_SPREAD;
+        double offsetZ = (random.nextDouble() - 0.5) * DROP_SPREAD;
+        double offsetY = random.nextDouble() * 0.1;
 
-            Vector3d dropPosition = new Vector3d(
-                position.x + offsetX,
-                position.y + offsetY,
-                position.z + offsetZ
+        Vector3d dropPosition = new Vector3d(
+            position.x + offsetX,
+            position.y + offsetY,
+            position.z + offsetZ
+        );
+
+        float velocityX = (float) (random.nextGaussian() * DROP_VELOCITY);
+        float velocityY = (float) (random.nextDouble() * DROP_VELOCITY + 0.1f);
+        float velocityZ = (float) (random.nextGaussian() * DROP_VELOCITY);
+
+        Vector3f rotation = Vector3f.ZERO;
+
+        try {
+            ItemStack itemStack = new ItemStack(coinItemId, amount);
+            Holder<EntityStore> itemHolder = ItemComponent.generateItemDrop(
+                store,
+                itemStack,
+                dropPosition,
+                rotation,
+                velocityX,
+                velocityY,
+                velocityZ
             );
 
-            float velocityX = (float) (random.nextGaussian() * DROP_VELOCITY);
-            float velocityY = (float) (random.nextDouble() * DROP_VELOCITY + 0.1f);
-            float velocityZ = (float) (random.nextGaussian() * DROP_VELOCITY);
-
-            Vector3f rotation = Vector3f.ZERO;
-
-            try {
-                ItemStack itemStack = new ItemStack(coinItemId, stackSize);
-                Holder<EntityStore> itemHolder = ItemComponent.generateItemDrop(
-                    store,
-                    itemStack,
-                    dropPosition,
-                    rotation,
-                    velocityX,
-                    velocityY,
-                    velocityZ
-                );
-
-                if (itemHolder != null) {
-                    commandBuffer.addEntity(itemHolder, AddReason.SPAWN);
-                }
-            } catch (Exception e) {
+            if (itemHolder != null) {
+                commandBuffer.addEntity(itemHolder, AddReason.SPAWN);
             }
+        } catch (Exception e) {
         }
     }
 
@@ -255,4 +267,5 @@ public class CoinDropSystem extends EntityTickingSystem<EntityStore> {
             return false;
         });
     }
+
 }
