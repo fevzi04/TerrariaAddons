@@ -9,15 +9,15 @@
   ],
   "MaxStack": 1,
   "IconProperties": {
-    "Scale": 0.6,
+    "Scale": 0.58823,
     "Rotation": [
-      13,
-      34,
-      0
+      22.5,
+      45,
+      22.5
     ],
     "Translation": [
-      -1,
-      -12
+      0,
+      -8
     ]
   },
   "Model": "Items/Accessories/HermesBoots/HermesBoots.blockymodel",

@@ -61,7 +61,7 @@ public class MagmaStoneSystem extends DamageEventSystem {
         }
 
         Ref<EntityStore> attackerRef = resolveAttackerRef(damage);
-        if (attackerRef == null || !attackerRef.isValid() || attackerRef.equals(targetRef)) {
+        if (attackerRef == null || !attackerRef.isValid() || attackerRef.equals((Object) targetRef)) {
             return;
         }
 

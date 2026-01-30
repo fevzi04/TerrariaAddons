@@ -17,6 +17,19 @@
         }
       ],
       "Stock": 1
+    },
+    {
+      "Output": {
+        "ItemId": "RocketBoots",
+        "Quantity": 1
+      },
+      "Input": [
+        {
+          "ItemId": "Ingredient_Coin_Gold",
+          "Quantity": 5
+        }
+      ],
+      "Stock": 1
     }
   ]
 }

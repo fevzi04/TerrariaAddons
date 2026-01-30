@@ -26,10 +26,16 @@ items.DPSMeter.name=DPS Meter
 items.DPSMeter.description=Displays current damage per second.
 
 items.HermesBoots.name=Hermes Boots
-items.HermesBoots.description=Increases movement speed.
+items.HermesBoots.description=The wearer can run super fast.
 
 items.Aglet.name=Aglet
 items.Aglet.description=Increases movement speed.
+
+items.RocketBoots.name=Rocket Boots
+items.RocketBoots.description=Allows temporary flight.
+
+items.SpectreBoots.name=Spectre Boots
+items.SpectreBoots.description=Allows temporary flight.\nThe wearer can run super fast.
 
 items.LuckyHorseshoe.name=Lucky Horseshoe
 items.LuckyHorseshoe.description=Become immune to fall damage.

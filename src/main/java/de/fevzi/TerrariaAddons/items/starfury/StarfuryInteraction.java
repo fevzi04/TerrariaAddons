@@ -115,7 +115,7 @@ public class StarfuryInteraction extends SimpleInstantInteraction {
         double closestEntityT = Double.MAX_VALUE;
         List<Ref<EntityStore>> candidates = TargetUtil.getAllEntitiesInSphere(origin, RAYCAST_RANGE, commandBuffer);
         for (Ref<EntityStore> candidate : candidates) {
-            if (candidate == null || !candidate.isValid() || candidate.equals(shooterRef)) {
+            if (candidate == null || !candidate.isValid() || candidate.equals((Object) shooterRef)) {
                 continue;
             }
 

@@ -1,0 +1,54 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.SpectreBoots.name",
+    "Description": "server.items.SpectreBoots.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "MaxStack": 1,
+  "Model": "Items/Accessories/SpectreBoots/SpectreBoots.blockymodel",
+  "Texture": "Items/Accessories/SpectreBoots/SpectreBoots.png",
+  "Scale": 1.0,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "HermesBoots",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "RocketBoots",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "TinkerersWorkshop",
+        "Categories": [
+          "Tinkerers_Accessories"
+        ]
+      }
+    ]
+  },
+  "Quality": "Rare",
+  "Icon": "Icons/ItemsGenerated/SpectreBoots.png",
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -8
+    ]
+  }
+}

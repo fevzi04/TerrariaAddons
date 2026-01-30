@@ -38,6 +38,9 @@ public class AccessoryPouch extends OpenItemStackContainerInteraction {
             if (!isAccessory(stack)) {
                 return false;
             }
+            if (isBootsAccessory(stack) && hasOtherBoots(container, slot, stack)) {
+                return false;
+            }
             return !hasDuplicateAccessory(container, slot, stack);
         }
         return true;
@@ -142,6 +145,44 @@ public class AccessoryPouch extends OpenItemStackContainerInteraction {
             }
         }
 
+        return false;
+    }
+
+    private static boolean isBootsAccessory(ItemStack stack) {
+        if (stack == null || ItemStack.isEmpty(stack)) {
+            return false;
+        }
+        String itemId = stack.getItemId();
+        if (itemId == null || itemId.isBlank()) {
+            return false;
+        }
+        return itemId.toLowerCase().contains("boots");
+    }
+
+    private static boolean hasOtherBoots(ItemContainer container, short targetSlot, ItemStack incoming) {
+        if (container == null || incoming == null || ItemStack.isEmpty(incoming)) {
+            return false;
+        }
+        String incomingId = incoming.getItemId();
+        if (incomingId == null || incomingId.isBlank()) {
+            return false;
+        }
+        short capacity = container.getCapacity();
+        for (short i = 0; i < capacity; i++) {
+            if (i == targetSlot) {
+                continue;
+            }
+            ItemStack existing = container.getItemStack(i);
+            if (existing == null || ItemStack.isEmpty(existing)) {
+                continue;
+            }
+            String existingId = existing.getItemId();
+            if (existingId != null && !existingId.isBlank()
+                    && existingId.toLowerCase().contains("boots")
+                    && !incomingId.equals(existingId)) {
+                return true;
+            }
+        }
         return false;
     }
 }

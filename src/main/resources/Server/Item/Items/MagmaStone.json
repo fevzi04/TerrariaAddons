@@ -2,14 +2,13 @@
   "TranslationProperties": {
     "Name": "server.items.MagmaStone.name",
     "Description": "server.items.MagmaStone.description"
-
   },
   "PlayerAnimationsId": "Item",
   "Categories": [
     "Items.Accessories"
   ],
-  "Model": "Items/Accessories/MagmaStone/MagmaStone.blockymodel",
-  "Texture": "Items/Accessories/MagmaStone/MagmaStone.png",
+  "Model": "Items/Accessories/MagmaStone/MagmaStone_Model.blockymodel",
+  "Texture": "Items/Accessories/MagmaStone/MagmaStone_Texture.png",
   "Scale": 1.5,
   "Tags": {
     "Type": [
@@ -43,15 +42,15 @@
   },
   "ItemLevel": 20,
   "IconProperties": {
-    "Scale": 1.7,
+    "Scale": 1.4,
     "Rotation": [
-      313,
-      200,
+      306,
+      176,
       0
     ],
     "Translation": [
-      -1,
-      -4
+      0.7,
+      -2
     ]
   },
   "MaxStack": 1,

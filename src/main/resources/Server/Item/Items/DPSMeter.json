@@ -10,19 +10,19 @@
   ],
   "MaxStack": 1,
   "IconProperties": {
-    "Scale": 1.6,
+    "Scale": 1.4,
     "Rotation": [
-      282,
-      140,
-      29
+      360,
+      264,
+      0
     ],
     "Translation": [
-      -1,
-      -2
+      -0.5,
+      1
     ]
   },
-  "Model": "Items/Accessories/DPSmeter/dps_meter.blockymodel",
-  "Texture": "Items/Accessories/DPSmeter/dps_meter.png",
+  "Model": "Items/Accessories/DPSmeter/DPSMeter_Model.blockymodel",
+  "Texture": "Items/Accessories/DPSmeter/DPSMeter_Texture.png",
   "Scale": 1.5,
   "Tags": {
     "Type": [
@@ -31,8 +31,6 @@
     ]
   },
   "ItemLevel": 20,
-  "Icon": "Icons/ItemsGenerated/DPSMeter.png",
-
   "Recipe": {
     "BenchRequirement": [
       {
@@ -55,5 +53,6 @@
         "Quantity": 50
       }
     ]
-  }
+  },
+  "Icon": "Icons/ItemsGenerated/DPSMeter.png"
 }

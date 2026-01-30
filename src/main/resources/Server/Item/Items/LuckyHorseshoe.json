@@ -2,15 +2,14 @@
   "TranslationProperties": {
     "Name": "server.items.LuckyHorseshoe.name",
     "Description": "server.items.LuckyHorseshoe.description"
-
   },
   "PlayerAnimationsId": "Item",
   "Categories": [
     "Items.Accessories"
   ],
-  "Model": "Items/Accessories/LuckyHorseshoe/LuckyHorseshoe.blockymodel",
-  "Texture": "Items/Accessories/LuckyHorseshoe/LuckyHorseshoe.png",
-  "Scale": 1.5,
+  "Model": "Items/Accessories/LuckyHorseshoe/LuckyHorseshoe_Model.blockymodel",
+  "Texture": "Items/Accessories/LuckyHorseshoe/LuckyHorseshoe_Texture.png",
+  "Scale": 1,
   "Tags": {
     "Type": [
       "Accessory"
@@ -38,19 +37,19 @@
     ]
   },
   "ItemLevel": 20,
-  "Icon": "Icons/ItemsGenerated/LuckyHorseshoe.png",
   "IconProperties": {
-    "Scale": 1.8,
+    "Scale": 1.1,
     "Rotation": [
-      291,
-      157,
+      270,
+      150,
       21
     ],
     "Translation": [
-      -2,
-      -4
+      0,
+      -6
     ]
   },
   "MaxStack": 1,
-  "Quality": "Rare"
+  "Quality": "Rare",
+  "Icon": "Icons/ItemsGenerated/LuckyHorseshoe.png"
 }

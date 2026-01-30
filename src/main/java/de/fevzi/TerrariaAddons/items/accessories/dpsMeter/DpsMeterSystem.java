@@ -166,7 +166,7 @@ public class DpsMeterSystem extends DamageEventSystem {
             }
 
             Ref<EntityStore> playerRef = player.getReference();
-            if (playerRef != null && attackerRef.equals(playerRef)) {
+            if (playerRef != null && attackerRef.equals((Object) playerRef)) {
                 return player;
             }
         }

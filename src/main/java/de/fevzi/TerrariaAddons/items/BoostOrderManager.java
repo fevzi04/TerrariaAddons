@@ -13,6 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class BoostOrderManager {
     public enum ActiveBoost {
         NONE,
+        BOOTS,
         BLIZZARD,
         SANDSTORM
     }
@@ -21,6 +22,7 @@ public final class BoostOrderManager {
     private static final Map<PlayerRef, Boolean> usedBlizzard = new ConcurrentHashMap<>();
     private static final Map<PlayerRef, Boolean> usedSandstorm = new ConcurrentHashMap<>();
     private static final Map<PlayerRef, ActiveBoost> activeBoost = new ConcurrentHashMap<>();
+    private static final Map<PlayerRef, Boolean> bootsFuelAvailable = new ConcurrentHashMap<>();
 
     private static final Map<PlayerRef, Boolean> lastCrouchState = new ConcurrentHashMap<>();
     private static final Map<PlayerRef, Boolean> crouchEdgeAvailable = new ConcurrentHashMap<>();
@@ -35,9 +37,22 @@ public final class BoostOrderManager {
         usedBlizzard.put(playerRef, false);
         usedSandstorm.put(playerRef, false);
         activeBoost.put(playerRef, ActiveBoost.NONE);
+        bootsFuelAvailable.put(playerRef, false);
         lastCrouchState.put(playerRef, false);
         crouchEdgeAvailable.put(playerRef, false);
         crouchPressConsumed.put(playerRef, false);
+    }
+
+    public static void setBootsFuelAvailable(PlayerRef playerRef, boolean available) {
+        bootsFuelAvailable.put(playerRef, available);
+    }
+
+    public static boolean canUseBoots(PlayerRef playerRef, boolean hasBoots, boolean hasFuel) {
+        if (!hasBoots || !hasFuel) {
+            return false;
+        }
+        ActiveBoost current = activeBoost.getOrDefault(playerRef, ActiveBoost.NONE);
+        return current == ActiveBoost.NONE || current == ActiveBoost.BOOTS;
     }
 
     public static void markCloudUsed(PlayerRef playerRef) {
@@ -45,7 +60,13 @@ public final class BoostOrderManager {
     }
 
     public static boolean canUseCloud(PlayerRef playerRef, boolean hasCloud) {
-        return hasCloud && !usedCloud.getOrDefault(playerRef, false);
+        if (!hasCloud || usedCloud.getOrDefault(playerRef, false)) {
+            return false;
+        }
+        if (bootsFuelAvailable.getOrDefault(playerRef, false)) {
+            return false;
+        }
+        return true;
     }
 
     public static boolean canUseBlizzard(PlayerRef playerRef, boolean hasCloud, boolean hasBlizzard) {
@@ -56,6 +77,10 @@ public final class BoostOrderManager {
         }
 
         if (usedBlizzard.getOrDefault(playerRef, false)) {
+            return false;
+        }
+
+        if (bootsFuelAvailable.getOrDefault(playerRef, false)) {
             return false;
         }
 
@@ -77,6 +102,10 @@ public final class BoostOrderManager {
             return false;
         }
 
+        if (bootsFuelAvailable.getOrDefault(playerRef, false)) {
+            return false;
+        }
+
         if (hasCloud && !usedCloud.getOrDefault(playerRef, false)) {
             return false;
         }
@@ -91,6 +120,10 @@ public final class BoostOrderManager {
     public static void setBlizzardActive(PlayerRef playerRef) {
         usedBlizzard.put(playerRef, true);
         activeBoost.put(playerRef, ActiveBoost.BLIZZARD);
+    }
+
+    public static void setBootsActive(PlayerRef playerRef) {
+        activeBoost.put(playerRef, ActiveBoost.BOOTS);
     }
 
     public static void setSandstormActive(PlayerRef playerRef) {

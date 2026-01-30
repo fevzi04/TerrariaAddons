@@ -1,0 +1,33 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.RocketBoots.name",
+    "Description": "server.items.RocketBoots.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "MaxStack": 1,
+  "Model": "Items/Accessories/RocketBoots/RocketBoots_Model.blockymodel",
+  "Texture": "Items/Accessories/RocketBoots/RocketBoots_Texture.png",
+  "Scale": 1.0,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "Quality": "Rare",
+  "Icon": "Icons/ItemsGenerated/RocketBoots.png",
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -8
+    ]
+  }
+}

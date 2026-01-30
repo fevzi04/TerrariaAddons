@@ -22,6 +22,7 @@ import de.fevzi.TerrariaAddons.coinDropSystem.CoinDropSystem;
 import de.fevzi.TerrariaAddons.items.coinPouch.CoinPouch;
 import de.fevzi.TerrariaAddons.fallingStarSystem.FallingStarSystem;
 import de.fevzi.TerrariaAddons.items.accessories.speed.SpeedBoostSystem;
+import de.fevzi.TerrariaAddons.items.accessories.rocketBoots.RocketBootsSystem;
 import de.fevzi.TerrariaAddons.items.accessories.lavaCharm.LavaCharmHudSystem;
 import de.fevzi.TerrariaAddons.items.accessories.lavaCharm.LavaCharmSystem;
 import de.fevzi.TerrariaAddons.items.consumables.lifeCrystal.LifeCrystalInteraction;
@@ -96,6 +97,7 @@ public class TerrariaAddons extends JavaPlugin {
         getEntityStoreRegistry().registerSystem(new CloudInABottle());
         getEntityStoreRegistry().registerSystem(new BlizzardInABottle());
         getEntityStoreRegistry().registerSystem(new SandstormInABottle());
+        getEntityStoreRegistry().registerSystem(new RocketBootsSystem());
         getEntityStoreRegistry().registerSystem(new BandOfRegenerationSystem());
         getEntityStoreRegistry().registerSystem(new MagmaStoneSystem());
         getEntityStoreRegistry().registerSystem(new LavaCharmSystem());
