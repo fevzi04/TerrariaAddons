@@ -8,8 +8,6 @@ import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.asset.type.item.config.Item;
-import com.hypixel.hytale.server.core.Message;
-import com.hypixel.hytale.server.core.asset.type.item.config.Item;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.choices.ChoiceBasePage;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.choices.ChoiceElement;
@@ -31,9 +29,13 @@ import java.util.UUID;
 
 public class CoinShopPage extends ChoiceBasePage {
     private static final String UI_LAYOUT = "Pages/CoinShopPage.ui";
+    private final String shopId;
 
-    private CoinShopPage(@Nonnull PlayerRef playerRef, @Nonnull ChoiceElement[] elements) {
+    private CoinShopPage(@Nonnull PlayerRef playerRef,
+                         @Nonnull ChoiceElement[] elements,
+                         @Nonnull String shopId) {
         super(playerRef, elements, UI_LAYOUT);
+        this.shopId = shopId;
     }
 
     public static CoinShopPage create(@Nonnull Store<EntityStore> store,
@@ -45,7 +47,7 @@ public class CoinShopPage extends ChoiceBasePage {
         BarterShopAsset asset = (BarterShopAsset) BarterShopAsset.getAssetMap().getAsset(shopId);
         if (asset == null) {
             elements.add(new CoinShopElement(null, "Shop not found", "", "", "Unknown", 0, 0, 0, 0, 0, null));
-            return new CoinShopPage(playerRef, elements.toArray(new ChoiceElement[0]));
+            return new CoinShopPage(playerRef, elements.toArray(new ChoiceElement[0]), shopId);
         }
 
         WorldTimeResource worldTime = (WorldTimeResource) store.getResource(WorldTimeResource.getResourceType());
@@ -88,7 +90,20 @@ public class CoinShopPage extends ChoiceBasePage {
                     interaction));
         }
 
-        return new CoinShopPage(playerRef, elements.toArray(new ChoiceElement[0]));
+        return new CoinShopPage(playerRef, elements.toArray(new ChoiceElement[0]), shopId);
+    }
+
+    public boolean isForShop(@Nonnull String shopId) {
+        return this.shopId.equals(shopId);
+    }
+
+    public void refreshAfterPurchase(@Nonnull Ref<EntityStore> playerEntityRef,
+                                     @Nonnull Store<EntityStore> store,
+                                     int tradeIndex) {
+        UICommandBuilder commandBuilder = new UICommandBuilder();
+        updateBalanceCounts(playerEntityRef, store, commandBuilder);
+        updateStockText(store, tradeIndex, commandBuilder);
+        sendUpdate(commandBuilder, false);
     }
 
     private static int getCoinPrice(BarterItemStack[] input) {
@@ -202,6 +217,44 @@ public class CoinShopPage extends ChoiceBasePage {
         commandBuilder.set(selector + " #CoinSilverCount.Text", String.valueOf(counts[1]));
         commandBuilder.set(selector + " #CoinGoldCount.Text", String.valueOf(counts[2]));
         commandBuilder.set(selector + " #CoinPlatinumCount.Text", String.valueOf(counts[3]));
+    }
+
+    private void updateBalanceCounts(@Nonnull Ref<EntityStore> playerEntityRef,
+                                     @Nonnull Store<EntityStore> store,
+                                     @Nonnull UICommandBuilder commandBuilder) {
+        Ref<EntityStore> resolvedRef = playerRef.getReference();
+        if (resolvedRef == null) {
+            resolvedRef = playerEntityRef;
+        }
+        Player playerComponent = (Player) store.getComponent(resolvedRef, Player.getComponentType());
+        Inventory inventory = playerComponent != null ? playerComponent.getInventory() : null;
+        UUID uuid = playerRef.getUuid();
+
+        int[] counts = CoinPouchSharedContainer.getCoinCountsCombinedForDisplay(inventory, uuid);
+        String selector = "#BalanceContent[0]";
+        commandBuilder.set(selector + " #CoinCopperCount.Text", String.valueOf(counts[0]));
+        commandBuilder.set(selector + " #CoinSilverCount.Text", String.valueOf(counts[1]));
+        commandBuilder.set(selector + " #CoinGoldCount.Text", String.valueOf(counts[2]));
+        commandBuilder.set(selector + " #CoinPlatinumCount.Text", String.valueOf(counts[3]));
+    }
+
+    private void updateStockText(@Nonnull Store<EntityStore> store,
+                                 int tradeIndex,
+                                 @Nonnull UICommandBuilder commandBuilder) {
+        if (tradeIndex < 0) {
+            return;
+        }
+        BarterShopAsset asset = (BarterShopAsset) BarterShopAsset.getAssetMap().getAsset(shopId);
+        if (asset == null) {
+            return;
+        }
+
+        WorldTimeResource worldTime = (WorldTimeResource) store.getResource(WorldTimeResource.getResourceType());
+        Instant gameTime = worldTime != null ? worldTime.getGameTime() : Instant.now();
+        int[] stock = BarterShopState.get().getStockArray(asset, gameTime);
+        int stockLeft = (tradeIndex < stock.length) ? stock[tradeIndex] : -1;
+        String stockText = stockLeft >= 0 ? ("Stock: " + stockLeft) : "Stock: Unlimited";
+        commandBuilder.set("#ItemList[" + tradeIndex + "] #Stock.Text", stockText);
     }
 
 }

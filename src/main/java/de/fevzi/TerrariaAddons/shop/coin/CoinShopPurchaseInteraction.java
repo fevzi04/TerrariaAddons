@@ -13,6 +13,7 @@ import com.hypixel.hytale.server.core.inventory.Inventory;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
 import com.hypixel.hytale.server.core.inventory.transaction.ItemStackTransaction;
 import com.hypixel.hytale.server.core.modules.time.WorldTimeResource;
+import com.hypixel.hytale.server.core.entity.entities.player.pages.CustomUIPage;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import de.fevzi.TerrariaAddons.items.CoinPouch.CoinPouchCurrency;
@@ -88,11 +89,15 @@ public class CoinShopPurchaseInteraction extends ChoiceInteraction {
         }
 
 
-        // Refresh the page so coin counts and stock update immediately.
-        playerComponent.getPageManager().openCustomPage(
-                ref,
-                store,
-                CoinShopPage.create(store, ref, playerRef, shopId));
+        CustomUIPage currentPage = playerComponent.getPageManager().getCustomPage();
+        if (currentPage instanceof CoinShopPage coinShopPage && coinShopPage.isForShop(shopId)) {
+            coinShopPage.refreshAfterPurchase(ref, store, tradeIndex);
+        } else {
+            playerComponent.getPageManager().openCustomPage(
+                    ref,
+                    store,
+                    CoinShopPage.create(store, ref, playerRef, shopId));
+        }
     }
 
     private static int getCoinPrice(BarterItemStack[] input) {

@@ -1,0 +1,99 @@
+{
+  "DisplayNameKey": "server.barter.GoblinTinkererShop.title",
+  "RefreshInterval": {
+    "Days": 1
+  },
+  "RestockHour": 0,
+  "Trades": [
+    {
+      "Output": {
+        "ItemId": "Mining_Helmet",
+        "Quantity": 1
+      },
+      "Input": [
+        {
+          "ItemId": "Ingredient_Coin_Gold",
+          "Quantity": 4
+        }
+      ],
+      "Stock": 1
+    },
+        {
+      "Output": {
+        "ItemId": "CoinPouch",
+        "Quantity": 1
+      },
+      "Input": [
+        {
+          "ItemId": "Ingredient_Coin_Gold",
+          "Quantity": 1
+        }
+      ],
+      "Stock": 1
+    },
+        {
+      "Output": {
+        "ItemId": "Tool_Pickaxe_Copper",
+        "Quantity": 1
+      },
+      "Input": [
+        {
+          "ItemId": "Ingredient_Coin_Silver",
+          "Quantity": 50
+        }
+      ],
+      "Stock": 1
+    },
+            {
+      "Output": {
+        "ItemId": "Tool_Hatchet_Copper",
+        "Quantity": 1
+      },
+      "Input": [
+        {
+          "ItemId": "Ingredient_Coin_Silver",
+          "Quantity": 50
+        }
+      ],
+      "Stock": 1
+    },        {
+      "Output": {
+        "ItemId": "Furniture_Crude_Torch",
+        "Quantity": 1
+      },
+      "Input": [
+        {
+          "ItemId": "Ingredient_Coin_Copper",
+          "Quantity": 50
+        }
+      ],
+      "Stock": 1
+    },
+            {
+      "Output": {
+        "ItemId": "Potion_Health_Lesser",
+        "Quantity": 1
+      },
+      "Input": [
+        {
+          "ItemId": "Ingredient_Coin_Silver",
+          "Quantity": 50
+        }
+      ],
+      "Stock": 1
+    },
+            {
+      "Output": {
+        "ItemId": "Weapon_Arrow_Crude",
+        "Quantity": 10
+      },
+      "Input": [
+        {
+          "ItemId": "Ingredient_Coin_Copper",
+          "Quantity": 50
+        }
+      ],
+      "Stock": 1
+    }
+  ]
+}

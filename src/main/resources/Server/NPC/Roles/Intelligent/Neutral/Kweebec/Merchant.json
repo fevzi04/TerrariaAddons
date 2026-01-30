@@ -15,14 +15,14 @@
       "Description": "Overrides the memory name if set"
     },
     "NameTranslationKey": {
-      "Value": "server.npcRoles.GoblinTinkerer.name",
+      "Value": "server.npcRoles.Merchant.name",
       "Description": "Translation key for NPC name display"
     }
   },
   "StartState": "Idle",
   "DefaultNPCAttitude": "Ignore",
   "DefaultPlayerAttitude": "Neutral",
-  "Appearance": "Goblin_Tinkerer",
+  "Appearance": "Merchant",
   "MaxHealth": 50,
   "IsMemory": true,
   "MemoriesCategory": "Kweebec",
@@ -280,7 +280,7 @@
               },
               {
                 "Type": "OpenCoinShop",
-                "Shop": "GoblinTinkerer_Shop"
+                "Shop": "Merchant_Shop"
               },
               {
                 "Type": "State",

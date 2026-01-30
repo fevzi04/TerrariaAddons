@@ -1,0 +1,69 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Mining_Helmet.name",
+    "Description": "server.items.Mining_Helmet.description"
+  },
+  "Parent": "Armor_Iron_Head",
+  "ItemLevel": 22,
+  "Icon": "Icons/ItemsGenerated/Mining_Helmet.png",
+  "Model": "Items/Armors/MiningHelmet/MiningHelmet_Model.blockymodel",
+  "Texture": "Items/Armors/MiningHelmet/MiningHelmet_Texture.png",
+  "Armor": {
+    "ArmorSlot": "Head",
+    "BaseDamageResistance": 0,
+    "CosmeticsToHide": [
+      "EarAccessory",
+      "Ear",
+      "Haircut",
+      "HeadAccessory"
+    ],
+    "StatModifiers": {
+      "Health": [
+        {
+          "Amount": 9,
+          "CalculationType": "Additive"
+        }
+      ]
+    },
+    "DamageResistance": {
+      "Physical": [
+        {
+          "Amount": 0.05,
+          "CalculationType": "Multiplicative"
+        }
+      ],
+      "Projectile": [
+        {
+          "Amount": 0.05,
+          "CalculationType": "Multiplicative"
+        }
+      ]
+    }
+  },
+  "MaxDurability": 200,
+  "Tags": {
+    "Type": [
+      "Armor"
+    ],
+    "Family": [
+      "Bronze"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Armor_Heavy",
+  "Quality": "Uncommon",
+  "Light": {
+    "Radius": 25
+  },
+  "IconProperties": {
+    "Scale": 0.5,
+    "Rotation": [
+      15,
+      205,
+      341
+    ],
+    "Translation": [
+      2,
+      -5
+    ]
+  }
+}

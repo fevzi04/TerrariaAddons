@@ -239,7 +239,7 @@
           "Type": "Not",
           "Sensor": {
             "Type": "CanInteract",
-            "ViewSector": 180
+            "ViewSector": 360
           }
         },
         "Actions": [

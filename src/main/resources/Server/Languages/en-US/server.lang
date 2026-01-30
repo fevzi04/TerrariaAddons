@@ -101,3 +101,7 @@ items.Coin_Pouch.description=Store your coins here. Converts 100 coins of a tier
 
 npcRoles.ArmsDealer.name=Arms Dealer
 npcRoles.GoblinTinkerer.name=Goblin Tinkerer
+npcRoles.Merchant.name=Merchant
+
+items.Mining_Helmet.name=Mining Helmet
+items.Mining_Helmet.description=Lights up the area around you.
