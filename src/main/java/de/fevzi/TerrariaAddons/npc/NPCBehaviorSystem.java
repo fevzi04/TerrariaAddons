@@ -12,6 +12,7 @@ import com.hypixel.hytale.server.core.entity.UUIDComponent;
 import com.hypixel.hytale.server.core.modules.time.WorldTimeResource;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+import com.hypixel.hytale.server.core.modules.entity.component.TransformComponent;
 import com.hypixel.hytale.server.npc.entities.NPCEntity;
 import de.fevzi.TerrariaAddons.housing.npc.NPCSpawnData;
 import de.fevzi.TerrariaAddons.housing.npc.NPCSpawnDataManager;
@@ -34,10 +35,16 @@ public class NPCBehaviorSystem extends EntityTickingSystem<EntityStore> {
     private static final int WANDER_RADIUS = 30;
     private static final long WANDER_INTERVAL_MS = 10000L;
     private static final long BEHAVIOR_CHECK_INTERVAL_MS = 2000L;
+    private static final long STUCK_TELEPORT_MS = 15000L;
+    private static final double STUCK_DISTANCE = 1.0;
+    private static final double MIN_MOVE_DISTANCE = 0.4;
+    private static final double HOME_REACHED_DISTANCE = 0.5;
 
     private static final Map<UUID, Long> LAST_WANDER_TIME = new ConcurrentHashMap<>();
     private static final Map<UUID, Boolean> NPC_IS_HOME = new ConcurrentHashMap<>();
     private static final Map<String, Long> LAST_BEHAVIOR_CHECK = new ConcurrentHashMap<>();
+    private static final Map<UUID, Vector3d> LAST_POS = new ConcurrentHashMap<>();
+    private static final Map<UUID, Long> LAST_PROGRESS_TIME = new ConcurrentHashMap<>();
 
     @Override
     public Query<EntityStore> getQuery() {
@@ -107,6 +114,11 @@ public class NPCBehaviorSystem extends EntityTickingSystem<EntityStore> {
             return;
         }
 
+        TransformComponent transform = store.getComponent(entityRef, TransformComponent.getComponentType());
+        if (transform == null) {
+            return;
+        }
+
         Vector3i housingPos = npcData.getHousingPosition();
         if (housingPos == null) {
             return;
@@ -125,7 +137,7 @@ public class NPCBehaviorSystem extends EntityTickingSystem<EntityStore> {
         if (isDaytime) {
             handleDaytimeBehavior(npcEntity, entityUuid, housingPos, now);
         } else if (isNighttime) {
-            handleNighttimeBehavior(npcEntity, entityUuid, housingPos);
+            handleNighttimeBehavior(npcEntity, entityUuid, housingPos, transform.getPosition(), now, store, entityRef);
         }
     }
 
@@ -146,20 +158,42 @@ public class NPCBehaviorSystem extends EntityTickingSystem<EntityStore> {
     }
 
     private void handleNighttimeBehavior(@Nonnull NPCEntity npcEntity,
-                                          @Nonnull UUID entityUuid,
-                                          @Nonnull Vector3i housingPos) {
-        Boolean isHome = NPC_IS_HOME.get(entityUuid);
-        if (isHome != null && isHome) {
-            return;
-        }
-
+                                         @Nonnull UUID entityUuid,
+                                         @Nonnull Vector3i housingPos,
+                                         @Nonnull Vector3d currentPos,
+                                         long now,
+                                         @Nonnull Store<EntityStore> store,
+                                         @Nonnull Ref<EntityStore> entityRef) {
         Vector3d homePosition = new Vector3d(
             housingPos.x + 0.5,
             housingPos.y + 1.0,
             housingPos.z + 0.5
         );
+
+        double distanceToHome = distance(currentPos, homePosition);
+        if (distanceToHome <= HOME_REACHED_DISTANCE) {
+            NPC_IS_HOME.put(entityUuid, true);
+            LAST_WANDER_TIME.remove(entityUuid);
+            LAST_PROGRESS_TIME.remove(entityUuid);
+            LAST_POS.remove(entityUuid);
+            return;
+        }
+
+        NPC_IS_HOME.put(entityUuid, false);
+
+        updateMovementProgress(entityUuid, currentPos, now);
+
+        Long lastProgress = LAST_PROGRESS_TIME.get(entityUuid);
+        if (distanceToHome > STUCK_DISTANCE && lastProgress != null && (now - lastProgress) >= STUCK_TELEPORT_MS) {
+            teleportNpcToHome(store, entityRef, homePosition);
+            NPC_IS_HOME.put(entityUuid, true);
+            LAST_WANDER_TIME.remove(entityUuid);
+            LAST_PROGRESS_TIME.remove(entityUuid);
+            LAST_POS.remove(entityUuid);
+            return;
+        }
+
         npcEntity.setLeashPoint(homePosition);
-        NPC_IS_HOME.put(entityUuid, true);
         LAST_WANDER_TIME.remove(entityUuid);
     }
 
@@ -191,9 +225,43 @@ public class NPCBehaviorSystem extends EntityTickingSystem<EntityStore> {
         return NPCSpawnManager.NPC_TYPES;
     }
 
+    private void updateMovementProgress(@Nonnull UUID entityUuid, @Nonnull Vector3d currentPos, long now) {
+        Vector3d lastPos = LAST_POS.get(entityUuid);
+        if (lastPos == null) {
+            LAST_POS.put(entityUuid, currentPos);
+            LAST_PROGRESS_TIME.put(entityUuid, now);
+            return;
+        }
+
+        if (distance(currentPos, lastPos) >= MIN_MOVE_DISTANCE) {
+            LAST_POS.put(entityUuid, currentPos);
+            LAST_PROGRESS_TIME.put(entityUuid, now);
+        }
+    }
+
+    private void teleportNpcToHome(@Nonnull Store<EntityStore> store,
+                                   @Nonnull Ref<EntityStore> entityRef,
+                                   @Nonnull Vector3d homePosition) {
+        TransformComponent transform = store.getComponent(entityRef, TransformComponent.getComponentType());
+        if (transform == null) {
+            return;
+        }
+        transform.setPosition(homePosition);
+    }
+
+
+    private static double distance(@Nonnull Vector3d a, @Nonnull Vector3d b) {
+        double dx = a.x - b.x;
+        double dy = a.y - b.y;
+        double dz = a.z - b.z;
+        return Math.sqrt((dx * dx) + (dy * dy) + (dz * dz));
+    }
+
     public static void cleanupNpc(@Nonnull UUID entityUuid) {
         LAST_WANDER_TIME.remove(entityUuid);
         NPC_IS_HOME.remove(entityUuid);
+        LAST_POS.remove(entityUuid);
+        LAST_PROGRESS_TIME.remove(entityUuid);
         LAST_BEHAVIOR_CHECK.entrySet().removeIf(entry -> entry.getKey().endsWith(":" + entityUuid.toString()));
     }
 }

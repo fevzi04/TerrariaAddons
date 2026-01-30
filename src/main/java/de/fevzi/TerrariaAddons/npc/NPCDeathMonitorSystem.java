@@ -8,6 +8,7 @@ import com.hypixel.hytale.component.query.Query;
 import com.hypixel.hytale.server.core.entity.UUIDComponent;
 import com.hypixel.hytale.server.core.modules.entity.damage.Damage;
 import com.hypixel.hytale.server.core.modules.entity.damage.DamageEventSystem;
+import com.hypixel.hytale.server.core.modules.entity.damage.DeathComponent;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
@@ -65,6 +66,10 @@ public class NPCDeathMonitorSystem extends DamageEventSystem {
 
         float damageAmount = damage.getAmount();
         if (damageAmount <= 0) {
+            return;
+        }
+
+        if (!store.getArchetype(targetRef).contains(DeathComponent.getComponentType())) {
             return;
         }
 
