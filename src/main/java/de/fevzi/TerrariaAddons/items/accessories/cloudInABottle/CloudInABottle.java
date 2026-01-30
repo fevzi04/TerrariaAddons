@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.items.accessories.CloudInABottle;
+package de.fevzi.TerrariaAddons.items.accessories.cloudInABottle;
 
 import java.util.Collections;
 import javax.annotation.Nonnull;

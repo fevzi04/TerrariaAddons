@@ -7,8 +7,8 @@
   "Categories": [
     "Items.Accessories"
   ],
-  "Model": "Items/LavaCharm/Lava_Charm_Model.blockymodel",
-  "Texture": "Items/LavaCharm/Lava_Charm_Texture.png",
+  "Model": "Items/Accessories/LavaCharm/Lava_Charm_Model.blockymodel",
+  "Texture": "Items/Accessories/LavaCharm/Lava_Charm_Texture.png",
   "Scale": 1,
   "Tags": {
     "Type": [

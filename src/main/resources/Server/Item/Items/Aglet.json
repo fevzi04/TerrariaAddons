@@ -1,0 +1,20 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Aglet.name",
+    "Description": "server.items.Aglet.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "MaxStack": 1,
+  "Model": "Items/Accessories/Aglet/Aglet_Model.blockymodel",
+  "Texture": "Items/Accessories/Aglet/Aglet_Texture.png",
+  "Scale": 1.0,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "Quality": "Common"
+}

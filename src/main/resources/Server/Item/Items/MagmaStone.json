@@ -8,8 +8,8 @@
   "Categories": [
     "Items.Accessories"
   ],
-  "Model": "Items/MagmaStone/MagmaStone.blockymodel",
-  "Texture": "Items/MagmaStone/MagmaStone.png",
+  "Model": "Items/Accessories/MagmaStone/MagmaStone.blockymodel",
+  "Texture": "Items/Accessories/MagmaStone/MagmaStone.png",
   "Scale": 1.5,
   "Tags": {
     "Type": [

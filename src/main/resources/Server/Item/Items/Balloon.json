@@ -7,8 +7,8 @@
   "Categories": [
     "Items.Accessories"
   ],
-  "Model": "Items/Balloon/Balloon.blockymodel",
-  "Texture": "Items/Balloon/Balloon.png",
+  "Model": "Items/Accessories/Balloon/Balloon.blockymodel",
+  "Texture": "Items/Accessories/Balloon/Balloon.png",
   "Scale": 4,
   "Tags": {
     "Type": [

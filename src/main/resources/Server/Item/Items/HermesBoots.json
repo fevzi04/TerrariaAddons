@@ -20,8 +20,8 @@
       -12
     ]
   },
-  "Model": "Items/HermesBoots/HermesBoots.blockymodel",
-  "Texture": "Items/HermesBoots/HermesBoots.png",
+  "Model": "Items/Accessories/HermesBoots/HermesBoots.blockymodel",
+  "Texture": "Items/Accessories/HermesBoots/HermesBoots.png",
   "Scale": 1,
   "Tags": {
     "Type": [

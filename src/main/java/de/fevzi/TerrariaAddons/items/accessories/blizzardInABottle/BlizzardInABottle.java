@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.items.accessories.BlizzardInABottle;
+package de.fevzi.TerrariaAddons.items.accessories.blizzardInABottle;
 
 import java.util.Collections;
 import java.util.Map;

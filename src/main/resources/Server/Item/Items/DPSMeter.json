@@ -21,8 +21,8 @@
       -2
     ]
   },
-  "Model": "Items/DPSmeter/dps_meter.blockymodel",
-  "Texture": "Items/DPSmeter/dps_meter.png",
+  "Model": "Items/Accessories/DPSmeter/dps_meter.blockymodel",
+  "Texture": "Items/Accessories/DPSmeter/dps_meter.png",
   "Scale": 1.5,
   "Tags": {
     "Type": [

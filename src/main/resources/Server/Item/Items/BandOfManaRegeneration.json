@@ -7,8 +7,8 @@
   "Categories": [
     "Items.Accessories"
   ],
-  "Model": "Items/BandOfManaRegeneration/BandOfManaRegeneration.blockymodel",
-  "Texture": "Items/BandOfManaRegeneration/BandOfManaRegeneration.png",
+  "Model": "Items/Accessories/BandOfManaRegeneration/BandOfManaRegeneration.blockymodel",
+  "Texture": "Items/Accessories/BandOfManaRegeneration/BandOfManaRegeneration.png",
   "Scale": 1.5,
   "Tags": {
     "Type": [

@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.items.accessories.Balloon;
+package de.fevzi.TerrariaAddons.items.accessories.balloon;
 
 import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;

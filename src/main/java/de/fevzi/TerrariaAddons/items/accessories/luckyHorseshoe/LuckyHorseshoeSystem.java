@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.items.accessories.LuckyHorseshoe;
+package de.fevzi.TerrariaAddons.items.accessories.luckyHorseshoe;
 
 import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;

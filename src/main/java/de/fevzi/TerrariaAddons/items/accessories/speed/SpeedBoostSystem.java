@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.items.accessories.HermesBoots;
+package de.fevzi.TerrariaAddons.items.accessories.speed;
 
 import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;
@@ -14,16 +14,24 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import de.fevzi.TerrariaAddons.items.accessoryPouch.AccessoryPouchSharedContainer;
 
 import javax.annotation.Nonnull;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * System that handles the Hermes Boots accessory effect.
- * When a player has Hermes Boots equipped in their accessory pouch,
- * this system applies a movement speed boost. The boost is automatically
- * removed when the boots are unequipped.
+ * Applies stacked movement speed bonuses from accessories in the pouch.
+ * Add new speed items by updating SPEED_MULTIPLIERS.
  */
-public class HermesBootsSystem extends EntityTickingSystem<EntityStore> {
-    private static final String HERMES_BOOTS_ITEM_ID = "HermesBoots";
-    private static final float SPEED_MULTIPLIER = 1.2f;
+public class SpeedBoostSystem extends EntityTickingSystem<EntityStore> {
+    private static final float MULTIPLIER_EPSILON = 0.001f;
+    private static final Map<String, Float> SPEED_MULTIPLIERS;
+
+    static {
+        Map<String, Float> multipliers = new HashMap<>();
+        multipliers.put("HermesBoots", 1.2f);
+        multipliers.put("Aglet", 1.05f);
+        SPEED_MULTIPLIERS = Collections.unmodifiableMap(multipliers);
+    }
 
     @Override
     public Query<EntityStore> getQuery() {
@@ -55,37 +63,43 @@ public class HermesBootsSystem extends EntityTickingSystem<EntityStore> {
             return;
         }
 
-        boolean hasBoots = AccessoryPouchSharedContainer.hasItemInPouch(player.getInventory(), playerRef.getUuid(), HERMES_BOOTS_ITEM_ID);
-        boolean isBoosted = isSpeedBoostApplied(movementManager);
+        float targetMultiplier = 1.0f;
+        boolean hasAnySpeedItem = false;
+        for (Map.Entry<String, Float> entry : SPEED_MULTIPLIERS.entrySet()) {
+            if (AccessoryPouchSharedContainer.hasItemInPouch(player.getInventory(), playerRef.getUuid(), entry.getKey())) {
+                targetMultiplier *= entry.getValue();
+                hasAnySpeedItem = true;
+            }
+        }
 
-        if (hasBoots == isBoosted) {
+        float currentMultiplier = getCurrentSpeedMultiplier(movementManager);
+        if (Math.abs(currentMultiplier - targetMultiplier) < MULTIPLIER_EPSILON) {
             return;
         }
 
-        if (hasBoots) {
-            applySpeedBoost(movementManager);
-            movementManager.update(playerRef.getPacketHandler());
+        if (hasAnySpeedItem) {
+            applySpeedMultiplier(movementManager, targetMultiplier);
         } else {
             removeSpeedBoost(movementManager);
-            movementManager.update(playerRef.getPacketHandler());
         }
+        movementManager.update(playerRef.getPacketHandler());
     }
 
-    private static void applySpeedBoost(MovementManager movementManager) {
+    private static void applySpeedMultiplier(MovementManager movementManager, float multiplier) {
         MovementSettings settings = movementManager.getSettings();
         MovementSettings defaults = movementManager.getDefaultSettings();
         if (settings == null || defaults == null) {
             return;
         }
-        settings.baseSpeed = defaults.baseSpeed * SPEED_MULTIPLIER;
-        settings.forwardWalkSpeedMultiplier = defaults.forwardWalkSpeedMultiplier * SPEED_MULTIPLIER;
-        settings.backwardWalkSpeedMultiplier = defaults.backwardWalkSpeedMultiplier * SPEED_MULTIPLIER;
-        settings.strafeWalkSpeedMultiplier = defaults.strafeWalkSpeedMultiplier * SPEED_MULTIPLIER;
-        settings.forwardRunSpeedMultiplier = defaults.forwardRunSpeedMultiplier * SPEED_MULTIPLIER;
-        settings.backwardRunSpeedMultiplier = defaults.backwardRunSpeedMultiplier * SPEED_MULTIPLIER;
-        settings.strafeRunSpeedMultiplier = defaults.strafeRunSpeedMultiplier * SPEED_MULTIPLIER;
-        settings.forwardSprintSpeedMultiplier = defaults.forwardSprintSpeedMultiplier * SPEED_MULTIPLIER;
-        settings.maxSpeedMultiplier = defaults.maxSpeedMultiplier * SPEED_MULTIPLIER;
+        settings.baseSpeed = defaults.baseSpeed * multiplier;
+        settings.forwardWalkSpeedMultiplier = defaults.forwardWalkSpeedMultiplier * multiplier;
+        settings.backwardWalkSpeedMultiplier = defaults.backwardWalkSpeedMultiplier * multiplier;
+        settings.strafeWalkSpeedMultiplier = defaults.strafeWalkSpeedMultiplier * multiplier;
+        settings.forwardRunSpeedMultiplier = defaults.forwardRunSpeedMultiplier * multiplier;
+        settings.backwardRunSpeedMultiplier = defaults.backwardRunSpeedMultiplier * multiplier;
+        settings.strafeRunSpeedMultiplier = defaults.strafeRunSpeedMultiplier * multiplier;
+        settings.forwardSprintSpeedMultiplier = defaults.forwardSprintSpeedMultiplier * multiplier;
+        settings.maxSpeedMultiplier = defaults.maxSpeedMultiplier * multiplier;
     }
 
     private static void removeSpeedBoost(MovementManager movementManager) {
@@ -97,7 +111,7 @@ public class HermesBootsSystem extends EntityTickingSystem<EntityStore> {
 
         settings.baseSpeed = defaults.baseSpeed;
         settings.forwardWalkSpeedMultiplier = defaults.forwardWalkSpeedMultiplier;
-        settings.backwardWalkSpeedMultiplier = defaults.backwardWalkSpeedMultiplier;
+        settings.backwardWalkSpeedMultiplier = defaults.backwardRunSpeedMultiplier;
         settings.strafeWalkSpeedMultiplier = defaults.strafeWalkSpeedMultiplier;
         settings.forwardRunSpeedMultiplier = defaults.forwardRunSpeedMultiplier;
         settings.backwardRunSpeedMultiplier = defaults.backwardRunSpeedMultiplier;
@@ -106,14 +120,15 @@ public class HermesBootsSystem extends EntityTickingSystem<EntityStore> {
         settings.maxSpeedMultiplier = defaults.maxSpeedMultiplier;
     }
 
-    private static boolean isSpeedBoostApplied(MovementManager movementManager) {
+    private static float getCurrentSpeedMultiplier(MovementManager movementManager) {
         MovementSettings settings = movementManager.getSettings();
         MovementSettings defaults = movementManager.getDefaultSettings();
         if (settings == null || defaults == null) {
-            return false;
+            return 1.0f;
         }
-        return settings.baseSpeed > defaults.baseSpeed * (SPEED_MULTIPLIER - 0.001f);
+        if (defaults.baseSpeed == 0f) {
+            return 1.0f;
+        }
+        return settings.baseSpeed / defaults.baseSpeed;
     }
-
-
 }

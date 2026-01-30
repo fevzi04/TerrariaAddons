@@ -1,6 +1,6 @@
 {
-  "Model": "Items/Projectiles/Starfury_Projectile/Starfury_Projectile.blockymodel",
-  "Texture": "Items/Projectiles/Starfury_Projectile/Starfury_Texture.png",
+  "Model": "Items/Ingredients/FallingStar/FallingStar.blockymodel",
+  "Texture": "Items/Ingredients/FallingStar/FallingStar.png",
   "TranslationProperties": {
     "Name": "server.items.Fallen_Star.name",
     "Description": "server.items.Fallen_Star.description"

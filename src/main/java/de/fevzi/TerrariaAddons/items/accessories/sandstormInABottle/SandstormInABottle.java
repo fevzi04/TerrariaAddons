@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.items.accessories.SandstormInABottle;
+package de.fevzi.TerrariaAddons.items.accessories.sandstormInABottle;
 
 import java.util.Collections;
 import java.util.Map;

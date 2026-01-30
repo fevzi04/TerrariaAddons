@@ -28,6 +28,9 @@ items.DPSMeter.description=Displays current damage per second.
 items.HermesBoots.name=Hermes Boots
 items.HermesBoots.description=Increases movement speed.
 
+items.Aglet.name=Aglet
+items.Aglet.description=Increases movement speed by 5%.
+
 items.LuckyHorseshoe.name=Lucky Horseshoe
 items.LuckyHorseshoe.description=Become immune to fall damage.
 

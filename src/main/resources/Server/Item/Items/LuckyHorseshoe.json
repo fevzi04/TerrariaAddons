@@ -8,8 +8,8 @@
   "Categories": [
     "Items.Accessories"
   ],
-  "Model": "Items/LuckyHorseshoe/LuckyHorseshoe.blockymodel",
-  "Texture": "Items/LuckyHorseshoe/LuckyHorseshoe.png",
+  "Model": "Items/Accessories/LuckyHorseshoe/LuckyHorseshoe.blockymodel",
+  "Texture": "Items/Accessories/LuckyHorseshoe/LuckyHorseshoe.png",
   "Scale": 1.5,
   "Tags": {
     "Type": [

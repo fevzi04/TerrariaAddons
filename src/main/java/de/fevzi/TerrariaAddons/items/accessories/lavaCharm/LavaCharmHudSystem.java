@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.items.accessories.LavaCharm;
+package de.fevzi.TerrariaAddons.items.accessories.lavaCharm;
 
 import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;

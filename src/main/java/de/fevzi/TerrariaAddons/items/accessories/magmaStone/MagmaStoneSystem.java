@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.items.accessories.MagmaStone;
+package de.fevzi.TerrariaAddons.items.accessories.magmaStone;
 
 import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;

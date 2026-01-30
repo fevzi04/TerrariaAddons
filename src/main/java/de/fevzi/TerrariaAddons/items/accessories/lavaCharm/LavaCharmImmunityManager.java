@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.items.accessories.LavaCharm;
+package de.fevzi.TerrariaAddons.items.accessories.lavaCharm;
 
 import java.util.Map;
 import java.util.UUID;

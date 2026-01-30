@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.items.accessories.BandOfManaRegeneration;
+package de.fevzi.TerrariaAddons.items.accessories.bandOfRegeneration;
 
 import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;
@@ -19,15 +19,15 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * System that handles the Band of Mana Regeneration accessory effect.
- * When a player has the Band of Mana Regeneration equipped in their accessory pouch,
- * this system provides passive mana regeneration over time.
- * Regenerates 3 mana per second while equipped.
+ * System that handles the Band of Regeneration accessory effect.
+ * When a player has the Band of Regeneration equipped in their accessory pouch,
+ * this system provides passive health regeneration over time.
+ * Heals 1 HP per second while equipped.
  */
-public class BandOfManaRegenerationSystem extends EntityTickingSystem<EntityStore> {
-    private static final String BAND_ITEM_ID = "BandOfManaRegeneration";
-    private static final float MANA_PER_SECOND = 3.0f;
-    private static final Map<UUID, Float> MANA_REMAINDERS = new ConcurrentHashMap<>();
+public class BandOfRegenerationSystem extends EntityTickingSystem<EntityStore> {
+    private static final String BAND_ITEM_ID = "BandOfRegeneration";
+    private static final float HEAL_PER_SECOND = 1.0f;
+    private static final Map<UUID, Float> HEAL_REMAINDERS = new ConcurrentHashMap<>();
 
     @Override
     public Query<EntityStore> getQuery() {
@@ -57,7 +57,7 @@ public class BandOfManaRegenerationSystem extends EntityTickingSystem<EntityStor
         }
 
         if (!AccessoryPouchSharedContainer.hasItemInPouch(player.getInventory(), uuid, BAND_ITEM_ID)) {
-            MANA_REMAINDERS.remove(uuid);
+            HEAL_REMAINDERS.remove(uuid);
             return;
         }
 
@@ -66,17 +66,17 @@ public class BandOfManaRegenerationSystem extends EntityTickingSystem<EntityStor
             return;
         }
 
-        float remainder = MANA_REMAINDERS.getOrDefault(uuid, 0f);
-        float toManaRegen = remainder + (delta * MANA_PER_SECOND);
-        if (toManaRegen < 1f) {
-            MANA_REMAINDERS.put(uuid, toManaRegen);
+        float remainder = HEAL_REMAINDERS.getOrDefault(uuid, 0f);
+        float toHeal = remainder + (delta * HEAL_PER_SECOND);
+        if (toHeal < 1f) {
+            HEAL_REMAINDERS.put(uuid, toHeal);
             return;
         }
 
-        float amount = (float) Math.floor(toManaRegen);
-        float newRemainder = toManaRegen - amount;
-        stats.addStatValue(DefaultEntityStatTypes.getMana(), amount);
-        MANA_REMAINDERS.put(uuid, newRemainder);
+        float amount = (float) Math.floor(toHeal);
+        float newRemainder = toHeal - amount;
+        stats.addStatValue(DefaultEntityStatTypes.getHealth(), amount);
+        HEAL_REMAINDERS.put(uuid, newRemainder);
     }
 
 
