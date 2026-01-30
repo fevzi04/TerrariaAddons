@@ -19,8 +19,8 @@ import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
-import de.fevzi.TerrariaAddons.items.CoinPouch.CoinPouchCurrency;
-import de.fevzi.TerrariaAddons.items.CoinPouch.CoinPouchSharedContainer;
+import de.fevzi.TerrariaAddons.items.coinPouch.CoinPouchCurrency;
+import de.fevzi.TerrariaAddons.items.coinPouch.CoinPouchSharedContainer;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
 import javax.annotation.Nonnull;

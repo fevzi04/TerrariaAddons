@@ -16,8 +16,8 @@ import com.hypixel.hytale.server.core.modules.time.WorldTimeResource;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.CustomUIPage;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import de.fevzi.TerrariaAddons.items.CoinPouch.CoinPouchCurrency;
-import de.fevzi.TerrariaAddons.items.CoinPouch.CoinPouchSharedContainer;
+import de.fevzi.TerrariaAddons.items.coinPouch.CoinPouchCurrency;
+import de.fevzi.TerrariaAddons.items.coinPouch.CoinPouchSharedContainer;
 
 import javax.annotation.Nonnull;
 import java.time.Instant;
