@@ -278,8 +278,6 @@ public class NPCSpawnDataManager {
 
         Vector3i oldHousingPos = existingData.getHousingPosition();
 
-        String displacedNpcType = getNpcTypeAtHousing(worldKey, newHousingPos);
-
         Map<Vector3i, NPCSpawnData> housingMap = HOUSING_NPC_MAP.get(worldKey);
         if (housingMap != null) {
             housingMap.remove(oldHousingPos);
