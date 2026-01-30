@@ -59,12 +59,8 @@ public class TerrariaAddonsConfig {
                     if (configData == null) {
                         configData = new ConfigData();
                     }
-                    if (configData.coinItemId == null || configData.coinItemId.isEmpty() ||
-                        configData.coinItemId.equals("Currency_Coin") || configData.coinItemId.equals("Ingredient_Coin")) {
-                        if (configData.coinItemId != null && (configData.coinItemId.equals("Currency_Coin") || configData.coinItemId.equals("Ingredient_Coin"))) {
-                            System.out.println("[TerrariaAddons] Migrated coinItemId to Ingredient_Coin_Copper (coins now always drop as copper)");
-                        }
-                        configData.coinItemId = "Ingredient_Coin_Copper";
+                    if (configData.customCoinId == null) {
+                        configData.customCoinId = "";
                     }
                     System.out.println("[TerrariaAddons] Loaded configuration from: " + configFile.getAbsolutePath());
                     saveConfig();
@@ -116,30 +112,21 @@ public class TerrariaAddonsConfig {
         saveConfig();
     }
 
-    public String getCoinItemId() {
-        return configData.coinItemId;
+    public String getCustomCoinId() {
+        return configData.customCoinId;
     }
 
-    public void setCoinItemId(String coinItemId) {
-        configData.coinItemId = coinItemId;
+    public void setCustomCoinId(String customCoinId) {
+        configData.customCoinId = customCoinId;
         saveConfig();
     }
 
-    public int getMinCoinsPerKill() {
-        return configData.minCoinsPerKill;
+    public boolean isCoinDropsEnabled() {
+        return configData.coinDropsEnabled;
     }
 
-    public void setMinCoinsPerKill(int minCoins) {
-        configData.minCoinsPerKill = minCoins;
-        saveConfig();
-    }
-
-    public int getMaxCoinsPerKill() {
-        return configData.maxCoinsPerKill;
-    }
-
-    public void setMaxCoinsPerKill(int maxCoins) {
-        configData.maxCoinsPerKill = maxCoins;
+    public void setCoinDropsEnabled(boolean enabled) {
+        configData.coinDropsEnabled = enabled;
         saveConfig();
     }
 
@@ -161,11 +148,9 @@ public class TerrariaAddonsConfig {
 
         private double fallingStarsSpawnRange = 50.0;
 
-        private String coinItemId = "Ingredient_Coin_Copper";
+        private String customCoinId = "";
 
-        private int minCoinsPerKill = 1;
-
-        private int maxCoinsPerKill = 5;
+        private boolean coinDropsEnabled = true;
 
         private float coinsPerHealth = 0.2f;
 
@@ -178,10 +163,9 @@ public class TerrariaAddonsConfig {
         private String info = "TerrariaAddons Configuration File - Edit values below";
         private String fallingStarsSpawnRatePercent = "Spawn rate as percentage per tick";
         private String fallingStarsSpawnRange = "Radius in blocks around player where falling stars can spawn";
-        private String coinItemId = "Item ID for the coin currency to drop from slain mobs";
-        private String minCoinsPerKill = "Minimum number of coins dropped per kill (fallback if health unavailable)";
-        private String maxCoinsPerKill = "Maximum number of coins dropped per kill (fallback if health unavailable)";
-        private String coinsPerHealth = "Health points per coin (e.g., 0.2 = 1 coin per 0.2 max health)";
+        private String customCoinId = "Optional: item ID to drop instead of coins (leave blank to use normal coins)";
+        private String coinDropsEnabled = "Enable/disable coin drops from slain mobs";
+        private String coinsPerHealth = "Health points per coin (e.g., 0.2 equals 1 coin per 0.2 max health)";
 
         public ConfigDescription() {
         }

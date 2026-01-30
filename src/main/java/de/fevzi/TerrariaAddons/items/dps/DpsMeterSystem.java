@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.dps;
+package de.fevzi.TerrariaAddons.items.dps;
 
 import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;

@@ -38,9 +38,10 @@ public class NPCSpawnManager {
     public static final int SPAWN_RADIUS = 30;
     public static final double DAYTIME_THRESHOLD = 0.3;
 
-    private static final List<String> NPC_TYPES = Arrays.asList(
+    public static final List<String> NPC_TYPES = Arrays.asList(
         "ArmsDealer",
-        "GoblinTinkerer"
+        "GoblinTinkerer",
+        "Merchant"
     );
 
     @Nullable

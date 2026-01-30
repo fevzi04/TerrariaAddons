@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.dps;
+package de.fevzi.TerrariaAddons.items.dps;
 
 import com.hypixel.hytale.server.core.entity.entities.player.hud.CustomUIHud;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;

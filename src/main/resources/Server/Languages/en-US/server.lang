@@ -4,6 +4,9 @@ items.Potion_Potion_Recall.description=Consume to teleport back to your spawn lo
 items.Potion_Potion_Wormhole.name=Wormhole Potion
 items.Potion_Potion_Wormhole.description=Consume to teleport to a chosen player.
 
+items.Potion_Potion_Teleportation.name=Teleportation Potion
+items.Potion_Potion_Teleportation.description=Consume to teleport to a random location.
+
 items.Magic_Mirror.name=Magic Mirror
 items.Magic_Mirror.description=Reusable item that safely returns you to your spawn.
 

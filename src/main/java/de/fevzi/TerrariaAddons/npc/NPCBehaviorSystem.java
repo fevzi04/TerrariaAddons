@@ -188,10 +188,7 @@ public class NPCBehaviorSystem extends EntityTickingSystem<EntityStore> {
     }
 
     private java.util.List<String> getNpcTypes() {
-        return java.util.Arrays.asList(
-            "ArmsDealer",
-            "GoblinTinkerer"
-        );
+        return NPCSpawnManager.NPC_TYPES;
     }
 
     public static void cleanupNpc(@Nonnull UUID entityUuid) {

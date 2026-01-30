@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.items.CoinDropSystem;
+package de.fevzi.TerrariaAddons.CoinDropSystem;
 
 import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;
@@ -40,6 +40,8 @@ public class CoinDropSystem extends EntityTickingSystem<EntityStore> {
     private static final Map<UUID, Boolean> PROCESSED_DEATHS = new ConcurrentHashMap<>();
     private static final float DROP_VELOCITY = 0.3f;
     private static final float DROP_SPREAD = 0.2f;
+    private static final int MIN_COINS_PER_KILL = 1;
+    private static final int MAX_COINS_PER_KILL = 5;
     private static final long CLEANUP_INTERVAL_MS = 60000L; // Clean up every minute
     private static long lastCleanupTime = 0;
 
@@ -54,6 +56,10 @@ public class CoinDropSystem extends EntityTickingSystem<EntityStore> {
                      @Nonnull ArchetypeChunk<EntityStore> chunk,
                      @Nonnull Store<EntityStore> store,
                      @Nonnull CommandBuffer<EntityStore> commandBuffer) {
+
+        if (!TerrariaAddonsConfig.getInstance().isCoinDropsEnabled()) {
+            return;
+        }
 
         Ref<EntityStore> entityRef = chunk.getReferenceTo(index);
         if (entityRef == null || !entityRef.isValid()) {
@@ -137,7 +143,13 @@ public class CoinDropSystem extends EntityTickingSystem<EntityStore> {
             return;
         }
 
-        dropConvertedCoins(store, commandBuffer, deathPosition, coinAmount, random);
+        String customCoinId = TerrariaAddonsConfig.getInstance().getCustomCoinId();
+        if (customCoinId != null && !customCoinId.isBlank()
+                && !CoinPouchCurrency.isCoin(customCoinId)) {
+            dropCustomItem(store, commandBuffer, deathPosition, customCoinId, coinAmount, random);
+        } else {
+            dropConvertedCoins(store, commandBuffer, deathPosition, coinAmount, random);
+        }
 
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastCleanupTime > CLEANUP_INTERVAL_MS) {
@@ -149,8 +161,8 @@ public class CoinDropSystem extends EntityTickingSystem<EntityStore> {
 
     private int calculateCoinAmount(float maxHealth, @Nonnull ThreadLocalRandom random) {
         if (maxHealth <= 0) {
-            int minCoins = TerrariaAddonsConfig.getInstance().getMinCoinsPerKill();
-            int maxCoins = TerrariaAddonsConfig.getInstance().getMaxCoinsPerKill();
+            int minCoins = MIN_COINS_PER_KILL;
+            int maxCoins = MAX_COINS_PER_KILL;
             
             if (minCoins < 0) minCoins = 0;
             if (maxCoins < minCoins) maxCoins = minCoins;
@@ -246,6 +258,15 @@ public class CoinDropSystem extends EntityTickingSystem<EntityStore> {
             }
         } catch (Exception e) {
         }
+    }
+
+    private void dropCustomItem(@Nonnull Store<EntityStore> store,
+                                @Nonnull CommandBuffer<EntityStore> commandBuffer,
+                                @Nonnull Vector3d position,
+                                @Nonnull String itemId,
+                                int amount,
+                                @Nonnull ThreadLocalRandom random) {
+        dropCoinStack(store, commandBuffer, position, itemId, amount, random);
     }
 
     private void cleanupProcessedDeaths(@Nonnull Store<EntityStore> store) {

@@ -23,7 +23,6 @@ import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nonnull;
 
 import java.util.ArrayDeque;
-import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -43,7 +42,6 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
     private static final int MAX_SEARCH_BLOCKS = 4000; //how many blocks can be checked
     public static final int MAX_RADIUS = 24; // scanning radius
     private static final int MIN_VOLUME = 45; // minimum x*y*z interior
-    private static final int MIN_HEIGHT = 2; // minimum house height
 
     private static final Long2ObjectOpenHashMap<HousingResult> CACHED_RESULTS = new Long2ObjectOpenHashMap<>();
 
@@ -133,8 +131,6 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
 
         ArrayDeque<Vector3i> queue = new ArrayDeque<>();
         HashSet<Vector3i> visited = new HashSet<>();
-        HashMap<Long, int[]> columnHeights = new HashMap<>();
-
         boolean hasDoor = false;
         boolean hasTorch = false;
         boolean hasChair = false;
@@ -150,8 +146,6 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
             }
 
             Vector3i current = queue.removeFirst();
-            updateColumnHeights(columnHeights, current);
-
             if (Math.abs(current.x - origin.x) > MAX_RADIUS
                     || Math.abs(current.y - origin.y) > MAX_RADIUS
                     || Math.abs(current.z - origin.z) > MAX_RADIUS) {
@@ -202,10 +196,6 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
                     queue.addLast(next);
                 }
             }
-        }
-
-        if (!allColumnsMeetMinHeight(columnHeights, MIN_HEIGHT, hasDoor ? 2 : 0)) {
-            return HousingResult.TOO_SHORT;
         }
 
         if (visited.size() < MIN_VOLUME) {
@@ -288,30 +278,6 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
         return accessor;
     }
 
-    private static void updateColumnHeights(HashMap<Long, int[]> columnHeights, Vector3i pos) {
-        long key = (((long) pos.x) << 32) ^ (pos.z & 0xffffffffL);
-        int[] bounds = columnHeights.get(key);
-        if (bounds == null) {
-            columnHeights.put(key, new int[]{pos.y, pos.y});
-        } else {
-            bounds[0] = Math.min(bounds[0], pos.y);
-            bounds[1] = Math.max(bounds[1], pos.y);
-        }
-    }
-
-    private static boolean allColumnsMeetMinHeight(HashMap<Long, int[]> columnHeights, int minHeight, int allowedTooShortColumns) {
-        int tooShortColumns = 0;
-        for (int[] bounds : columnHeights.values()) {
-            if ((bounds[1] - bounds[0] + 1) < minHeight) {
-                tooShortColumns++;
-                if (tooShortColumns > allowedTooShortColumns) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
     private static boolean isDoorBlock(BlockType blockType) {
         String id = blockType.getId();
         if (id != null && id.toLowerCase().contains(DOOR_ID_MARKER)) {
@@ -385,7 +351,6 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
         OPEN,
         TOO_LARGE,
         TOO_SMALL,
-        TOO_SHORT,
         MULTIPLE_CHECKERS,
         NO_DOOR,
         NO_TORCH,
@@ -413,7 +378,6 @@ public class HousingCheckerSystem extends EntityEventSystem<EntityStore, PlaceBl
             case NO_INTERIOR -> "no interior found";
             case TOO_LARGE -> "room too large";
             case TOO_SMALL -> "room too small";
-            case TOO_SHORT -> "room too short";
             case NO_DOOR -> "no door found";
             case NO_TORCH -> "no torch found";
             case NO_CHAIR -> "no chair found";

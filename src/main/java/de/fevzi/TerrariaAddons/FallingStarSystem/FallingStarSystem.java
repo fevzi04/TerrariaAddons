@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.items.FallingStarSystem;
+package de.fevzi.TerrariaAddons.FallingStarSystem;
 
 import com.hypixel.hytale.component.*;
 import com.hypixel.hytale.component.query.Query;

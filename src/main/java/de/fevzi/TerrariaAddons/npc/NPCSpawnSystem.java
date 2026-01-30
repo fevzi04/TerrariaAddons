@@ -171,7 +171,6 @@ public class NPCSpawnSystem extends EntityTickingSystem<EntityStore> {
             }
             Ref<EntityStore> ref = entityStore.getRefFromUUID(uuid);
             if (ref == null || !ref.isValid()) {
-                NPCSpawnDataManager.markNpcDead(worldKey, data.getNpcTypeId());
                 continue;
             }
             if (store.getArchetype(ref).contains(DeathComponent.getComponentType())) {
