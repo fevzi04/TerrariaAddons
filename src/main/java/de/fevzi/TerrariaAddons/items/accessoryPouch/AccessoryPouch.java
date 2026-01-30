@@ -35,7 +35,10 @@ public class AccessoryPouch extends OpenItemStackContainerInteraction {
             if (stack == null || ItemStack.isEmpty(stack)) {
                 return true;
             }
-            return isAccessory(stack);
+            if (!isAccessory(stack)) {
+                return false;
+            }
+            return !hasDuplicateAccessory(container, slot, stack);
         }
         return true;
     };
@@ -108,6 +111,33 @@ public class AccessoryPouch extends OpenItemStackContainerInteraction {
 
         for (String category : categories) {
             if (ACCESSORY_CATEGORY.equals(category)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static boolean hasDuplicateAccessory(ItemContainer container, short targetSlot, ItemStack incoming) {
+        if (container == null || incoming == null || ItemStack.isEmpty(incoming)) {
+            return false;
+        }
+        String incomingId = incoming.getItemId();
+        if (incomingId == null || incomingId.isBlank()) {
+            return false;
+        }
+
+        short capacity = container.getCapacity();
+        for (short i = 0; i < capacity; i++) {
+            if (i == targetSlot) {
+                continue;
+            }
+            ItemStack existing = container.getItemStack(i);
+            if (existing == null || ItemStack.isEmpty(existing)) {
+                continue;
+            }
+            String existingId = existing.getItemId();
+            if (incomingId.equals(existingId)) {
                 return true;
             }
         }

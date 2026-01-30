@@ -10,11 +10,24 @@
   "MaxStack": 1,
   "Model": "Items/Accessories/Aglet/Aglet_Model.blockymodel",
   "Texture": "Items/Accessories/Aglet/Aglet_Texture.png",
-  "Scale": 1.0,
+  "Scale": 0.5,
   "Tags": {
     "Type": [
       "Accessory"
     ]
   },
-  "Quality": "Common"
+  "Quality": "Common",
+  "Icon": "Icons/ItemsGenerated/Aglet.png",
+  "IconProperties": {
+    "Scale": 0.9,
+    "Rotation": [
+      172,
+      78,
+      125
+    ],
+    "Translation": [
+      2,
+      -9
+    ]
+  }
 }
