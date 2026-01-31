@@ -1,0 +1,262 @@
+{
+  "Parent": "Template_Weapon_Sword",
+  "Model": "Items/Weapons/Meowmere/Meowmere.blockymodel",
+  "Texture": "Items/Weapons/Meowmere/Meow.png",
+  "Quality": "Legendary",
+  "ItemLevel": 50,
+  "Icon": "Icons/ItemsGenerated/Meowmere.png",
+  "Recipe": {
+    "TimeSeconds": 5,
+    "KnowledgeRequired": false,
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Weapon_Sword"
+        ],
+        "Id": "Weapon_Bench",
+        "RequiredTierLevel": 3
+      }
+    ],
+    "Input": [
+      {
+        "ItemId": "Ingredient_Crystal_Yellow",
+        "Quantity": 15,
+        "ItemTag": ""
+      },
+      {
+        "ItemId": "Ingredient_Crystal_White",
+        "Quantity": 15
+      },
+      {
+        "ItemId": "Ingredient_Crystal_Red",
+        "Quantity": 15
+      },
+      {
+        "ItemId": "Ingredient_Crystal_Purple",
+        "Quantity": 15
+      },
+      {
+        "ItemId": "Ingredient_Crystal_Green",
+        "Quantity": 15
+      },
+      {
+        "ItemId": "Ingredient_Crystal_Cyan",
+        "Quantity": 15
+      },
+      {
+        "ItemId": "Ingredient_Crystal_Blue",
+        "Quantity": 15
+      },
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Wool",
+        "Quantity": 20
+      },
+      {
+        "ItemId": "Food_Fish_Raw",
+        "Quantity": 5
+      }
+    ]
+  },
+  "IconProperties": {
+    "Scale": 0.4,
+    "Rotation": [
+      318,
+      270,
+      0
+    ],
+    "Translation": [
+      -33,
+      -33
+    ]
+  },
+  "InteractionVars": {
+    "Swing_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Primary_Swing_Left_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 18
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Swing_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Primary_Swing_Right_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 21
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Swing_Down_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Primary_Swing_Down_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 34
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Thrust_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Primary_Thrust_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 51
+            }
+          },
+          "EntityStatsOnHit": [
+            {
+              "EntityStatId": "SignatureEnergy",
+              "Amount": 3
+            }
+          ],
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Vortexstrike_Spin_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Signature_Vortexstrike_Spin_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 37
+            }
+          },
+          "EntityStatsOnHit": [],
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Vortexstrike_Stab_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Signature_Vortexstrike_Stab_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 110
+            }
+          },
+          "EntityStatsOnHit": [],
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Guard_Wield": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Sword_Secondary_Guard_Wield",
+          "StaminaCost": {
+            "Value": 20,
+            "CostType": "Damage"
+          }
+        }
+      ]
+    }
+  },
+  "MaxDurability": 500,
+  "DurabilityLossOnHit": 0.21,
+  "TranslationProperties": {
+    "Name": "Meowmere"
+  },
+  "UsePlayerAnimations": true,
+  "Scale": 1.3,
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "ItemEntity": {
+    "ParticleSystemId": "Drop_Epic"
+  },
+  "Light": {
+    "Color": "#868",
+    "Radius": 0
+  },
+  "Trails": [
+    {
+      "TrailId": "Meowmere_Trail1",
+      "PositionOffset": {
+        "Y": 1
+      }
+    },
+    {
+      "PositionOffset": {
+        "Y": 0.9
+      },
+      "TrailId": "Meowmere_Trail2"
+    },
+    {
+      "TrailId": "Meowmere_Trail3",
+      "PositionOffset": {
+        "Y": 0.8
+      }
+    },
+    {
+      "PositionOffset": {
+        "Y": 0.7
+      },
+      "TrailId": "Meowmere_Trail4"
+    },
+    {
+      "PositionOffset": {
+        "Y": 0.6
+      },
+      "TrailId": "Meowmere_Trail5"
+    },
+    {
+      "TrailId": "Meowmere_Trail6",
+      "PositionOffset": {
+        "Y": 0.5
+      }
+    },
+    {
+      "TrailId": "Meowmere_Trail7",
+      "PositionOffset": {
+        "Y": 0.4
+      }
+    },
+    {
+      "PositionOffset": {
+        "Y": 0.3
+      },
+      "TrailId": "Meowmere_Trail8"
+    }
+  ],
+  "PlayerAnimationsId": "Sword",
+  "Animation": "Items/Weapons/Meowmere/MeowmereHeadAnim.blockyanim",
+  "Interactions": {
+    "Primary": "Meowmerehead_Rootinteraction"
+  }
+}

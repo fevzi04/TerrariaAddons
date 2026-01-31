@@ -1,0 +1,16 @@
+{
+  "Cooldown": {
+    "Cooldown": 0.1,
+    "SkipCooldownReset": false
+  },
+  "Tags": {
+    "Attack": [
+      "Ranged"
+    ]
+  },
+  "Interactions": [
+    "Weapon_Sword_Primary",
+    "Meowmerehead_Interaction"
+  ],
+  "RequireNewClick": false
+}

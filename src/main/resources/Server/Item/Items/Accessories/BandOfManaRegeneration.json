@@ -15,27 +15,6 @@
       "Accessory"
     ]
   },
-  "Recipe": {
-    "Input": [
-      {
-        "ItemId": "BandOfRegeneration",
-        "Quantity": 1
-      },
-      {
-        "ItemId": "ManaCrystal",
-        "Quantity": 1
-      }
-    ],
-    "BenchRequirement": [
-      {
-        "Type": "Crafting",
-        "Id": "TinkerersWorkshop",
-        "Categories": [
-          "Tinkerers_Accessories"
-        ]
-      }
-    ]
-  },
   "ItemLevel": 20,
   "IconProperties": {
     "Scale": 1.4,

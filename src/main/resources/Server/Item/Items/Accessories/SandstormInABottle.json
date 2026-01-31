@@ -15,31 +15,6 @@
       "Accessory"
     ]
   },
-  "Recipe": {
-    "Input": [
-      {
-        "ItemId": "Ingredient_Fabric_Scrap_Cindercloth",
-        "Quantity": 12
-      },
-      {
-        "ItemId": "Ingredient_Life_Essence",
-        "Quantity": 50
-      },
-      {
-        "ItemId": "Ingredient_Bar_Thorium",
-        "Quantity": 8
-      }
-    ],
-    "BenchRequirement": [
-      {
-        "Type": "Crafting",
-        "Id": "TinkerersWorkshop",
-        "Categories": [
-          "Tinkerers_Accessories"
-        ]
-      }
-    ]
-  },
   "ItemLevel": 20,
   "Icon": "Icons/ItemsGenerated/SandstormInABottle.png",
   "IconProperties": {

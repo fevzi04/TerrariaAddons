@@ -1,0 +1,23 @@
+{
+  "TexturePath": "Trails/Basic_Strong.png",
+  "LifeSpan": 5,
+  "Roll": 180.0,
+  "Start": {
+    "Color": "rgba(#ff00e4, 0.616)",
+    "Width": 0.3
+  },
+  "End": {
+    "Color": "rgba(#fd00ff, 0.639)",
+    "Width": 0.3
+  },
+  "LightInfluence": 0,
+  "Smooth": true,
+  "RenderMode": "BlendLinear",
+  "IntersectionHighlight": {
+    "HighlightThreshold": 0,
+    "HighlightColor": "#000000"
+  },
+  "Animation": {
+    "FrameLifeSpan": 0
+  }
+}

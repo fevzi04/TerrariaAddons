@@ -1,0 +1,14 @@
+{
+  "Type": "Serial",
+  "Interactions": [
+    {
+      "Type": "LaunchProjectile",
+      "ProjectileId": "StarWrath_Projectile3",
+      "ViewDistance": 96,
+      "Effects": {
+        "CameraEffect": "Mace_Explode",
+        "LocalSoundEventId": "Starwrath_FallenStarSound"
+      }
+    }
+  ]
+}

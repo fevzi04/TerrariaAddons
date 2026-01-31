@@ -1,0 +1,13 @@
+{
+  "Layers": [
+    {
+      "Files": [
+        "Sounds/Meowmere/Item_57.wav--effiroom.ru.ogg",
+        "Sounds/Meowmere/Item_58.wav--effiroom.ru.ogg"
+      ],
+      "Volume": -3.0980391997148637
+    }
+  ],
+  "Volume": 1.0,
+  "Parent": "SFX_Attn_Quiet"
+}

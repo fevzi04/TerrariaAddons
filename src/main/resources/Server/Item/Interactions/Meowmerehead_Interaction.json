@@ -1,0 +1,13 @@
+{
+  "Type": "Serial",
+  "Interactions": [
+    {
+      "Type": "Projectile",
+      "HorizontalSpeedMultiplier": 1,
+      "Config": "Meowmerehead_Trail_Project",
+      "Effects": {
+        "ClearSoundEventOnFinish": true
+      }
+    }
+  ]
+}

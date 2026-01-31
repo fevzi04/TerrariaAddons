@@ -11,6 +11,8 @@ repositories {
 dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'com.buuz135:MultipleHUD:1.0.4'
+    // Local dependency for Hytalor (missing at runtime otherwise).
+    implementation files("${System.getProperty('user.home')}/Downloads/Hytalor-1.5.jar")
 }
 
 java {

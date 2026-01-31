@@ -3,5 +3,7 @@
   "name": "Terraria Addons",
   "version": "1.5.6",
   "main": "de.fevzi.TerrariaAddons.TerrariaAddons",
-  "dependencies": []
+  "dependencies": [
+    "com.hypersonicsharkz:Hytalor"
+  ]
 }

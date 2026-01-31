@@ -1,0 +1,16 @@
+{
+  "Cooldown": {
+    "Cooldown": 0.2,
+    "SkipCooldownReset": false
+  },
+  "Tags": {
+    "Attack": [
+      "Ranged"
+    ]
+  },
+  "RequireNewClick": false,
+  "Interactions": [
+    "Weapon_Sword_Primary",
+    "StarWrath_Int"
+  ]
+}

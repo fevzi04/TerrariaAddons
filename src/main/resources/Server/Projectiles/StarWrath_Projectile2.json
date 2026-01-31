@@ -1,0 +1,43 @@
+{
+  "Appearance": "StarWrath_ModelAsset",
+  "SticksVertically": true,
+  "MuzzleVelocity": 100,
+  "TerminalVelocity": 200,
+  "Gravity": 500,
+  "Bounciness": 0,
+  "ImpactSlowdown": 0,
+  "TimeToLive": 10,
+  "Damage": 10,
+  "DeadTime": 0,
+  "DepthShot": 1,
+  "HorizontalCenterShot": 1,
+  "HitParticles": {
+    "SystemId": "Firework_GS",
+    "Color": "#ff9fe8"
+  },
+  "DeathEffectsOnHit": true,
+  "DeadTimeMiss": 0,
+  "VerticalCenterShot": -60,
+  "Radius": 1,
+  "Height": 30,
+  "Density": 100,
+  "ExplosionConfig": {
+    "DamageEntities": true,
+    "DamageBlocks": false,
+    "EntityDamageRadius": 5,
+    "EntityDamage": 15
+  },
+  "MissParticles": {
+    "SystemId": "Firework_GS",
+    "Color": "#ff9fe8"
+  },
+  "MissSoundEventId": "Starwrath_FallenStarExploreSound",
+  "DeathSoundEventId": "Starwrath_FallenStarExploreSound",
+  "HitSoundEventId": "Starwrath_FallenStarSound",
+  "BounceSoundEventId": "Starwrath_FallenStarSound",
+  "DeathParticles": {
+    "SystemId": "Firework_GS",
+    "Color": "#ff9fe8"
+  },
+  "SwimmingDampingFactor": 0
+}

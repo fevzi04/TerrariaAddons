@@ -15,31 +15,6 @@
       "Accessory"
     ]
   },
-  "Recipe": {
-    "Input": [
-      {
-        "ItemId": "Ingredient_Bar_Gold",
-        "Quantity": 8
-      },
-      {
-        "ItemId": "Ingredient_Fire_Essence",
-        "Quantity": 100
-      },
-      {
-        "ItemId": "Ingredient_Life_Essence",
-        "Quantity": 50
-      }
-    ],
-    "BenchRequirement": [
-      {
-        "Type": "Crafting",
-        "Id": "TinkerersWorkshop",
-        "Categories": [
-          "Tinkerers_Accessories"
-        ]
-      }
-    ]
-  },
   "ItemLevel": 20,
   "Icon": "Icons/ItemsGenerated/LavaCharm.png",
   "IconProperties": {

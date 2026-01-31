@@ -28,31 +28,6 @@
       "Accessory"
     ]
   },
-  "Recipe": {
-    "Input": [
-      {
-        "ItemId": "Ingredient_Bar_Cobalt",
-        "Quantity": 8
-      },
-      {
-        "ItemId": "Ingredient_Fabric_Scrap_Shadoweave",
-        "Quantity": 12
-      },
-      {
-        "ItemId": "Ingredient_Life_Essence",
-        "Quantity": 50
-      }
-    ],
-    "BenchRequirement": [
-      {
-        "Type": "Crafting",
-        "Id": "TinkerersWorkshop",
-        "Categories": [
-          "Tinkerers_Accessories"
-        ]
-      }
-    ]
-  },
   "ItemLevel": 20,
   "Icon": "Icons/ItemsGenerated/HermesBoots.png",
   "Quality": "Rare"

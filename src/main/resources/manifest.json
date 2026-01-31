@@ -11,6 +11,7 @@
     "ServerVersion": "*",
     "Dependencies": {
         "Buuz135:MultipleHUD": "*",
+        "com.hypersonicsharkz:Hytalor": "*",
         "Hytale:NPC": "*"
     },
     "OptionalDependencies": {

@@ -1,0 +1,100 @@
+{
+  "HitBox": {
+    "Max": {
+      "X": 0.075,
+      "Y": 0.075,
+      "Z": 0.075
+    },
+    "Min": {
+      "X": -0.075,
+      "Y": -0.075,
+      "Z": -0.075
+    }
+  },
+  "MinScale": 1,
+  "MaxScale": 1,
+  "DefaultAttachments": [
+    {
+      "Model": "Items/Weapons/Meowmere/MeowmereHead.blockymodel",
+      "Texture": "Items/Weapons/Meowmere/MeowHead.png"
+    }
+  ],
+  "Model": "Items/Weapons/Meowmere/MeowmereHead.blockymodel",
+  "Texture": "Items/Weapons/Meowmere/MeowHead.png",
+  "AnimationSets": {
+    "Idle": {
+      "Animations": [
+        {
+          "Animation": "Items/Animations/Fly/Fly_Vertical.blockyanim"
+        }
+      ]
+    }
+  },
+  "Trails": [
+    {
+      "TrailId": "Meowmerehead_Trail1",
+      "PositionOffset": {
+        "Y": 0.26
+      }
+    },
+    {
+      "TrailId": "Meowmerehead_Trail2",
+      "PositionOffset": {
+        "Y": 0.23
+      }
+    },
+    {
+      "TrailId": "Meowmerehead_Trail3",
+      "PositionOffset": {
+        "Y": 0.2
+      }
+    },
+    {
+      "PositionOffset": {
+        "Y": 0.17
+      },
+      "TrailId": "Meowmerehead_Trail4"
+    },
+    {
+      "TrailId": "Meowmerehead_Trail5",
+      "PositionOffset": {
+        "Y": 0.14
+      }
+    },
+    {
+      "TrailId": "Meowmerehead_Trail6",
+      "PositionOffset": {
+        "Y": 0.11
+      }
+    },
+    {
+      "TrailId": "Meowmerehead_Trail7",
+      "PositionOffset": {
+        "Y": 0.08
+      }
+    },
+    {
+      "PositionOffset": {
+        "Y": 0.05
+      },
+      "TrailId": "Meowmerehead_Trail8"
+    }
+  ],
+  "Light": {
+    "Color": "#d0f",
+    "Radius": 4
+  },
+  "Particles": [
+    {
+      "SystemId": "Smoke_Gold_Brazier_Small",
+      "TargetEntityPart": "Entity",
+      "Scale": 1
+    },
+    {
+      "SystemId": "Smoke_Gold_Brazier_Small"
+    },
+    {
+      "SystemId": "Smoke_Gold_Brazier_Small"
+    }
+  ]
+}

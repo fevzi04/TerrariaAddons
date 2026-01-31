@@ -1,0 +1,49 @@
+{
+  "Model": "Items/Weapons/StarWrath/Starfury_Projectile.blockymodel",
+  "Texture": "Items/Weapons/StarWrath/Starfury_Texture.png",
+  "HitBox": {
+    "Max": {
+      "X": 0.05,
+      "Y": 0.05,
+      "Z": 0.05
+    },
+    "Min": {
+      "X": -0.05,
+      "Y": -0.05,
+      "Z": -0.05
+    }
+  },
+  "Trails": [
+    {
+      "TrailId": "StarWrathFallen_Trail2"
+    },
+    {
+      "TrailId": "StarWrathFallen_Trail2",
+      "RotationOffset": {
+        "Roll": 90
+      }
+    }
+  ],
+  "MaxScale": 1,
+  "MinScale": 1,
+  "Light": {
+    "Color": "#90a",
+    "Radius": 4
+  },
+  "Particles": [
+    {
+      "SystemId": "Firework_GS",
+      "Scale": 1,
+      "Color": "#ff00eb",
+      "TargetEntityPart": "Entity"
+    },
+    {
+      "SystemId": "Firework_Mix2",
+      "Color": "#fb70ff"
+    },
+    {
+      "SystemId": "Firework_Mix2",
+      "Color": "#ff00b5"
+    }
+  ]
+}
