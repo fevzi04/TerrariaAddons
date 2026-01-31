@@ -18,6 +18,7 @@
         "RequiredTierLevel": 3
       }
     ],
+    "RequiredMemoriesLevel": 6,
     "Input": [
       {
         "ItemId": "Ingredient_Crystal_Yellow",

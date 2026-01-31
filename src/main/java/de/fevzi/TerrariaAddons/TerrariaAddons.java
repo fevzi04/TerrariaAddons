@@ -37,7 +37,8 @@ import de.fevzi.TerrariaAddons.items.consumables.potions.recall.RecallInteractio
 import de.fevzi.TerrariaAddons.items.consumables.potions.teleportation.TeleportationPotionInteraction;
 import de.fevzi.TerrariaAddons.items.consumables.potions.wormhole.PlayerTeleportPageSupplier;
 import de.fevzi.TerrariaAddons.items.voidbag.Voidbag;
-import de.fevzi.TerrariaAddons.items.starfury.StarfuryInteraction;
+import de.fevzi.TerrariaAddons.items.weapons.starfury.StarfuryInteraction;
+import de.fevzi.TerrariaAddons.items.weapons.starwrath.StarWrathInteraction;
 import de.fevzi.TerrariaAddons.housing.HousingCheckerSystem;
 import de.fevzi.TerrariaAddons.housing.HousingRevalidationBreakSystem;
 import de.fevzi.TerrariaAddons.housing.HousingRevalidationPlaceSystem;
@@ -84,6 +85,7 @@ public class TerrariaAddons extends JavaPlugin {
         interactions.register("CoinPouch", CoinPouch.class, CoinPouch.CODEC);
         interactions.register("Voidbag", Voidbag.class, Voidbag.CODEC);
         interactions.register("Starfury", StarfuryInteraction.class, StarfuryInteraction.CODEC);
+        interactions.register("StarWrath", StarWrathInteraction.class, StarWrathInteraction.CODEC);
         NPCPlugin npcPlugin = NPCPlugin.get();
         if (npcPlugin != null) {
             npcPlugin.registerCoreComponentType("OpenCoinShop", BuilderActionOpenCoinShop::new);

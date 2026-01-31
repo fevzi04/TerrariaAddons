@@ -1,4 +1,4 @@
-package de.fevzi.TerrariaAddons.items.starfury;
+package de.fevzi.TerrariaAddons.items.weapons.starfury;
 
 import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.AddReason;

@@ -50,9 +50,9 @@
     "BenchRequirement": [
       {
         "Type": "Crafting",
-        "Id": "TinkerersWorkshop",
+        "Id": "Workbench",
         "Categories": [
-          "Tinkerers_Pouches"
+          "Workbench_Survival"
         ]
       }
     ]

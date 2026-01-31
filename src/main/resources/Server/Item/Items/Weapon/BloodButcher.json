@@ -5,7 +5,7 @@
   },
   "Model": "Items/Weapons/BloodButcher/BloodButcher.blockymodel",
   "Texture": "Items/Weapons/BloodButcher/BloodButcher.png",
-  "Quality": "Legendary",
+  "Quality": "Rare",
   "ItemLevel": 30,
   "Icon": "Icons/ItemsGenerated/BloodButcher.png",
   "Recipe": {
@@ -28,7 +28,7 @@
           "Weapon_Sword"
         ],
         "Id": "Weapon_Bench",
-        "RequiredTierLevel": 3
+        "RequiredTierLevel": 2
       }
     ]
   },

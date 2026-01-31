@@ -10,7 +10,6 @@
   },
   "RequireNewClick": false,
   "Interactions": [
-    "Weapon_Sword_Primary",
-    "StarWrath_Int"
+    "Weapon_Sword_Primary"
   ]
 }
