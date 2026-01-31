@@ -51,9 +51,12 @@ import de.fevzi.TerrariaAddons.housing.ui.HousingCheckPageSupplier;
 import de.fevzi.TerrariaAddons.npc.NPCBehaviorSystem;
 import de.fevzi.TerrariaAddons.npc.NPCDeathMonitorSystem;
 import de.fevzi.TerrariaAddons.npc.NPCSpawnSystem;
+import de.fevzi.TerrariaAddons.npc.NPCMapMarkerProvider;
+import de.fevzi.TerrariaAddons.npc.commands.NPCKillCommand;
 import de.fevzi.TerrariaAddons.shop.coin.BuilderActionOpenCoinShop;
 
 import javax.annotation.Nonnull;
+import com.hypixel.hytale.server.core.universe.world.events.AddWorldEvent;
 
 /**
  * Main plugin class for TerrariaAddons.
@@ -118,6 +121,11 @@ public class TerrariaAddons extends JavaPlugin {
 
         CommandManager.get().register(new NPCDebugCommand());
         CommandManager.get().register(new ValidHousingCommand());
+        CommandManager.get().register(new NPCKillCommand());
+
+        getEventRegistry().registerGlobal(AddWorldEvent.class, event ->
+            event.getWorld().getWorldMapManager().addMarkerProvider("npcMarkers", NPCMapMarkerProvider.INSTANCE)
+        );
 
     }
 }

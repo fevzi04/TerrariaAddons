@@ -29,13 +29,16 @@ items.HermesBoots.name=Hermes Boots
 items.HermesBoots.description=The wearer can run super fast.
 
 items.Aglet.name=Aglet
-items.Aglet.description=Increases movement speed.
+items.Aglet.description=5% increased movement speed.
 
 items.RocketBoots.name=Rocket Boots
 items.RocketBoots.description=Allows temporary flight.
 
 items.SpectreBoots.name=Spectre Boots
 items.SpectreBoots.description=Allows temporary flight.\nThe wearer can run super fast.
+
+items.LightningBoots.name=Lightning Boots
+items.LightningBoots.description=Allows temporary flight, super fast running \n8% increased movement speed.
 
 items.LuckyHorseshoe.name=Lucky Horseshoe
 items.LuckyHorseshoe.description=Become immune to fall damage.
@@ -57,6 +60,12 @@ items.MagmaStone.description=Ignites Enemies.
 
 items.LavaCharm.name=Lava Charm
 items.LavaCharm.description=Grants temporary immunity to lava and fire damage.
+
+items.AnkletOfWind.name=Anklet of Wind
+items.AnkletOfWind.description=10% increased movement speed.
+
+items.IceSkates.name=Ice Skates
+items.IceSkates.description=Prevents sliding on ice.
 
 items.Weapon_TerraBlade.name=Terra Blade
 items.Weapon_TerraBlade.description=Fires a energy blade with each swing.

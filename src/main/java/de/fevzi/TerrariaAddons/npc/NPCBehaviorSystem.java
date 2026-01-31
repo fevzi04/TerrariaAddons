@@ -118,6 +118,7 @@ public class NPCBehaviorSystem extends EntityTickingSystem<EntityStore> {
         if (transform == null) {
             return;
         }
+        NPCSpawnDataManager.updateNpcTransform(entityUuid, transform.getPosition());
 
         Vector3i housingPos = npcData.getHousingPosition();
         if (housingPos == null) {
@@ -263,6 +264,7 @@ public class NPCBehaviorSystem extends EntityTickingSystem<EntityStore> {
         LAST_POS.remove(entityUuid);
         LAST_PROGRESS_TIME.remove(entityUuid);
         LAST_BEHAVIOR_CHECK.entrySet().removeIf(entry -> entry.getKey().endsWith(":" + entityUuid.toString()));
+        NPCSpawnDataManager.clearNpcTransform(entityUuid);
     }
 }
 

@@ -21,7 +21,8 @@
                 { "Type": "Single", "Weight": 2, "Item": { "ItemId": "BandOfRegeneration", "QuantityMin": 1, "QuantityMax": 1 } },
                 { "Type": "Single", "Weight": 2, "Item": { "ItemId": "CloudInABottle", "QuantityMin": 1, "QuantityMax": 1 } },
                 { "Type": "Single", "Weight": 2, "Item": { "ItemId": "HermesBoots", "QuantityMin": 1, "QuantityMax": 1 } },
-                { "Type": "Single", "Weight": 2, "Item": { "ItemId": "LuckyHorseshoe", "QuantityMin": 1, "QuantityMax": 1 } }
+                { "Type": "Single", "Weight": 2, "Item": { "ItemId": "LuckyHorseshoe", "QuantityMin": 1, "QuantityMax": 1 } },
+                { "Type": "Single", "Weight": 2, "Item": { "ItemId": "AnkletOfWind", "QuantityMin": 1, "QuantityMax": 1 } }
               ]
             },
             { "Type": "Empty", "Weight": 85 }

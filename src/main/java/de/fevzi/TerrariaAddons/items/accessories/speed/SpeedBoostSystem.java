@@ -30,6 +30,8 @@ public class SpeedBoostSystem extends EntityTickingSystem<EntityStore> {
         Map<String, Float> multipliers = new HashMap<>();
         multipliers.put("HermesBoots", 1.2f);
         multipliers.put("Aglet", 1.05f);
+        multipliers.put("AnkletOfWind", 1.1f);
+        multipliers.put("LightningBoots", 1.3f);
         multipliers.put("SpectreBoots", 1.2f);
         SPEED_MULTIPLIERS = Collections.unmodifiableMap(multipliers);
     }

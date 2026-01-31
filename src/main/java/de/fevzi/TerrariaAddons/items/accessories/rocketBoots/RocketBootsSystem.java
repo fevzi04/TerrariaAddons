@@ -39,6 +39,7 @@ public class RocketBootsSystem extends EntityTickingSystem<EntityStore> {
 
     private static final String ROCKET_BOOTS_ID = "RocketBoots";
     private static final String SPECTRE_BOOTS_ID = "SpectreBoots";
+    private static final String LIGHTNING_BOOTS_ID = "LightningBoots";
     private static final double LEAP_FORCE = 8.0D;
     private static final double FORWARD_BOOST = 10.0D;
     private static final int MAX_FUEL = 150;
@@ -66,7 +67,8 @@ public class RocketBootsSystem extends EntityTickingSystem<EntityStore> {
         if (playerRef == null) return;
 
         boolean hasItem = AccessoryPouchSharedContainer.hasItemInPouch(player.getInventory(), playerRef.getUuid(), ROCKET_BOOTS_ID)
-                || AccessoryPouchSharedContainer.hasItemInPouch(player.getInventory(), playerRef.getUuid(), SPECTRE_BOOTS_ID);
+                || AccessoryPouchSharedContainer.hasItemInPouch(player.getInventory(), playerRef.getUuid(), SPECTRE_BOOTS_ID)
+                || AccessoryPouchSharedContainer.hasItemInPouch(player.getInventory(), playerRef.getUuid(), LIGHTNING_BOOTS_ID);
         if (!hasItem) {
             BoostOrderManager.setBootsFuelAvailable(playerRef, false);
             BoostOrderManager.clearActiveBoost(playerRef, BoostOrderManager.ActiveBoost.BOOTS);

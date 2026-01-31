@@ -3,6 +3,7 @@ package de.fevzi.TerrariaAddons.housing.npc;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.hypixel.hytale.math.vector.Vector3d;
 import com.hypixel.hytale.math.vector.Vector3i;
 
 import javax.annotation.Nonnull;
@@ -35,6 +36,7 @@ public class NPCSpawnDataManager {
     private static final Map<String, Map<Vector3i, NPCSpawnData>> HOUSING_NPC_MAP = new ConcurrentHashMap<>();
     private static final Map<String, Map<String, NPCSpawnData>> NPC_TYPE_MAP = new ConcurrentHashMap<>();
     private static final Map<String, Set<Vector3i>> OCCUPIED_HOUSINGS = new ConcurrentHashMap<>();
+    private static final Map<UUID, Vector3d> NPC_POSITIONS = new ConcurrentHashMap<>();
 
     static {
         loadFromDisk();
@@ -92,9 +94,11 @@ public class NPCSpawnDataManager {
     public static void markNpcDead(@Nonnull String worldKey, @Nonnull String npcTypeId) {
         NPCSpawnData data = getNpcByType(worldKey, npcTypeId);
         if (data != null) {
+            UUID uuid = data.getEntityUuid();
             data.setAlive(false);
             data.setEntityUuid(null);
             data.setDeathTimestamp(System.currentTimeMillis());
+            clearNpcTransform(uuid);
             Set<Vector3i> occupied = OCCUPIED_HOUSINGS.get(worldKey);
             if (occupied != null) {
                 occupied.remove(data.getHousingPosition());
@@ -375,6 +379,23 @@ public class NPCSpawnDataManager {
             Vector3i freeHousing = unoccupiedHousings.iterator().next();
             assignHousingToHomelessNpc(worldKey, homelessNpcType, freeHousing);
         }
+    }
+
+    public static void updateNpcTransform(@Nonnull UUID entityUuid, @Nonnull Vector3d position) {
+        NPC_POSITIONS.put(entityUuid, new Vector3d(position));
+    }
+
+    @Nullable
+    public static Vector3d getNpcPosition(@Nonnull UUID entityUuid) {
+        Vector3d pos = NPC_POSITIONS.get(entityUuid);
+        return pos == null ? null : new Vector3d(pos);
+    }
+
+    public static void clearNpcTransform(@Nullable UUID entityUuid) {
+        if (entityUuid == null) {
+            return;
+        }
+        NPC_POSITIONS.remove(entityUuid);
     }
 
     private static class SavedNPCData {

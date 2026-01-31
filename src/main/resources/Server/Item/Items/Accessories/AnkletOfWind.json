@@ -1,0 +1,33 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.AnkletOfWind.name",
+    "Description": "server.items.AnkletOfWind.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "MaxStack": 1,
+  "Model": "Items/Accessories/AnkletOfWind/AnkletOfWind_Model.blockymodel",
+  "Texture": "Items/Accessories/AnkletOfWind/AnkletOfWind_Texture.png",
+  "Scale": 1,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "Quality": "Uncommon",
+  "Icon": "Icons/ItemsGenerated/AnkletOfWind.png",
+  "IconProperties": {
+    "Scale": 1.1,
+    "Rotation": [
+      135,
+      181,
+      0
+    ],
+    "Translation": [
+      0,
+      1
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.LightningBoots.name",
+    "Description": "server.items.LightningBoots.description"
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Items.Accessories"
+  ],
+  "MaxStack": 1,
+  "Model": "Items/Accessories/LightningBoots/LightningBoots_Model.blockymodel",
+  "Texture": "Items/Accessories/LightningBoots/LightningBoots_Texture.png",
+  "Scale": 1,
+  "Tags": {
+    "Type": [
+      "Accessory"
+    ]
+  },
+  "ItemLevel": 20,
+  "Quality": "Epic",
+  "Icon": "Icons/ItemsGenerated/LightningBoots.png",
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -8
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "SpectreBoots",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "AnkletOfWind",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Aglet",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "TinkerersWorkshop",
+        "Categories": [
+          "Tinkerers_Accessories"
+        ]
+      }
+    ]
+  }
+}
