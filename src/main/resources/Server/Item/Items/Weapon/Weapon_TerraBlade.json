@@ -4,11 +4,11 @@
     "Name": "server.items.Weapon_TerraBlade.name",
     "Description": "server.items.Weapon_TerraBlade.description"
   },
-  "Model": "Items/Weapons/Sword/TerraBlade.blockymodel",
-  "Texture": "Items/Weapons/Sword/TerraBlade.png",
-  "Scale": 0.5,
+  "Model": "Items/Weapons/Sword/TerraBlade_Model.blockymodel",
+  "Texture": "Items/Weapons/Sword/TerraBlade_Texture.png",
+  "Scale": 1,
   "Quality": "Legendary",
-  "Icon": "Icons/ItemsGenerated/Weapon_Sword_TerraBlade.png",
+  "Icon": "Icons/ItemsGenerated/Weapon_TerraBlade.png",
   "ItemLevel": 60,
   "Recipe": {
     "Input": [
@@ -186,5 +186,17 @@
     }
   },
   "MaxDurability": 200,
-  "DurabilityLossOnHit": 0.21
+  "DurabilityLossOnHit": 0.21,
+  "IconProperties": {
+    "Scale": 0.3,
+    "Rotation": [
+      45,
+      90,
+      0
+    ],
+    "Translation": [
+      -35,
+      -43
+    ]
+  }
 }
